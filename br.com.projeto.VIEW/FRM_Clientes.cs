@@ -24,4 +24,4 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             obj.nome = txt_Nome.Text;
         }
     }
-}
+} 

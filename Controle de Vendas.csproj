@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="br.com.projeto.CONEXAO\ConnectionFactory.cs" />
     <Compile Include="br.com.projeto.MODEL\Cliente.cs" />
     <Compile Include="br.com.projeto.VIEW\FRM_Clientes.cs">
       <SubType>Form</SubType>
@@ -92,7 +93,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="br.com.projeto.CONEXAO\" />
     <Folder Include="br.com.projeto.DAO\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
