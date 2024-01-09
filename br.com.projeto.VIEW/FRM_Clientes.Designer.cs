@@ -33,6 +33,20 @@
             this.tab_Clientes = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cbo_UF = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txt_Cidade = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txt_Bairro = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txt_Complemento = new System.Windows.Forms.TextBox();
+            this.txt_CEP = new System.Windows.Forms.MaskedTextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txt_Numero = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txt_Endereco = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txt_RG = new System.Windows.Forms.MaskedTextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -49,37 +63,23 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txt_Endereco = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txt_Numero = new System.Windows.Forms.TextBox();
-            this.txt_CEP = new System.Windows.Forms.MaskedTextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txt_Complemento = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.txt_Bairro = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.txt_Cidade = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.cbo_UF = new System.Windows.Forms.ComboBox();
+            this.tabelaCliente = new System.Windows.Forms.DataGridView();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btn_Pesquisar = new System.Windows.Forms.Button();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txt_Pesquisa = new System.Windows.Forms.TextBox();
             this.btn_Novo = new System.Windows.Forms.Button();
             this.btn_Salvar = new System.Windows.Forms.Button();
             this.btn_Excluir = new System.Windows.Forms.Button();
             this.btn_Editar = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.txt_Pesquisa = new System.Windows.Forms.TextBox();
-            this.btn_Pesquisar = new System.Windows.Forms.Button();
-            this.tabelaCliente = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.tab_Clientes.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabelaCliente)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -151,6 +151,148 @@
             this.groupBox2.TabIndex = 25;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Informações de endereço";
+            // 
+            // cbo_UF
+            // 
+            this.cbo_UF.FormattingEnabled = true;
+            this.cbo_UF.Items.AddRange(new object[] {
+            "AC",
+            "AL",
+            "AP",
+            "AM",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MT",
+            "MS",
+            "MG",
+            "PA",
+            "PB",
+            "PR",
+            "PE",
+            "PI",
+            "RJ",
+            "RN",
+            "RS",
+            "RO",
+            "RR",
+            "SC",
+            "SP",
+            "SE",
+            "TO"});
+            this.cbo_UF.Location = new System.Drawing.Point(553, 107);
+            this.cbo_UF.Name = "cbo_UF";
+            this.cbo_UF.Size = new System.Drawing.Size(129, 29);
+            this.cbo_UF.TabIndex = 35;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(512, 107);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(35, 21);
+            this.label16.TabIndex = 34;
+            this.label16.Text = "UF:";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(64, 77);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(79, 21);
+            this.label15.TabIndex = 32;
+            this.label15.Text = "Cidade:";
+            // 
+            // txt_Cidade
+            // 
+            this.txt_Cidade.Location = new System.Drawing.Point(149, 70);
+            this.txt_Cidade.Name = "txt_Cidade";
+            this.txt_Cidade.Size = new System.Drawing.Size(297, 28);
+            this.txt_Cidade.TabIndex = 33;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(82, 141);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(61, 21);
+            this.label14.TabIndex = 30;
+            this.label14.Text = "Bairro:";
+            // 
+            // txt_Bairro
+            // 
+            this.txt_Bairro.Location = new System.Drawing.Point(149, 138);
+            this.txt_Bairro.Name = "txt_Bairro";
+            this.txt_Bairro.Size = new System.Drawing.Size(297, 28);
+            this.txt_Bairro.TabIndex = 31;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(8, 107);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(135, 21);
+            this.label13.TabIndex = 28;
+            this.label13.Text = "Complemento:";
+            // 
+            // txt_Complemento
+            // 
+            this.txt_Complemento.Location = new System.Drawing.Point(149, 104);
+            this.txt_Complemento.Name = "txt_Complemento";
+            this.txt_Complemento.Size = new System.Drawing.Size(297, 28);
+            this.txt_Complemento.TabIndex = 29;
+            // 
+            // txt_CEP
+            // 
+            this.txt_CEP.Location = new System.Drawing.Point(553, 70);
+            this.txt_CEP.Mask = "00000-999";
+            this.txt_CEP.Name = "txt_CEP";
+            this.txt_CEP.Size = new System.Drawing.Size(129, 28);
+            this.txt_CEP.TabIndex = 27;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(499, 73);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(48, 21);
+            this.label12.TabIndex = 26;
+            this.label12.Text = "CEP:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(467, 39);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(80, 21);
+            this.label11.TabIndex = 14;
+            this.label11.Text = "Número:";
+            // 
+            // txt_Numero
+            // 
+            this.txt_Numero.Location = new System.Drawing.Point(553, 36);
+            this.txt_Numero.Name = "txt_Numero";
+            this.txt_Numero.Size = new System.Drawing.Size(129, 28);
+            this.txt_Numero.TabIndex = 15;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(48, 39);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(95, 21);
+            this.label10.TabIndex = 12;
+            this.label10.Text = "Endereço:";
+            // 
+            // txt_Endereco
+            // 
+            this.txt_Endereco.Location = new System.Drawing.Point(149, 36);
+            this.txt_Endereco.Name = "txt_Endereco";
+            this.txt_Endereco.Size = new System.Drawing.Size(297, 28);
+            this.txt_Endereco.TabIndex = 13;
             // 
             // groupBox1
             // 
@@ -304,147 +446,58 @@
             this.tabPage2.Text = "Consulta";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // label10
+            // tabelaCliente
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(48, 39);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(95, 21);
-            this.label10.TabIndex = 12;
-            this.label10.Text = "Endereço:";
+            this.tabelaCliente.AllowUserToAddRows = false;
+            this.tabelaCliente.AllowUserToDeleteRows = false;
+            this.tabelaCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tabelaCliente.Location = new System.Drawing.Point(23, 115);
+            this.tabelaCliente.Name = "tabelaCliente";
+            this.tabelaCliente.ReadOnly = true;
+            this.tabelaCliente.RowHeadersWidth = 51;
+            this.tabelaCliente.RowTemplate.Height = 24;
+            this.tabelaCliente.Size = new System.Drawing.Size(739, 344);
+            this.tabelaCliente.TabIndex = 1;
             // 
-            // txt_Endereco
+            // groupBox3
             // 
-            this.txt_Endereco.Location = new System.Drawing.Point(149, 36);
-            this.txt_Endereco.Name = "txt_Endereco";
-            this.txt_Endereco.Size = new System.Drawing.Size(297, 28);
-            this.txt_Endereco.TabIndex = 13;
+            this.groupBox3.Controls.Add(this.btn_Pesquisar);
+            this.groupBox3.Controls.Add(this.label17);
+            this.groupBox3.Controls.Add(this.txt_Pesquisa);
+            this.groupBox3.Location = new System.Drawing.Point(23, 21);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(739, 88);
+            this.groupBox3.TabIndex = 0;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Pesquisar clientes";
             // 
-            // label11
+            // btn_Pesquisar
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(467, 39);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(80, 21);
-            this.label11.TabIndex = 14;
-            this.label11.Text = "Número:";
+            this.btn_Pesquisar.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btn_Pesquisar.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Pesquisar.ForeColor = System.Drawing.Color.White;
+            this.btn_Pesquisar.Location = new System.Drawing.Point(589, 31);
+            this.btn_Pesquisar.Name = "btn_Pesquisar";
+            this.btn_Pesquisar.Size = new System.Drawing.Size(132, 37);
+            this.btn_Pesquisar.TabIndex = 6;
+            this.btn_Pesquisar.Text = "Pesquisar";
+            this.btn_Pesquisar.UseVisualStyleBackColor = false;
             // 
-            // txt_Numero
+            // label17
             // 
-            this.txt_Numero.Location = new System.Drawing.Point(553, 36);
-            this.txt_Numero.Name = "txt_Numero";
-            this.txt_Numero.Size = new System.Drawing.Size(129, 28);
-            this.txt_Numero.TabIndex = 15;
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(16, 39);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(65, 21);
+            this.label17.TabIndex = 12;
+            this.label17.Text = "Nome:";
             // 
-            // txt_CEP
+            // txt_Pesquisa
             // 
-            this.txt_CEP.Location = new System.Drawing.Point(553, 70);
-            this.txt_CEP.Mask = "00000-999";
-            this.txt_CEP.Name = "txt_CEP";
-            this.txt_CEP.Size = new System.Drawing.Size(129, 28);
-            this.txt_CEP.TabIndex = 27;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(499, 73);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(48, 21);
-            this.label12.TabIndex = 26;
-            this.label12.Text = "CEP:";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(8, 107);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(135, 21);
-            this.label13.TabIndex = 28;
-            this.label13.Text = "Complemento:";
-            // 
-            // txt_Complemento
-            // 
-            this.txt_Complemento.Location = new System.Drawing.Point(149, 104);
-            this.txt_Complemento.Name = "txt_Complemento";
-            this.txt_Complemento.Size = new System.Drawing.Size(297, 28);
-            this.txt_Complemento.TabIndex = 29;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(82, 141);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(61, 21);
-            this.label14.TabIndex = 30;
-            this.label14.Text = "Bairro:";
-            // 
-            // txt_Bairro
-            // 
-            this.txt_Bairro.Location = new System.Drawing.Point(149, 138);
-            this.txt_Bairro.Name = "txt_Bairro";
-            this.txt_Bairro.Size = new System.Drawing.Size(297, 28);
-            this.txt_Bairro.TabIndex = 31;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(64, 77);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(79, 21);
-            this.label15.TabIndex = 32;
-            this.label15.Text = "Cidade:";
-            // 
-            // txt_Cidade
-            // 
-            this.txt_Cidade.Location = new System.Drawing.Point(149, 70);
-            this.txt_Cidade.Name = "txt_Cidade";
-            this.txt_Cidade.Size = new System.Drawing.Size(297, 28);
-            this.txt_Cidade.TabIndex = 33;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(512, 107);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(35, 21);
-            this.label16.TabIndex = 34;
-            this.label16.Text = "UF:";
-            // 
-            // cbo_UF
-            // 
-            this.cbo_UF.FormattingEnabled = true;
-            this.cbo_UF.Items.AddRange(new object[] {
-            "AC",
-            "AL",
-            "AP",
-            "AM",
-            "BA",
-            "CE",
-            "DF",
-            "ES",
-            "GO",
-            "MA",
-            "MT",
-            "MS",
-            "MG",
-            "PA",
-            "PB",
-            "PR",
-            "PE",
-            "PI",
-            "RJ",
-            "RN",
-            "RS",
-            "RO",
-            "RR",
-            "SC",
-            "SP",
-            "SE",
-            "TO"});
-            this.cbo_UF.Location = new System.Drawing.Point(553, 107);
-            this.cbo_UF.Name = "cbo_UF";
-            this.cbo_UF.Size = new System.Drawing.Size(129, 29);
-            this.cbo_UF.TabIndex = 35;
+            this.txt_Pesquisa.Location = new System.Drawing.Point(87, 36);
+            this.txt_Pesquisa.Name = "txt_Pesquisa";
+            this.txt_Pesquisa.Size = new System.Drawing.Size(496, 28);
+            this.txt_Pesquisa.TabIndex = 13;
             // 
             // btn_Novo
             // 
@@ -469,6 +522,7 @@
             this.btn_Salvar.TabIndex = 3;
             this.btn_Salvar.Text = "Salvar";
             this.btn_Salvar.UseVisualStyleBackColor = false;
+            this.btn_Salvar.Click += new System.EventHandler(this.btn_Salvar_Click);
             // 
             // btn_Excluir
             // 
@@ -493,59 +547,6 @@
             this.btn_Editar.TabIndex = 5;
             this.btn_Editar.Text = "Editar";
             this.btn_Editar.UseVisualStyleBackColor = false;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.btn_Pesquisar);
-            this.groupBox3.Controls.Add(this.label17);
-            this.groupBox3.Controls.Add(this.txt_Pesquisa);
-            this.groupBox3.Location = new System.Drawing.Point(23, 21);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(739, 88);
-            this.groupBox3.TabIndex = 0;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Pesquisar clientes";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(16, 39);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(65, 21);
-            this.label17.TabIndex = 12;
-            this.label17.Text = "Nome:";
-            // 
-            // txt_Pesquisa
-            // 
-            this.txt_Pesquisa.Location = new System.Drawing.Point(87, 36);
-            this.txt_Pesquisa.Name = "txt_Pesquisa";
-            this.txt_Pesquisa.Size = new System.Drawing.Size(496, 28);
-            this.txt_Pesquisa.TabIndex = 13;
-            // 
-            // btn_Pesquisar
-            // 
-            this.btn_Pesquisar.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btn_Pesquisar.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Pesquisar.ForeColor = System.Drawing.Color.White;
-            this.btn_Pesquisar.Location = new System.Drawing.Point(589, 31);
-            this.btn_Pesquisar.Name = "btn_Pesquisar";
-            this.btn_Pesquisar.Size = new System.Drawing.Size(132, 37);
-            this.btn_Pesquisar.TabIndex = 6;
-            this.btn_Pesquisar.Text = "Pesquisar";
-            this.btn_Pesquisar.UseVisualStyleBackColor = false;
-            // 
-            // tabelaCliente
-            // 
-            this.tabelaCliente.AllowUserToAddRows = false;
-            this.tabelaCliente.AllowUserToDeleteRows = false;
-            this.tabelaCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tabelaCliente.Location = new System.Drawing.Point(23, 115);
-            this.tabelaCliente.Name = "tabelaCliente";
-            this.tabelaCliente.ReadOnly = true;
-            this.tabelaCliente.RowHeadersWidth = 51;
-            this.tabelaCliente.RowTemplate.Height = 24;
-            this.tabelaCliente.Size = new System.Drawing.Size(739, 344);
-            this.tabelaCliente.TabIndex = 1;
             // 
             // FRM_Clientes
             // 
@@ -572,9 +573,9 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tabelaCliente)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tabelaCliente)).EndInit();
             this.ResumeLayout(false);
 
         }
