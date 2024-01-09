@@ -68,7 +68,7 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
                 // 1 Criar o DataTable e o comando SQL
 
                 DataTable tabelaCliente = new DataTable();
-                string sql = "select * from tb_clientes";
+                string sql = "select nome NOME, id CODIGO from tb_clientes";
 
                 // 2 Organizar o comando sql e executar
 
@@ -89,6 +89,81 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
                 return null;
             }
         }
+        #endregion
+
+        #region Alterar Cliente
+        
+        public void alterarCliente(Cliente obj)
+        {
+            // Metodo para Alterar o cliente no sistema
+
+            try
+            {
+                // 1 - comando sql para alterar os campos desejados
+                string sql = @"update tb_clientes set nome = @nome, rg = @rg, cpf = @cpf, email = @email, telefone = @telefone,
+                                                  celular = @celular, cep = @cep, endereco = @cep, 
+                                                  numero = @numero, complemento = @complemento, bairro = @bairro, 
+                                                  cidade = @cidade, estado = @estado
+                              where id = @id";
+                //2 - Associando os parametros dos campos do sistema ao codigo sql
+                SqlCommand executacmd = new SqlCommand(sql, conexao);
+                executacmd.Parameters.AddWithValue("@nome", obj.nome);
+                executacmd.Parameters.AddWithValue("@rg", obj.rg);
+                executacmd.Parameters.AddWithValue("@cpf", obj.cpf);
+                executacmd.Parameters.AddWithValue("@email", obj.email);
+                executacmd.Parameters.AddWithValue("@telefone", obj.telefone);
+                executacmd.Parameters.AddWithValue("@celular", obj.celular);
+                executacmd.Parameters.AddWithValue("@cep", obj.cep);
+                executacmd.Parameters.AddWithValue("@endereco", obj.endereco);
+                executacmd.Parameters.AddWithValue("@numero", obj.numero);
+                executacmd.Parameters.AddWithValue("@complemento", obj.complemento);
+                executacmd.Parameters.AddWithValue("@bairro", obj.bairro);
+                executacmd.Parameters.AddWithValue("@cidade", obj.cidade);
+                executacmd.Parameters.AddWithValue("@estado", obj.estado);
+                executacmd.Parameters.AddWithValue("@id", obj.codigo);
+
+                //3 - Executando o codigo sql
+                conexao.Open();
+                executacmd.ExecuteNonQuery();
+
+                MessageBox.Show("Cliente alterado com sucesso");
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show("Aconteceu algum erro: " + erro);
+            }
+        }
+
+        #endregion
+
+        #region Exluir Cliente
+
+        public void excluirCliente(Cliente obj)
+        {
+            try
+            {
+                // 1 - Comando sql para excluir o registro
+                string sql = "delete from tb_clientes where id = @id";
+                
+
+                // 2 - Associar o registro para o parametro do codigo
+                SqlCommand executecmd = new SqlCommand(sql);
+                executecmd.Parameters.AddWithValue("@id", obj.codigo);
+                
+
+                // 3 - Executar codigo sql
+                conexao.Open();
+                executecmd.ExecuteNonQuery();
+
+                MessageBox.Show("Cliente excluido com sucesso");
+
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show("Aconteceu algum erro: "+ erro);
+            }
+        }
+
         #endregion
     }
 }
