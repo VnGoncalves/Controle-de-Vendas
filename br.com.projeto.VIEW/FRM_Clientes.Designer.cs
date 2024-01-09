@@ -31,7 +31,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.tab_Clientes = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tab_DadosPessoais = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cbo_UF = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -62,7 +62,7 @@
             this.txt_CPF = new System.Windows.Forms.MaskedTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tab_Consulta = new System.Windows.Forms.TabPage();
             this.tabelaCliente = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btn_Pesquisar = new System.Windows.Forms.Button();
@@ -72,12 +72,13 @@
             this.btn_Salvar = new System.Windows.Forms.Button();
             this.btn_Excluir = new System.Windows.Forms.Button();
             this.btn_Editar = new System.Windows.Forms.Button();
+            this.btn_Limpar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tab_Clientes.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tab_DadosPessoais.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.tab_Consulta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabelaCliente)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
@@ -107,8 +108,8 @@
             // 
             // tab_Clientes
             // 
-            this.tab_Clientes.Controls.Add(this.tabPage1);
-            this.tab_Clientes.Controls.Add(this.tabPage2);
+            this.tab_Clientes.Controls.Add(this.tab_DadosPessoais);
+            this.tab_Clientes.Controls.Add(this.tab_Consulta);
             this.tab_Clientes.Location = new System.Drawing.Point(13, 135);
             this.tab_Clientes.Margin = new System.Windows.Forms.Padding(4);
             this.tab_Clientes.Name = "tab_Clientes";
@@ -116,18 +117,18 @@
             this.tab_Clientes.Size = new System.Drawing.Size(796, 509);
             this.tab_Clientes.TabIndex = 1;
             // 
-            // tabPage1
+            // tab_DadosPessoais
             // 
-            this.tabPage1.Controls.Add(this.groupBox2);
-            this.tabPage1.Controls.Add(this.groupBox1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 30);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage1.Size = new System.Drawing.Size(788, 475);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Dados Pessoais";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tab_DadosPessoais.Controls.Add(this.groupBox2);
+            this.tab_DadosPessoais.Controls.Add(this.groupBox1);
+            this.tab_DadosPessoais.Location = new System.Drawing.Point(4, 30);
+            this.tab_DadosPessoais.Margin = new System.Windows.Forms.Padding(4);
+            this.tab_DadosPessoais.Name = "tab_DadosPessoais";
+            this.tab_DadosPessoais.Padding = new System.Windows.Forms.Padding(4);
+            this.tab_DadosPessoais.Size = new System.Drawing.Size(788, 475);
+            this.tab_DadosPessoais.TabIndex = 0;
+            this.tab_DadosPessoais.Text = "Dados Pessoais";
+            this.tab_DadosPessoais.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -433,18 +434,18 @@
             this.label6.TabIndex = 16;
             this.label6.Text = "CPF:";
             // 
-            // tabPage2
+            // tab_Consulta
             // 
-            this.tabPage2.Controls.Add(this.tabelaCliente);
-            this.tabPage2.Controls.Add(this.groupBox3);
-            this.tabPage2.Location = new System.Drawing.Point(4, 30);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage2.Size = new System.Drawing.Size(788, 475);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Consulta";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tab_Consulta.Controls.Add(this.tabelaCliente);
+            this.tab_Consulta.Controls.Add(this.groupBox3);
+            this.tab_Consulta.Location = new System.Drawing.Point(4, 30);
+            this.tab_Consulta.Margin = new System.Windows.Forms.Padding(4);
+            this.tab_Consulta.Name = "tab_Consulta";
+            this.tab_Consulta.Padding = new System.Windows.Forms.Padding(4);
+            this.tab_Consulta.Size = new System.Drawing.Size(788, 475);
+            this.tab_Consulta.TabIndex = 1;
+            this.tab_Consulta.Text = "Consulta";
+            this.tab_Consulta.UseVisualStyleBackColor = true;
             // 
             // tabelaCliente
             // 
@@ -458,6 +459,7 @@
             this.tabelaCliente.RowTemplate.Height = 24;
             this.tabelaCliente.Size = new System.Drawing.Size(739, 344);
             this.tabelaCliente.TabIndex = 1;
+            this.tabelaCliente.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelaCliente_CellClick);
             // 
             // groupBox3
             // 
@@ -504,7 +506,7 @@
             this.btn_Novo.BackColor = System.Drawing.SystemColors.Highlight;
             this.btn_Novo.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Novo.ForeColor = System.Drawing.Color.White;
-            this.btn_Novo.Location = new System.Drawing.Point(178, 674);
+            this.btn_Novo.Location = new System.Drawing.Point(119, 674);
             this.btn_Novo.Name = "btn_Novo";
             this.btn_Novo.Size = new System.Drawing.Size(112, 51);
             this.btn_Novo.TabIndex = 2;
@@ -516,7 +518,7 @@
             this.btn_Salvar.BackColor = System.Drawing.SystemColors.Highlight;
             this.btn_Salvar.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Salvar.ForeColor = System.Drawing.Color.White;
-            this.btn_Salvar.Location = new System.Drawing.Point(296, 674);
+            this.btn_Salvar.Location = new System.Drawing.Point(237, 674);
             this.btn_Salvar.Name = "btn_Salvar";
             this.btn_Salvar.Size = new System.Drawing.Size(112, 51);
             this.btn_Salvar.TabIndex = 3;
@@ -529,30 +531,46 @@
             this.btn_Excluir.BackColor = System.Drawing.SystemColors.Highlight;
             this.btn_Excluir.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Excluir.ForeColor = System.Drawing.Color.White;
-            this.btn_Excluir.Location = new System.Drawing.Point(414, 674);
+            this.btn_Excluir.Location = new System.Drawing.Point(355, 674);
             this.btn_Excluir.Name = "btn_Excluir";
             this.btn_Excluir.Size = new System.Drawing.Size(112, 51);
             this.btn_Excluir.TabIndex = 4;
             this.btn_Excluir.Text = "Excluir";
             this.btn_Excluir.UseVisualStyleBackColor = false;
+            this.btn_Excluir.Click += new System.EventHandler(this.btn_Excluir_Click);
             // 
             // btn_Editar
             // 
             this.btn_Editar.BackColor = System.Drawing.SystemColors.Highlight;
             this.btn_Editar.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Editar.ForeColor = System.Drawing.Color.White;
-            this.btn_Editar.Location = new System.Drawing.Point(532, 674);
+            this.btn_Editar.Location = new System.Drawing.Point(473, 674);
             this.btn_Editar.Name = "btn_Editar";
             this.btn_Editar.Size = new System.Drawing.Size(112, 51);
             this.btn_Editar.TabIndex = 5;
             this.btn_Editar.Text = "Editar";
             this.btn_Editar.UseVisualStyleBackColor = false;
+            this.btn_Editar.Click += new System.EventHandler(this.btn_Editar_Click);
+            // 
+            // btn_Limpar
+            // 
+            this.btn_Limpar.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btn_Limpar.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Limpar.ForeColor = System.Drawing.Color.White;
+            this.btn_Limpar.Location = new System.Drawing.Point(591, 674);
+            this.btn_Limpar.Name = "btn_Limpar";
+            this.btn_Limpar.Size = new System.Drawing.Size(112, 51);
+            this.btn_Limpar.TabIndex = 6;
+            this.btn_Limpar.Text = "Limpar ";
+            this.btn_Limpar.UseVisualStyleBackColor = false;
+            this.btn_Limpar.Click += new System.EventHandler(this.btn_Limpar_Click);
             // 
             // FRM_Clientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(841, 761);
+            this.Controls.Add(this.btn_Limpar);
             this.Controls.Add(this.btn_Editar);
             this.Controls.Add(this.btn_Excluir);
             this.Controls.Add(this.btn_Salvar);
@@ -568,12 +586,12 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.tab_Clientes.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
+            this.tab_DadosPessoais.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
+            this.tab_Consulta.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tabelaCliente)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
@@ -586,8 +604,8 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabControl tab_Clientes;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tab_DadosPessoais;
+        private System.Windows.Forms.TabPage tab_Consulta;
         private System.Windows.Forms.MaskedTextBox txt_CPF;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.MaskedTextBox txt_RG;
@@ -627,5 +645,6 @@
         private System.Windows.Forms.Button btn_Pesquisar;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox txt_Pesquisa;
+        private System.Windows.Forms.Button btn_Limpar;
     }
 }

@@ -50,6 +50,7 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
 
                 conexao.Open();
                 executacmd.ExecuteNonQuery();
+                conexao.Close();
                 MessageBox.Show("Cliente cadastrado com sucesso");
 
             } catch (Exception erro) 
@@ -68,8 +69,22 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
                 // 1 Criar o DataTable e o comando SQL
 
                 DataTable tabelaCliente = new DataTable();
-                string sql = "select nome NOME, id CODIGO from tb_clientes";
-
+                string sql = @"select 
+                                	id				[CODIGO],
+                                	nome			[NOME CLIENTE],
+                                	rg				[RG],
+                                	cpf				[CPF], 
+                                	email			[E-MAIL],
+                                	telefone		[TELEFONE],
+                                	celular			[CELULAR],
+                                	cep				[CEP],
+                                	endereco		[ENDERECO],
+                                	numero			[NUMERO],
+                                	complemento		[COMPLEMENTO],
+                                	bairro			[BAIRRO],
+                                	cidade			[CIDADE],
+                                	estado			[ESTADO]
+                                from tb_clientes";
                 // 2 Organizar o comando sql e executar
 
                 SqlCommand executacmd = new SqlCommand(sql, conexao);
@@ -81,6 +96,7 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
                 SqlDataAdapter da = new SqlDataAdapter(executacmd);
                 da.Fill(tabelaCliente);
 
+                conexao.Close();
                 return tabelaCliente;
             }
             catch (Exception erro)
@@ -125,6 +141,7 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
                 //3 - Executando o codigo sql
                 conexao.Open();
                 executacmd.ExecuteNonQuery();
+                conexao.Close();
 
                 MessageBox.Show("Cliente alterado com sucesso");
             }
@@ -144,19 +161,17 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
             {
                 // 1 - Comando sql para excluir o registro
                 string sql = "delete from tb_clientes where id = @id";
-                
 
                 // 2 - Associar o registro para o parametro do codigo
-                SqlCommand executecmd = new SqlCommand(sql);
+                SqlCommand executecmd = new SqlCommand(sql, conexao);
                 executecmd.Parameters.AddWithValue("@id", obj.codigo);
-                
 
                 // 3 - Executar codigo sql
                 conexao.Open();
                 executecmd.ExecuteNonQuery();
+                conexao.Close();
 
                 MessageBox.Show("Cliente excluido com sucesso");
-
             }
             catch (Exception erro)
             {
