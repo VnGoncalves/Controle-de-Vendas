@@ -42,5 +42,13 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             ClienteDAO dao = new ClienteDAO();
             dao.cadastrarCliente(obj);            
         }
+
+        private void FRM_Clientes_Load(object sender, EventArgs e)
+        {
+            // Carrega as informações da tabela tb_clientes ao carregar o formulario
+
+            ClienteDAO dao = new ClienteDAO();
+            tabelaCliente.DataSource = dao.listarClientes();
+        }
     }
 } 

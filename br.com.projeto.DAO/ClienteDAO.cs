@@ -2,6 +2,7 @@
 using Controle_de_Vendas.br.com.projeto.MODEL;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -54,6 +55,38 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
             } catch (Exception erro) 
             {
                 MessageBox.Show("Aconteceu um erro: " + erro);
+            }
+        }
+        #endregion
+
+        #region Listar Clientes
+
+        public DataTable listarClientes()
+        {
+            try
+            {
+                // 1 Criar o DataTable e o comando SQL
+
+                DataTable tabelaCliente = new DataTable();
+                string sql = "select * from tb_clientes";
+
+                // 2 Organizar o comando sql e executar
+
+                SqlCommand executacmd = new SqlCommand(sql, conexao);
+                conexao.Open();
+                executacmd.ExecuteNonQuery();
+
+                // 3 Criar o SqlDataAdapter para preencher os dados no DataTable
+
+                SqlDataAdapter da = new SqlDataAdapter(executacmd);
+                da.Fill(tabelaCliente);
+
+                return tabelaCliente;
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show("Aconteceu um erro: " + erro);
+                return null;
             }
         }
         #endregion
