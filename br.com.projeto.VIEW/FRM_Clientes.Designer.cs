@@ -186,7 +186,7 @@
             this.cbo_UF.Location = new System.Drawing.Point(553, 107);
             this.cbo_UF.Name = "cbo_UF";
             this.cbo_UF.Size = new System.Drawing.Size(129, 29);
-            this.cbo_UF.TabIndex = 35;
+            this.cbo_UF.TabIndex = 14;
             // 
             // label16
             // 
@@ -211,7 +211,7 @@
             this.txt_Cidade.Location = new System.Drawing.Point(149, 70);
             this.txt_Cidade.Name = "txt_Cidade";
             this.txt_Cidade.Size = new System.Drawing.Size(297, 28);
-            this.txt_Cidade.TabIndex = 33;
+            this.txt_Cidade.TabIndex = 9;
             // 
             // label14
             // 
@@ -227,7 +227,7 @@
             this.txt_Bairro.Location = new System.Drawing.Point(149, 138);
             this.txt_Bairro.Name = "txt_Bairro";
             this.txt_Bairro.Size = new System.Drawing.Size(297, 28);
-            this.txt_Bairro.TabIndex = 31;
+            this.txt_Bairro.TabIndex = 11;
             // 
             // label13
             // 
@@ -243,7 +243,7 @@
             this.txt_Complemento.Location = new System.Drawing.Point(149, 104);
             this.txt_Complemento.Name = "txt_Complemento";
             this.txt_Complemento.Size = new System.Drawing.Size(297, 28);
-            this.txt_Complemento.TabIndex = 29;
+            this.txt_Complemento.TabIndex = 10;
             // 
             // txt_CEP
             // 
@@ -251,7 +251,7 @@
             this.txt_CEP.Mask = "00000-999";
             this.txt_CEP.Name = "txt_CEP";
             this.txt_CEP.Size = new System.Drawing.Size(129, 28);
-            this.txt_CEP.TabIndex = 27;
+            this.txt_CEP.TabIndex = 13;
             // 
             // label12
             // 
@@ -276,7 +276,7 @@
             this.txt_Numero.Location = new System.Drawing.Point(553, 36);
             this.txt_Numero.Name = "txt_Numero";
             this.txt_Numero.Size = new System.Drawing.Size(129, 28);
-            this.txt_Numero.TabIndex = 15;
+            this.txt_Numero.TabIndex = 12;
             // 
             // label10
             // 
@@ -292,7 +292,7 @@
             this.txt_Endereco.Location = new System.Drawing.Point(149, 36);
             this.txt_Endereco.Name = "txt_Endereco";
             this.txt_Endereco.Size = new System.Drawing.Size(297, 28);
-            this.txt_Endereco.TabIndex = 13;
+            this.txt_Endereco.TabIndex = 8;
             // 
             // groupBox1
             // 
@@ -323,7 +323,7 @@
             this.txt_RG.Mask = "##,###,###-##";
             this.txt_RG.Name = "txt_RG";
             this.txt_RG.Size = new System.Drawing.Size(167, 28);
-            this.txt_RG.TabIndex = 15;
+            this.txt_RG.TabIndex = 6;
             // 
             // label2
             // 
@@ -339,7 +339,7 @@
             this.txt_Codigo.Location = new System.Drawing.Point(106, 30);
             this.txt_Codigo.Name = "txt_Codigo";
             this.txt_Codigo.Size = new System.Drawing.Size(100, 28);
-            this.txt_Codigo.TabIndex = 9;
+            this.txt_Codigo.TabIndex = 1;
             // 
             // txt_Telefone
             // 
@@ -347,7 +347,7 @@
             this.txt_Telefone.Mask = "(99) 0000-0000";
             this.txt_Telefone.Name = "txt_Telefone";
             this.txt_Telefone.Size = new System.Drawing.Size(142, 28);
-            this.txt_Telefone.TabIndex = 21;
+            this.txt_Telefone.TabIndex = 5;
             // 
             // label3
             // 
@@ -372,7 +372,7 @@
             this.txt_Nome.Location = new System.Drawing.Point(106, 64);
             this.txt_Nome.Name = "txt_Nome";
             this.txt_Nome.Size = new System.Drawing.Size(382, 28);
-            this.txt_Nome.TabIndex = 11;
+            this.txt_Nome.TabIndex = 2;
             // 
             // txt_Celular
             // 
@@ -380,7 +380,7 @@
             this.txt_Celular.Mask = "(99) 00000-0000";
             this.txt_Celular.Name = "txt_Celular";
             this.txt_Celular.Size = new System.Drawing.Size(142, 28);
-            this.txt_Celular.TabIndex = 19;
+            this.txt_Celular.TabIndex = 4;
             // 
             // label4
             // 
@@ -405,7 +405,7 @@
             this.txt_Email.Location = new System.Drawing.Point(106, 98);
             this.txt_Email.Name = "txt_Email";
             this.txt_Email.Size = new System.Drawing.Size(382, 28);
-            this.txt_Email.TabIndex = 13;
+            this.txt_Email.TabIndex = 3;
             // 
             // txt_CPF
             // 
@@ -413,7 +413,7 @@
             this.txt_CPF.Mask = "###,###,###-##";
             this.txt_CPF.Name = "txt_CPF";
             this.txt_CPF.Size = new System.Drawing.Size(167, 28);
-            this.txt_CPF.TabIndex = 17;
+            this.txt_CPF.TabIndex = 7;
             // 
             // label5
             // 
