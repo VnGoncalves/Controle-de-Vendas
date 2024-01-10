@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.tab_Clientes = new System.Windows.Forms.TabControl();
@@ -64,6 +65,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.tab_Consulta = new System.Windows.Forms.TabPage();
             this.tabelaCliente = new System.Windows.Forms.DataGridView();
+            this.tbclientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bDVENDASDataSet = new Controle_de_Vendas.BDVENDASDataSet();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btn_Pesquisar = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
@@ -73,6 +76,7 @@
             this.btn_Excluir = new System.Windows.Forms.Button();
             this.btn_Editar = new System.Windows.Forms.Button();
             this.btn_Limpar = new System.Windows.Forms.Button();
+            this.tb_clientesTableAdapter = new Controle_de_Vendas.BDVENDASDataSetTableAdapters.tb_clientesTableAdapter();
             this.panel1.SuspendLayout();
             this.tab_Clientes.SuspendLayout();
             this.tab_DadosPessoais.SuspendLayout();
@@ -80,6 +84,8 @@
             this.groupBox1.SuspendLayout();
             this.tab_Consulta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabelaCliente)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbclientesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bDVENDASDataSet)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -461,6 +467,16 @@
             this.tabelaCliente.TabIndex = 1;
             this.tabelaCliente.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelaCliente_CellClick);
             // 
+            // tbclientesBindingSource
+            // 
+            this.tbclientesBindingSource.DataMember = "tb_clientes";
+            this.tbclientesBindingSource.DataSource = this.bDVENDASDataSet;
+            // 
+            // bDVENDASDataSet
+            // 
+            this.bDVENDASDataSet.DataSetName = "BDVENDASDataSet";
+            this.bDVENDASDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.btn_Pesquisar);
@@ -565,6 +581,10 @@
             this.btn_Limpar.UseVisualStyleBackColor = false;
             this.btn_Limpar.Click += new System.EventHandler(this.btn_Limpar_Click);
             // 
+            // tb_clientesTableAdapter
+            // 
+            this.tb_clientesTableAdapter.ClearBeforeFill = true;
+            // 
             // FRM_Clientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
@@ -593,6 +613,8 @@
             this.groupBox1.PerformLayout();
             this.tab_Consulta.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tabelaCliente)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbclientesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bDVENDASDataSet)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
@@ -646,5 +668,8 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox txt_Pesquisa;
         private System.Windows.Forms.Button btn_Limpar;
+        private BDVENDASDataSet bDVENDASDataSet;
+        private System.Windows.Forms.BindingSource tbclientesBindingSource;
+        private BDVENDASDataSetTableAdapters.tb_clientesTableAdapter tb_clientesTableAdapter;
     }
 }

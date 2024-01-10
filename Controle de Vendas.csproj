@@ -50,6 +50,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BDVENDASDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BDVENDASDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="br.com.projeto.CONEXAO\ConnectionFactory.cs" />
     <Compile Include="br.com.projeto.DAO\ClienteDAO.cs" />
     <Compile Include="br.com.projeto.MODEL\Cliente.cs" />
@@ -79,6 +84,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="BDVENDASDataSet.xsc">
+      <DependentUpon>BDVENDASDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="BDVENDASDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BDVENDASDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="BDVENDASDataSet.xss">
+      <DependentUpon>BDVENDASDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

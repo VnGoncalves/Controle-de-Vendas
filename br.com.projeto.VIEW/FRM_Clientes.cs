@@ -17,6 +17,7 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
         public FRM_Clientes()
         {
             InitializeComponent();
+            this.Load += new EventHandler(FRM_Clientes_Load);
         }
 
         private void btn_Salvar_Click(object sender, EventArgs e)
@@ -55,13 +56,36 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
 
         private void FRM_Clientes_Load(object sender, EventArgs e)
         {
+            // TODO: esta linha de código carrega dados na tabela 'bDVENDASDataSet.tb_clientes'. Você pode movê-la ou removê-la conforme necessário.
+            this.tb_clientesTableAdapter.Fill(this.bDVENDASDataSet.tb_clientes);
             // Carrega as informações da tabela tb_clientes ao carregar o formulario
             #region
 
             ClienteDAO dao = new ClienteDAO();
             tabelaCliente.DataSource = dao.listarClientes();
 
-            #endregion 
+            // Ocultando campos desnecessarios
+
+            this.tabelaCliente.Columns[0].Visible = false;
+            this.tabelaCliente.Columns[2].Visible = false;
+            this.tabelaCliente.Columns[5].Visible = false;
+            this.tabelaCliente.Columns[6].Visible = false;
+            this.tabelaCliente.Columns[7].Visible = false;
+            this.tabelaCliente.Columns[8].Visible = false;
+            this.tabelaCliente.Columns[9].Visible = false;
+            this.tabelaCliente.Columns[10].Visible = false;
+            this.tabelaCliente.Columns[11].Visible = false;
+            this.tabelaCliente.Columns[12].Visible = false;
+            this.tabelaCliente.Columns[13].Visible = false;
+
+            // Ajustando o tamanho de cada coluna
+
+            tabelaCliente.Columns["NOME CLIENTE"].Width = 250;
+            tabelaCliente.Columns["CPF"].Width = 130;
+            tabelaCliente.Columns["E-MAIL"].Width = 220;
+
+
+            #endregion
         }
 
         private void tabelaCliente_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -145,6 +169,7 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
         private void btn_Editar_Click(object sender, EventArgs e)
         {
             // 1 - Receber os dados dentro do objeto modelo de cliente
+            #region
 
             Cliente obj = new Cliente();
             obj.nome = txt_Nome.Text;
@@ -170,6 +195,8 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             tabelaCliente.DataSource = dao.listarClientes();
 
             apagarCampos();
+
+            #endregion
         }
     }
 } 
