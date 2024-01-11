@@ -33,6 +33,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tab_Clientes = new System.Windows.Forms.TabControl();
             this.tab_DadosPessoais = new System.Windows.Forms.TabPage();
+            this.btn_Limpar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cbo_UF = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -48,6 +49,7 @@
             this.txt_Numero = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txt_Endereco = new System.Windows.Forms.TextBox();
+            this.btn_Editar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txt_RG = new System.Windows.Forms.MaskedTextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -63,19 +65,17 @@
             this.txt_CPF = new System.Windows.Forms.MaskedTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.btn_Excluir = new System.Windows.Forms.Button();
+            this.btn_Novo = new System.Windows.Forms.Button();
+            this.btn_Salvar = new System.Windows.Forms.Button();
             this.tab_Consulta = new System.Windows.Forms.TabPage();
             this.tabelaCliente = new System.Windows.Forms.DataGridView();
-            this.tbclientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.bDVENDASDataSet = new Controle_de_Vendas.BDVENDASDataSet();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btn_Pesquisar = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
             this.txt_Pesquisa = new System.Windows.Forms.TextBox();
-            this.btn_Novo = new System.Windows.Forms.Button();
-            this.btn_Salvar = new System.Windows.Forms.Button();
-            this.btn_Excluir = new System.Windows.Forms.Button();
-            this.btn_Editar = new System.Windows.Forms.Button();
-            this.btn_Limpar = new System.Windows.Forms.Button();
+            this.tbclientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bDVENDASDataSet = new Controle_de_Vendas.BDVENDASDataSet();
             this.tb_clientesTableAdapter = new Controle_de_Vendas.BDVENDASDataSetTableAdapters.tb_clientesTableAdapter();
             this.panel1.SuspendLayout();
             this.tab_Clientes.SuspendLayout();
@@ -84,9 +84,9 @@
             this.groupBox1.SuspendLayout();
             this.tab_Consulta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabelaCliente)).BeginInit();
+            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbclientesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bDVENDASDataSet)).BeginInit();
-            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -120,21 +120,39 @@
             this.tab_Clientes.Margin = new System.Windows.Forms.Padding(4);
             this.tab_Clientes.Name = "tab_Clientes";
             this.tab_Clientes.SelectedIndex = 0;
-            this.tab_Clientes.Size = new System.Drawing.Size(796, 509);
+            this.tab_Clientes.Size = new System.Drawing.Size(815, 584);
             this.tab_Clientes.TabIndex = 1;
             // 
             // tab_DadosPessoais
             // 
+            this.tab_DadosPessoais.Controls.Add(this.btn_Limpar);
             this.tab_DadosPessoais.Controls.Add(this.groupBox2);
+            this.tab_DadosPessoais.Controls.Add(this.btn_Editar);
             this.tab_DadosPessoais.Controls.Add(this.groupBox1);
+            this.tab_DadosPessoais.Controls.Add(this.btn_Excluir);
+            this.tab_DadosPessoais.Controls.Add(this.btn_Novo);
+            this.tab_DadosPessoais.Controls.Add(this.btn_Salvar);
             this.tab_DadosPessoais.Location = new System.Drawing.Point(4, 30);
             this.tab_DadosPessoais.Margin = new System.Windows.Forms.Padding(4);
             this.tab_DadosPessoais.Name = "tab_DadosPessoais";
             this.tab_DadosPessoais.Padding = new System.Windows.Forms.Padding(4);
-            this.tab_DadosPessoais.Size = new System.Drawing.Size(788, 475);
+            this.tab_DadosPessoais.Size = new System.Drawing.Size(807, 550);
             this.tab_DadosPessoais.TabIndex = 0;
             this.tab_DadosPessoais.Text = "Dados Pessoais";
             this.tab_DadosPessoais.UseVisualStyleBackColor = true;
+            // 
+            // btn_Limpar
+            // 
+            this.btn_Limpar.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btn_Limpar.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Limpar.ForeColor = System.Drawing.Color.White;
+            this.btn_Limpar.Location = new System.Drawing.Point(576, 478);
+            this.btn_Limpar.Name = "btn_Limpar";
+            this.btn_Limpar.Size = new System.Drawing.Size(112, 51);
+            this.btn_Limpar.TabIndex = 6;
+            this.btn_Limpar.Text = "Limpar ";
+            this.btn_Limpar.UseVisualStyleBackColor = false;
+            this.btn_Limpar.Click += new System.EventHandler(this.btn_Limpar_Click);
             // 
             // groupBox2
             // 
@@ -301,6 +319,19 @@
             this.txt_Endereco.Size = new System.Drawing.Size(297, 28);
             this.txt_Endereco.TabIndex = 8;
             // 
+            // btn_Editar
+            // 
+            this.btn_Editar.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btn_Editar.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Editar.ForeColor = System.Drawing.Color.White;
+            this.btn_Editar.Location = new System.Drawing.Point(458, 478);
+            this.btn_Editar.Name = "btn_Editar";
+            this.btn_Editar.Size = new System.Drawing.Size(112, 51);
+            this.btn_Editar.TabIndex = 5;
+            this.btn_Editar.Text = "Editar";
+            this.btn_Editar.UseVisualStyleBackColor = false;
+            this.btn_Editar.Click += new System.EventHandler(this.btn_Editar_Click);
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.txt_RG);
@@ -440,6 +471,44 @@
             this.label6.TabIndex = 16;
             this.label6.Text = "CPF:";
             // 
+            // btn_Excluir
+            // 
+            this.btn_Excluir.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btn_Excluir.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Excluir.ForeColor = System.Drawing.Color.White;
+            this.btn_Excluir.Location = new System.Drawing.Point(340, 478);
+            this.btn_Excluir.Name = "btn_Excluir";
+            this.btn_Excluir.Size = new System.Drawing.Size(112, 51);
+            this.btn_Excluir.TabIndex = 4;
+            this.btn_Excluir.Text = "Excluir";
+            this.btn_Excluir.UseVisualStyleBackColor = false;
+            this.btn_Excluir.Click += new System.EventHandler(this.btn_Excluir_Click);
+            // 
+            // btn_Novo
+            // 
+            this.btn_Novo.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btn_Novo.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Novo.ForeColor = System.Drawing.Color.White;
+            this.btn_Novo.Location = new System.Drawing.Point(104, 478);
+            this.btn_Novo.Name = "btn_Novo";
+            this.btn_Novo.Size = new System.Drawing.Size(112, 51);
+            this.btn_Novo.TabIndex = 2;
+            this.btn_Novo.Text = "Novo";
+            this.btn_Novo.UseVisualStyleBackColor = false;
+            // 
+            // btn_Salvar
+            // 
+            this.btn_Salvar.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btn_Salvar.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Salvar.ForeColor = System.Drawing.Color.White;
+            this.btn_Salvar.Location = new System.Drawing.Point(222, 478);
+            this.btn_Salvar.Name = "btn_Salvar";
+            this.btn_Salvar.Size = new System.Drawing.Size(112, 51);
+            this.btn_Salvar.TabIndex = 3;
+            this.btn_Salvar.Text = "Salvar";
+            this.btn_Salvar.UseVisualStyleBackColor = false;
+            this.btn_Salvar.Click += new System.EventHandler(this.btn_Salvar_Click);
+            // 
             // tab_Consulta
             // 
             this.tab_Consulta.Controls.Add(this.tabelaCliente);
@@ -448,7 +517,7 @@
             this.tab_Consulta.Margin = new System.Windows.Forms.Padding(4);
             this.tab_Consulta.Name = "tab_Consulta";
             this.tab_Consulta.Padding = new System.Windows.Forms.Padding(4);
-            this.tab_Consulta.Size = new System.Drawing.Size(788, 475);
+            this.tab_Consulta.Size = new System.Drawing.Size(807, 550);
             this.tab_Consulta.TabIndex = 1;
             this.tab_Consulta.Text = "Consulta";
             this.tab_Consulta.UseVisualStyleBackColor = true;
@@ -463,19 +532,9 @@
             this.tabelaCliente.ReadOnly = true;
             this.tabelaCliente.RowHeadersWidth = 51;
             this.tabelaCliente.RowTemplate.Height = 24;
-            this.tabelaCliente.Size = new System.Drawing.Size(739, 344);
+            this.tabelaCliente.Size = new System.Drawing.Size(763, 482);
             this.tabelaCliente.TabIndex = 1;
             this.tabelaCliente.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelaCliente_CellClick);
-            // 
-            // tbclientesBindingSource
-            // 
-            this.tbclientesBindingSource.DataMember = "tb_clientes";
-            this.tbclientesBindingSource.DataSource = this.bDVENDASDataSet;
-            // 
-            // bDVENDASDataSet
-            // 
-            this.bDVENDASDataSet.DataSetName = "BDVENDASDataSet";
-            this.bDVENDASDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // groupBox3
             // 
@@ -484,7 +543,7 @@
             this.groupBox3.Controls.Add(this.txt_Pesquisa);
             this.groupBox3.Location = new System.Drawing.Point(23, 21);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(739, 88);
+            this.groupBox3.Size = new System.Drawing.Size(763, 88);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Pesquisar clientes";
@@ -494,12 +553,13 @@
             this.btn_Pesquisar.BackColor = System.Drawing.SystemColors.Highlight;
             this.btn_Pesquisar.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Pesquisar.ForeColor = System.Drawing.Color.White;
-            this.btn_Pesquisar.Location = new System.Drawing.Point(589, 31);
+            this.btn_Pesquisar.Location = new System.Drawing.Point(625, 31);
             this.btn_Pesquisar.Name = "btn_Pesquisar";
             this.btn_Pesquisar.Size = new System.Drawing.Size(132, 37);
             this.btn_Pesquisar.TabIndex = 6;
             this.btn_Pesquisar.Text = "Pesquisar";
             this.btn_Pesquisar.UseVisualStyleBackColor = false;
+            this.btn_Pesquisar.Click += new System.EventHandler(this.btn_Pesquisar_Click);
             // 
             // label17
             // 
@@ -514,72 +574,19 @@
             // 
             this.txt_Pesquisa.Location = new System.Drawing.Point(87, 36);
             this.txt_Pesquisa.Name = "txt_Pesquisa";
-            this.txt_Pesquisa.Size = new System.Drawing.Size(496, 28);
+            this.txt_Pesquisa.Size = new System.Drawing.Size(532, 28);
             this.txt_Pesquisa.TabIndex = 13;
+            this.txt_Pesquisa.TextChanged += new System.EventHandler(this.txt_Pesquisa_TextChanged);
             // 
-            // btn_Novo
+            // tbclientesBindingSource
             // 
-            this.btn_Novo.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btn_Novo.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Novo.ForeColor = System.Drawing.Color.White;
-            this.btn_Novo.Location = new System.Drawing.Point(119, 674);
-            this.btn_Novo.Name = "btn_Novo";
-            this.btn_Novo.Size = new System.Drawing.Size(112, 51);
-            this.btn_Novo.TabIndex = 2;
-            this.btn_Novo.Text = "Novo";
-            this.btn_Novo.UseVisualStyleBackColor = false;
+            this.tbclientesBindingSource.DataMember = "tb_clientes";
+            this.tbclientesBindingSource.DataSource = this.bDVENDASDataSet;
             // 
-            // btn_Salvar
+            // bDVENDASDataSet
             // 
-            this.btn_Salvar.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btn_Salvar.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Salvar.ForeColor = System.Drawing.Color.White;
-            this.btn_Salvar.Location = new System.Drawing.Point(237, 674);
-            this.btn_Salvar.Name = "btn_Salvar";
-            this.btn_Salvar.Size = new System.Drawing.Size(112, 51);
-            this.btn_Salvar.TabIndex = 3;
-            this.btn_Salvar.Text = "Salvar";
-            this.btn_Salvar.UseVisualStyleBackColor = false;
-            this.btn_Salvar.Click += new System.EventHandler(this.btn_Salvar_Click);
-            // 
-            // btn_Excluir
-            // 
-            this.btn_Excluir.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btn_Excluir.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Excluir.ForeColor = System.Drawing.Color.White;
-            this.btn_Excluir.Location = new System.Drawing.Point(355, 674);
-            this.btn_Excluir.Name = "btn_Excluir";
-            this.btn_Excluir.Size = new System.Drawing.Size(112, 51);
-            this.btn_Excluir.TabIndex = 4;
-            this.btn_Excluir.Text = "Excluir";
-            this.btn_Excluir.UseVisualStyleBackColor = false;
-            this.btn_Excluir.Click += new System.EventHandler(this.btn_Excluir_Click);
-            // 
-            // btn_Editar
-            // 
-            this.btn_Editar.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btn_Editar.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Editar.ForeColor = System.Drawing.Color.White;
-            this.btn_Editar.Location = new System.Drawing.Point(473, 674);
-            this.btn_Editar.Name = "btn_Editar";
-            this.btn_Editar.Size = new System.Drawing.Size(112, 51);
-            this.btn_Editar.TabIndex = 5;
-            this.btn_Editar.Text = "Editar";
-            this.btn_Editar.UseVisualStyleBackColor = false;
-            this.btn_Editar.Click += new System.EventHandler(this.btn_Editar_Click);
-            // 
-            // btn_Limpar
-            // 
-            this.btn_Limpar.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btn_Limpar.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Limpar.ForeColor = System.Drawing.Color.White;
-            this.btn_Limpar.Location = new System.Drawing.Point(591, 674);
-            this.btn_Limpar.Name = "btn_Limpar";
-            this.btn_Limpar.Size = new System.Drawing.Size(112, 51);
-            this.btn_Limpar.TabIndex = 6;
-            this.btn_Limpar.Text = "Limpar ";
-            this.btn_Limpar.UseVisualStyleBackColor = false;
-            this.btn_Limpar.Click += new System.EventHandler(this.btn_Limpar_Click);
+            this.bDVENDASDataSet.DataSetName = "BDVENDASDataSet";
+            this.bDVENDASDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // tb_clientesTableAdapter
             // 
@@ -589,12 +596,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(841, 761);
-            this.Controls.Add(this.btn_Limpar);
-            this.Controls.Add(this.btn_Editar);
-            this.Controls.Add(this.btn_Excluir);
-            this.Controls.Add(this.btn_Salvar);
-            this.Controls.Add(this.btn_Novo);
+            this.ClientSize = new System.Drawing.Size(841, 734);
             this.Controls.Add(this.tab_Clientes);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -613,10 +615,10 @@
             this.groupBox1.PerformLayout();
             this.tab_Consulta.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tabelaCliente)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbclientesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bDVENDASDataSet)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbclientesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bDVENDASDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }

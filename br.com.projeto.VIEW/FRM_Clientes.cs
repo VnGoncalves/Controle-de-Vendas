@@ -45,11 +45,14 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
 
             // 2 - Criar um objeto da classe ClienteDAO e chamar o metodo cadastrarCliente
 
-            ClienteDAO dao = new ClienteDAO();
-            dao.cadastrarCliente(obj);
-            tabelaCliente.DataSource = dao.listarClientes();
+            if (MessageBox.Show("Deseja salvar o registro ?", "ATENÇÃO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                ClienteDAO dao = new ClienteDAO();
+                dao.cadastrarCliente(obj);
+                tabelaCliente.DataSource = dao.listarClientes();
 
-            apagarCampos();
+                apagarCampos();
+            }
 
             #endregion 
         }
@@ -132,7 +135,7 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             obj.codigo = int.Parse(txt_Codigo.Text);
 
             // Obter o registro para excluir e carregar novamente a lista de clientes
-            
+
             ClienteDAO dao = new ClienteDAO();
             dao.excluirCliente(obj);
             tabelaCliente.DataSource = dao.listarClientes();
@@ -198,5 +201,33 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
 
             #endregion
         }
+
+        private void btn_Pesquisar_Click(object sender, EventArgs e)
+        {
+            // Chamando o metodo para listar os clientes no Data Grid
+
+            ListarNomes();
+        }
+
+        private void txt_Pesquisa_TextChanged(object sender, EventArgs e)
+        {
+            // Chamando o metodo para listar os clientes no Data Grid
+
+            ListarNomes();
+        }
+
+        private void ListarNomes()
+        {
+            // Instancia para chamar o metodo listar clientes no ClienteDAO
+
+            string nome = "%" + txt_Pesquisa.Text + "%";
+            ClienteDAO dao = new ClienteDAO();
+            tabelaCliente.DataSource = dao.buscarClientePorNome(nome);
+
+            //if (tabelaCliente.Rows.Count == 0)
+            //{
+            //    tabelaCliente.DataSource = dao.listarClientes();
+            //}
+        }
     }
-} 
+}
