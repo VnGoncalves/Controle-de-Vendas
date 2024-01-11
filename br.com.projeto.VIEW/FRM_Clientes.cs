@@ -17,7 +17,6 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
         public FRM_Clientes()
         {
             InitializeComponent();
-            this.Load += new EventHandler(FRM_Clientes_Load);
         }
 
         private void btn_Salvar_Click(object sender, EventArgs e)
@@ -116,8 +115,7 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
 
             #endregion
         }
-
-        private void btn_Limpar_Click(object sender, EventArgs e)
+        private void btn_Novo_Click(object sender, EventArgs e)
         {
             // Botão para limpar os campos
             apagarCampos();
@@ -146,7 +144,7 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             #endregion
         }
 
-        public void apagarCampos()
+        private void apagarCampos()
         {
             // Limpando os campos Txt
             #region
@@ -219,6 +217,7 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
         private void ListarNomes()
         {
             // Instancia para chamar o metodo listar clientes no ClienteDAO
+            #region
 
             string nome = "%" + txt_Pesquisa.Text + "%";
             ClienteDAO dao = new ClienteDAO();
@@ -228,6 +227,37 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             //{
             //    tabelaCliente.DataSource = dao.listarClientes();
             //}
+
+            #endregion
+        }
+
+        private void btn_Buscar_Click(object sender, EventArgs e)
+        {
+            // Botão para consultar cep com API
+            #region
+
+            try
+            {
+                string cep = txt_CEP.Text;
+                string xml = "https://viacep.com.br/ws/" + cep + "/xml/";
+
+                DataSet dados = new DataSet();
+
+                dados.ReadXml(xml);
+
+                txt_Endereco.Text = dados.Tables[0].Rows[0]["logradouro"].ToString();
+                txt_Bairro.Text = dados.Tables[0].Rows[0]["bairro"].ToString();
+                txt_Cidade.Text = dados.Tables[0].Rows[0]["localidade"].ToString();
+                txt_Complemento.Text = dados.Tables[0].Rows[0]["complemento"].ToString();
+                cbo_UF.Text = dados.Tables[0].Rows[0]["uf"].ToString();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Endereco não encontrado, digite manualmente.");
+            }
+
+            #endregion
         }
     }
 }
