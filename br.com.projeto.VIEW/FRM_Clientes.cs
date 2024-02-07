@@ -45,22 +45,9 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
 
             // 2 - Criar um objeto da classe ClienteDAO e chamar o metodo cadastrarCliente
 
-            if (txt_Nome.Text.Equals(string.Empty) ||
-             txt_Email.Equals(string.Empty) ||
-             txt_Endereco.Text.Equals(string.Empty) ||
-             txt_CPF.Text.Equals(string.Empty) ||
-             txt_Numero.Text.Equals(string.Empty) ||
-             txt_Complemento.Text.Equals(string.Empty) ||
-             txt_Bairro.Text.Equals(string.Empty) ||
-             txt_Celular.Text.Equals(string.Empty) ||
-             txt_Telefone.Text.Equals(string.Empty) ||
-             txt_RG.Text.Equals(string.Empty) ||
-             txt_Cidade.Text.Equals(string.Empty) ||
-             cbo_UF.Text.Equals(string.Empty) ||
-             txt_CEP.Text.Equals(string.Empty))
+            if (verificaCamposVazios() == true)
             { 
                 MessageBox.Show("Preencha todos os campos.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
             }
             else
             {
@@ -325,29 +312,24 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
         {
             #region
 
+            txt_Celular.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            txt_Telefone.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            txt_RG.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            txt_CPF.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            txt_CEP.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            txt_Numero.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+
             if (txt_Nome.Text.Equals(string.Empty) || 
-                txt_Email.Equals(string.Empty) || 
-                txt_Endereco.Text.Equals(string.Empty) ||
                 txt_CPF.Text.Equals(string.Empty) ||
-                txt_Numero.Text.Equals(string.Empty) || 
-                txt_Complemento.Text.Equals(string.Empty) || 
-                txt_Bairro.Text.Equals(string.Empty) || 
                 txt_Celular.Text.Equals(string.Empty) || 
-                txt_Telefone.Text.Equals(string.Empty) || 
                 txt_RG.Text.Equals(string.Empty) || 
                 txt_Cidade.Text.Equals(string.Empty) ||
                 cbo_UF.Text.Equals(string.Empty) || 
                 txt_CEP.Text.Equals(string.Empty))
-
-
-                   //(txt_Nome.Text.Equals(string.Empty) ||
-                   // txt_Login.Text.Equals(string.Empty) ||
-                   // txt_Senha.Text.Equals(string.Empty) ||
-                   // txt_ConfirmaSenha.Text.Equals(string.Empty))
-
             {
                 return true;
             }
+
             return false;
 
             #endregion
