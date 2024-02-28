@@ -51,6 +51,7 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
                 conexao.Open();
                 executacmd.ExecuteNonQuery();
                 conexao.Close();
+
                 MessageBox.Show("Cliente cadastrado com sucesso", "SUCESSO.");
 
             } catch (Exception erro) 
