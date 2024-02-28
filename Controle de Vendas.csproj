@@ -58,6 +58,7 @@
     <Compile Include="br.com.projeto.CONEXAO\ConnectionFactory.cs" />
     <Compile Include="br.com.projeto.DAO\ClienteDAO.cs" />
     <Compile Include="br.com.projeto.MODEL\Cliente.cs" />
+    <Compile Include="br.com.projeto.MODEL\Funcionario.cs" />
     <Compile Include="br.com.projeto.VIEW\FRM_Clientes.cs">
       <SubType>Form</SubType>
     </Compile>
