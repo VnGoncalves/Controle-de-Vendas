@@ -34,7 +34,7 @@
             this.tab_Clientes = new System.Windows.Forms.TabControl();
             this.tab_DadosPessoais = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txt_Numero = new System.Windows.Forms.MaskedTextBox();
+            this.txt_Numero = new System.Windows.Forms.TextBox();
             this.btn_Buscar = new System.Windows.Forms.Button();
             this.cbo_UF = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -171,11 +171,10 @@
             // 
             // txt_Numero
             // 
-            this.txt_Numero.Location = new System.Drawing.Point(552, 64);
-            this.txt_Numero.Mask = "####";
+            this.txt_Numero.Location = new System.Drawing.Point(552, 60);
             this.txt_Numero.Name = "txt_Numero";
             this.txt_Numero.Size = new System.Drawing.Size(146, 23);
-            this.txt_Numero.TabIndex = 13;
+            this.txt_Numero.TabIndex = 35;
             // 
             // btn_Buscar
             // 
@@ -726,11 +725,11 @@
         private System.Windows.Forms.BindingSource tbclientesBindingSource;
         private BDVENDASDataSetTableAdapters.tb_clientesTableAdapter tb_clientesTableAdapter;
         private System.Windows.Forms.Button btn_Buscar;
-        private System.Windows.Forms.MaskedTextBox txt_Numero;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox txt_Numero;
     }
 }

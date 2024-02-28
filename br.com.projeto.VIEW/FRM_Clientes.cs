@@ -36,37 +36,44 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             obj.celular = txt_Celular.Text;
             obj.cep = txt_CEP.Text;
             obj.endereco = txt_Endereco.Text;
-            obj.numero = txt_Numero.Text;
+            obj.numero = IntNull.ForceInteger(txt_Numero.Text);
             obj.complemento = txt_Complemento.Text;
             obj.bairro = txt_Bairro.Text;
             obj.cidade = txt_Cidade.Text;
             obj.estado = cbo_UF.Text;
 
-
-            // 2 - Criar um objeto da classe ClienteDAO e chamar o metodo cadastrarCliente
-
-            if (verificaTamanhoCampo() == true)
+            try
             {
-                MessageBox.Show("Preencha os campos em vermelho completo.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                if (verificaCamposVazios() == true)
+                // 2 - Criar um objeto da classe ClienteDAO e chamar o metodo cadastrarCliente
+
+                if (verificaTamanhoCampo() == true)
                 {
-                    MessageBox.Show("Preencha todos os campos.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Preencha os campos em vermelho completo.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-
-                    if (MessageBox.Show("Deseja salvar o registro ?", "ATENÇÃO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (verificaCamposVazios() == true)
                     {
-                        ClienteDAO dao = new ClienteDAO();
-                        dao.cadastrarCliente(obj);
-                        tabelaCliente.DataSource = dao.listarClientes();
+                        MessageBox.Show("Preencha todos os campos.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
 
-                        apagarCampos();
+                        if (MessageBox.Show("Deseja salvar o registro ?", "ATENÇÃO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            ClienteDAO dao = new ClienteDAO();
+                            dao.cadastrarCliente(obj);
+                            tabelaCliente.DataSource = dao.listarClientes();
+
+                            apagarCampos();
+                        }
                     }
                 }
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
 
             #endregion 
@@ -138,7 +145,7 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             txt_Celular.Text = tabelaCliente.CurrentRow.Cells[6].Value.ToString();
             txt_CEP.Text = tabelaCliente.CurrentRow.Cells[7].Value.ToString();
             txt_Endereco.Text = tabelaCliente.CurrentRow.Cells[8].Value.ToString();
-            txt_Numero.Text = tabelaCliente.CurrentRow.Cells[9].Value.ToString();
+            txt_Numero1.Text = tabelaCliente.CurrentRow.Cells[9].Value.ToString();
             txt_Complemento.Text = tabelaCliente.CurrentRow.Cells[10].Value.ToString();
             txt_Bairro.Text = tabelaCliente.CurrentRow.Cells[11].Value.ToString();
             txt_Cidade.Text = tabelaCliente.CurrentRow.Cells[12].Value.ToString();
@@ -219,7 +226,7 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             txt_Celular.Text = string.Empty;
             txt_CEP.Text = string.Empty;
             txt_Endereco.Text = string.Empty;
-            txt_Numero.Text = string.Empty;
+            txt_Numero1.Text = string.Empty;
             txt_Complemento.Text = string.Empty;
             txt_Bairro.Text = string.Empty;
             txt_Cidade.Text = string.Empty;
@@ -250,6 +257,7 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
                 }
                 else
                 {
+                    // Instancia dos objetos para os componentes do Form
 
                     obj.nome = txt_Nome.Text;
                     obj.rg = txt_RG.Text;
@@ -259,12 +267,13 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
                     obj.celular = txt_Celular.Text;
                     obj.cep = txt_CEP.Text;
                     obj.endereco = txt_Endereco.Text;
-                    obj.numero = txt_Numero.Text;
+                    obj.numero = IntNull.ForceInteger(txt_Numero.Text);
                     obj.complemento = txt_Complemento.Text;
                     obj.bairro = txt_Bairro.Text;
                     obj.cidade = txt_Cidade.Text;
                     obj.estado = cbo_UF.Text;
                     obj.codigo = txt_Codigo.Text;
+
 
                     // Verificando se todos os campos estão registrados
 
@@ -371,7 +380,7 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             txt_RG.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             txt_CPF.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             txt_CEP.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-            txt_Numero.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            txt_Numero1.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
 
             if (txt_Nome.Text.Equals(string.Empty) ||
                 txt_CPF.Text.Equals(string.Empty) ||
@@ -462,6 +471,19 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             }
 
             #endregion
+        }
+    }
+
+    public static class IntNull
+    {
+        // Extensao de metodo para declarar a variavel do tipo int para o valor null
+        public static int ForceInteger(this string valor)
+        {
+            int resultado;
+            if (int.TryParse(valor, out resultado))
+                return resultado;
+            else
+                return 0;
         }
     }
 }
