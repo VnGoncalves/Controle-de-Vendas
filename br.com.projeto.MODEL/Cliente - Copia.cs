@@ -8,7 +8,7 @@ namespace Controle_de_Vendas.br.com.projeto.MODEL
 {
     public class Cliente
     {
-        public string codigo { get; set; }
+        public int codigo { get; set; }
         public string nome { get; set; }
         public string rg { get; set; }
         public string cpf { get; set; }

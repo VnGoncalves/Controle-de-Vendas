@@ -46,7 +46,7 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             // 2 - Criar um objeto da classe ClienteDAO e chamar o metodo cadastrarCliente
 
             if (verificaCamposVazios() == true)
-            {
+            { 
                 MessageBox.Show("Preencha todos os campos.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
@@ -107,10 +107,6 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
 
             #region
 
-            // Se houver uma linha selecionada, desative o botão "Salvar"
-
-            btn_Salvar.Enabled = false;
-
             txt_Codigo.Text = tabelaCliente.CurrentRow.Cells[0].Value.ToString();
             txt_Nome.Text = tabelaCliente.CurrentRow.Cells[1].Value.ToString();
             txt_RG.Text = tabelaCliente.CurrentRow.Cells[2].Value.ToString();
@@ -128,15 +124,10 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
 
             tab_Clientes.SelectedTab = tab_DadosPessoais;
 
-
             #endregion
         }
         private void btn_Novo_Click(object sender, EventArgs e)
         {
-            // Habilitar o botao editar
-
-            btn_Salvar.Enabled = true;
-
             // Botão para limpar os campos
 
             apagarCampos();
@@ -144,43 +135,32 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
 
         private void btn_Excluir_Click(object sender, EventArgs e)
         {
-
             // Botão excluir
 
             #region
 
             // Verifica se o usuario tem certeza que vai deletar o registro
 
-            if (txt_Codigo.Text == string.Empty)
+            if (MessageBox.Show("Deseja deletar o registro ?", "ATENÇÃO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                MessageBox.Show("Nenhum registro foi selecionado.", "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
+                Cliente obj = new Cliente();
 
-                if (MessageBox.Show("Deseja excluir o registro ?", "ATENÇÃO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    btn_Salvar.Enabled = true;
+                // pegar o codigo do cliente
 
-                    Cliente obj = new Cliente();
+                obj.codigo = int.Parse(txt_Codigo.Text);
 
-                    // pegar o codigo do cliente
+                // Instanciando a classe ClienteDAO e chamando o método ExcluirCliente
 
-                    obj.codigo = txt_Codigo.Text;
+                ClienteDAO dao = new ClienteDAO();
+                dao.excluirCliente(obj);
 
-                    // Instanciando a classe ClienteDAO e chamando o método ExcluirCliente
+                // Chamando o metodo para atualizar a lista no DataGrid após apagar
 
-                    ClienteDAO dao = new ClienteDAO();
-                    dao.excluirCliente(obj);
+                tabelaCliente.DataSource = dao.listarClientes();
 
-                    // Chamando o metodo para atualizar a lista no DataGrid após apagar
+                // Limpa os campos após remover o registro
 
-                    tabelaCliente.DataSource = dao.listarClientes();
-
-                    // Limpa os campos após remover o registro
-
-                    apagarCampos();
-                }
+                apagarCampos();
             }
 
             #endregion
@@ -192,20 +172,23 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
 
             #region
 
-            txt_Codigo.Text = string.Empty;
-            txt_Nome.Text = string.Empty;
-            txt_RG.Text = string.Empty;
-            txt_CPF.Text = string.Empty;
-            txt_Email.Text = string.Empty;
-            txt_Telefone.Text = string.Empty;
-            txt_Celular.Text = string.Empty;
-            txt_CEP.Text = string.Empty;
-            txt_Endereco.Text = string.Empty;
-            txt_Numero.Text = string.Empty;
-            txt_Complemento.Text = string.Empty;
-            txt_Bairro.Text = string.Empty;
-            txt_Cidade.Text = string.Empty;
-            cbo_UF.Text = string.Empty;
+            if (MessageBox.Show("Deseja limpar todos os campos ?", "ATENÇÃO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                txt_Codigo.Text = string.Empty;
+                txt_Nome.Text = string.Empty;
+                txt_RG.Text = string.Empty;
+                txt_CPF.Text = string.Empty;
+                txt_Email.Text = string.Empty;
+                txt_Telefone.Text = string.Empty;
+                txt_Celular.Text = string.Empty;
+                txt_CEP.Text = string.Empty;
+                txt_Endereco.Text = string.Empty;
+                txt_Numero.Text = string.Empty;
+                txt_Complemento.Text = string.Empty;
+                txt_Bairro.Text = string.Empty;
+                txt_Cidade.Text = string.Empty;
+                cbo_UF.Text = string.Empty;
+            }
 
             #endregion
         }
@@ -217,55 +200,44 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             #region
 
             Cliente obj = new Cliente();
+            obj.nome = txt_Nome.Text;
+            obj.rg = txt_RG.Text;
+            obj.cpf = txt_CPF.Text;
+            obj.email = txt_Email.Text;
+            obj.telefone = txt_Telefone.Text;
+            obj.celular = txt_Celular.Text;
+            obj.cep = txt_CEP.Text;
+            obj.endereco = txt_Endereco.Text;
+            obj.numero = txt_Numero.Text;
+            obj.complemento = txt_Complemento.Text;
+            obj.bairro = txt_Bairro.Text;
+            obj.cidade = txt_Cidade.Text;
+            obj.estado = cbo_UF.Text;
 
-            // Verifica se o cliente esta setado no campo txt_Codigo para editar
+            obj.codigo = int.Parse(txt_Codigo.Text);
 
-            if (txt_Codigo.Text == string.Empty)
+            // Verificando se todos os campos estão registrados
+
+            if (verificaCamposVazios() == true)
             {
-                MessageBox.Show("Nenhum cliente identificado", "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Preencha todos os campos.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
             else
             {
+                // Verificando se o usuario tem certeza que vai modificar o registro
 
-                obj.nome = txt_Nome.Text;
-                obj.rg = txt_RG.Text;
-                obj.cpf = txt_CPF.Text;
-                obj.email = txt_Email.Text;
-                obj.telefone = txt_Telefone.Text;
-                obj.celular = txt_Celular.Text;
-                obj.cep = txt_CEP.Text;
-                obj.endereco = txt_Endereco.Text;
-                obj.numero = txt_Numero.Text;
-                obj.complemento = txt_Complemento.Text;
-                obj.bairro = txt_Bairro.Text;
-                obj.cidade = txt_Cidade.Text;
-                obj.estado = cbo_UF.Text;
-                obj.codigo = txt_Codigo.Text;
-
-                // Verificando se todos os campos estão registrados
-
-                if (verificaCamposVazios() == true)
+                if (MessageBox.Show("Deseja alterar o registro ?", "ATENÇÃO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    MessageBox.Show("Preencha todos os campos.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    // Instanciando o metodo alterarCliente da classe ClienteDAO para alteramos os registro
 
-                }
-                else
-                {
-                    // Verificando se o usuario tem certeza que vai modificar o registro
+                    ClienteDAO dao = new ClienteDAO();
+                    dao.alterarCliente(obj);
+                    tabelaCliente.DataSource = dao.listarClientes();
 
-                    if (MessageBox.Show("Deseja alterar o registro ?", "ATENÇÃO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    {
-                        // Instanciando o metodo alterarCliente da classe ClienteDAO para alteramos os registro
+                    // Limpa os campos após remover o registro
 
-                        ClienteDAO dao = new ClienteDAO();
-                        dao.alterarCliente(obj);
-                        tabelaCliente.DataSource = dao.listarClientes();
-
-                        // Limpa os campos após remover o registro
-
-                        apagarCampos();
-                    }
+                    apagarCampos();
                 }
             }
 
@@ -347,12 +319,12 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             txt_CEP.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             txt_Numero.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
 
-            if (txt_Nome.Text.Equals(string.Empty) ||
+            if (txt_Nome.Text.Equals(string.Empty) || 
                 txt_CPF.Text.Equals(string.Empty) ||
-                txt_Celular.Text.Equals(string.Empty) ||
-                txt_RG.Text.Equals(string.Empty) ||
+                txt_Celular.Text.Equals(string.Empty) || 
+                txt_RG.Text.Equals(string.Empty) || 
                 txt_Cidade.Text.Equals(string.Empty) ||
-                cbo_UF.Text.Equals(string.Empty) ||
+                cbo_UF.Text.Equals(string.Empty) || 
                 txt_CEP.Text.Equals(string.Empty))
             {
                 return true;

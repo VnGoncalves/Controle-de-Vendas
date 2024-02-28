@@ -51,7 +51,7 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
                 conexao.Open();
                 executacmd.ExecuteNonQuery();
                 conexao.Close();
-                MessageBox.Show("Cliente cadastrado com sucesso", "SUCESSO.");
+                MessageBox.Show("Cliente cadastrado com sucesso");
 
             } catch (Exception erro) 
             {
@@ -143,7 +143,7 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
                 executacmd.ExecuteNonQuery();
                 conexao.Close();
 
-                MessageBox.Show("Cliente alterado com sucesso", "SUCESSO.");
+                MessageBox.Show("Cliente alterado com sucesso");
             }
             catch (Exception erro)
             {
@@ -170,7 +170,7 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
                 executecmd.ExecuteNonQuery();
                 conexao.Close();
 
-                MessageBox.Show("Cliente excluido com sucesso.", "SUCESSO.");
+                MessageBox.Show("Cliente excluido com sucesso");
             }
             catch (Exception erro)
             {
