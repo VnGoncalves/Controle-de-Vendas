@@ -175,7 +175,7 @@
             this.txt_Numero.Mask = "####";
             this.txt_Numero.Name = "txt_Numero";
             this.txt_Numero.Size = new System.Drawing.Size(146, 23);
-            this.txt_Numero.TabIndex = 21;
+            this.txt_Numero.TabIndex = 13;
             // 
             // btn_Buscar
             // 
@@ -249,7 +249,7 @@
             this.txt_Cidade.Location = new System.Drawing.Point(149, 95);
             this.txt_Cidade.Name = "txt_Cidade";
             this.txt_Cidade.Size = new System.Drawing.Size(297, 23);
-            this.txt_Cidade.TabIndex = 9;
+            this.txt_Cidade.TabIndex = 10;
             // 
             // label14
             // 
@@ -265,7 +265,7 @@
             this.txt_Bairro.Location = new System.Drawing.Point(149, 163);
             this.txt_Bairro.Name = "txt_Bairro";
             this.txt_Bairro.Size = new System.Drawing.Size(297, 23);
-            this.txt_Bairro.TabIndex = 11;
+            this.txt_Bairro.TabIndex = 12;
             // 
             // label13
             // 
@@ -281,7 +281,7 @@
             this.txt_Complemento.Location = new System.Drawing.Point(149, 129);
             this.txt_Complemento.Name = "txt_Complemento";
             this.txt_Complemento.Size = new System.Drawing.Size(297, 23);
-            this.txt_Complemento.TabIndex = 10;
+            this.txt_Complemento.TabIndex = 11;
             // 
             // txt_CEP
             // 
@@ -289,7 +289,7 @@
             this.txt_CEP.Mask = "00000-999";
             this.txt_CEP.Name = "txt_CEP";
             this.txt_CEP.Size = new System.Drawing.Size(150, 23);
-            this.txt_CEP.TabIndex = 13;
+            this.txt_CEP.TabIndex = 8;
             // 
             // label12
             // 
@@ -323,7 +323,7 @@
             this.txt_Endereco.Location = new System.Drawing.Point(149, 64);
             this.txt_Endereco.Name = "txt_Endereco";
             this.txt_Endereco.Size = new System.Drawing.Size(297, 23);
-            this.txt_Endereco.TabIndex = 8;
+            this.txt_Endereco.TabIndex = 9;
             // 
             // btn_Editar
             // 
@@ -509,7 +509,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(264, 139);
+            this.label5.Location = new System.Drawing.Point(269, 139);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(42, 17);
             this.label5.TabIndex = 14;
@@ -518,7 +518,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(257, 173);
+            this.label6.Location = new System.Drawing.Point(264, 173);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(47, 17);
             this.label6.TabIndex = 16;

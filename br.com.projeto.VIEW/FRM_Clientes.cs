@@ -45,22 +45,30 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
 
             // 2 - Criar um objeto da classe ClienteDAO e chamar o metodo cadastrarCliente
 
-            if (verificaCamposVazios() == true)
+            if (verificaTamanhoCampo() == true)
             {
-                MessageBox.Show("Preencha todos os campos.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Preencha os campos em vermelho completo.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-
-                if (MessageBox.Show("Deseja salvar o registro ?", "ATENÇÃO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (verificaCamposVazios() == true)
                 {
-                    ClienteDAO dao = new ClienteDAO();
-                    dao.cadastrarCliente(obj);
-                    tabelaCliente.DataSource = dao.listarClientes();
+                    MessageBox.Show("Preencha todos os campos.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
 
-                    apagarCampos();
+                    if (MessageBox.Show("Deseja salvar o registro ?", "ATENÇÃO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        ClienteDAO dao = new ClienteDAO();
+                        dao.cadastrarCliente(obj);
+                        tabelaCliente.DataSource = dao.listarClientes();
+
+                        apagarCampos();
+                    }
                 }
             }
+
             #endregion 
         }
 
@@ -110,6 +118,16 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             // Se houver uma linha selecionada, desative o botão "Salvar"
 
             btn_Salvar.Enabled = false;
+
+            // Este codigo e feito para quando eu cadastrar mais de um registro, os campos de mascara seja cadastrados certinhos no banco de dados.
+
+            txt_Celular.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
+            txt_Telefone.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
+            txt_RG.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
+            txt_CPF.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
+            txt_CEP.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
+
+            // Seta os campos no cadastro de clientes quando eu clicar em algum cliente ja cadastrado
 
             txt_Codigo.Text = tabelaCliente.CurrentRow.Cells[0].Value.ToString();
             txt_Nome.Text = tabelaCliente.CurrentRow.Cells[1].Value.ToString();
@@ -223,52 +241,58 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             if (txt_Codigo.Text == string.Empty)
             {
                 MessageBox.Show("Nenhum cliente identificado", "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
             }
             else
             {
-
-                obj.nome = txt_Nome.Text;
-                obj.rg = txt_RG.Text;
-                obj.cpf = txt_CPF.Text;
-                obj.email = txt_Email.Text;
-                obj.telefone = txt_Telefone.Text;
-                obj.celular = txt_Celular.Text;
-                obj.cep = txt_CEP.Text;
-                obj.endereco = txt_Endereco.Text;
-                obj.numero = txt_Numero.Text;
-                obj.complemento = txt_Complemento.Text;
-                obj.bairro = txt_Bairro.Text;
-                obj.cidade = txt_Cidade.Text;
-                obj.estado = cbo_UF.Text;
-                obj.codigo = txt_Codigo.Text;
-
-                // Verificando se todos os campos estão registrados
-
-                if (verificaCamposVazios() == true)
+                if (verificaTamanhoCampo() == true)
                 {
-                    MessageBox.Show("Preencha todos os campos.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
+                    MessageBox.Show("Preencha os campos em vermelho completo.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    // Verificando se o usuario tem certeza que vai modificar o registro
 
-                    if (MessageBox.Show("Deseja alterar o registro ?", "ATENÇÃO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    obj.nome = txt_Nome.Text;
+                    obj.rg = txt_RG.Text;
+                    obj.cpf = txt_CPF.Text;
+                    obj.email = txt_Email.Text;
+                    obj.telefone = txt_Telefone.Text;
+                    obj.celular = txt_Celular.Text;
+                    obj.cep = txt_CEP.Text;
+                    obj.endereco = txt_Endereco.Text;
+                    obj.numero = txt_Numero.Text;
+                    obj.complemento = txt_Complemento.Text;
+                    obj.bairro = txt_Bairro.Text;
+                    obj.cidade = txt_Cidade.Text;
+                    obj.estado = cbo_UF.Text;
+                    obj.codigo = txt_Codigo.Text;
+
+                    // Verificando se todos os campos estão registrados
+
+                    if (verificaCamposVazios() == true)
                     {
-                        // Instanciando o metodo alterarCliente da classe ClienteDAO para alteramos os registro
+                        MessageBox.Show("Preencha todos os campos.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-                        ClienteDAO dao = new ClienteDAO();
-                        dao.alterarCliente(obj);
-                        tabelaCliente.DataSource = dao.listarClientes();
+                    }
+                    else
+                    {
+                        // Verificando se o usuario tem certeza que vai modificar o registro
 
-                        // Limpa os campos após remover o registro
+                        if (MessageBox.Show("Deseja alterar o registro ?", "ATENÇÃO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            // Instanciando o metodo alterarCliente da classe ClienteDAO para alteramos os registro
 
-                        apagarCampos();
+                            ClienteDAO dao = new ClienteDAO();
+                            dao.alterarCliente(obj);
+                            tabelaCliente.DataSource = dao.listarClientes();
+
+                            // Limpa os campos após remover o registro
+
+                            apagarCampos();
+                        }
                     }
                 }
-            }
 
+            }
             #endregion
         }
 
@@ -338,6 +362,8 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
 
         private bool verificaCamposVazios()
         {
+            // Verifca os campos vazios para nao deixar de cadastrar informacoes obrigatorias
+
             #region
 
             txt_Celular.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
@@ -359,6 +385,81 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             }
 
             return false;
+
+            #endregion
+        }
+
+        private bool verificaTamanhoCampo()
+        {
+            // Verifica se todos os campos do tipo Macara estao preenchidos completamente
+
+            #region
+
+            txt_Telefone.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+
+            if (!txt_Celular.MaskCompleted || !txt_RG.MaskCompleted || !txt_CPF.MaskCompleted || !txt_CEP.MaskCompleted || !txt_Telefone.MaskCompleted && txt_Telefone.Text.Length != 0)
+            {
+                if (!txt_Celular.MaskCompleted)
+                {
+                    txt_Celular.ForeColor = Color.Red;
+                }
+                else
+                {
+                    txt_Celular.ForeColor = Color.Black;
+                }
+
+                if (!txt_RG.MaskCompleted)
+                {
+                    txt_RG.ForeColor = Color.Red;
+                }
+                else
+                {
+                    txt_RG.ForeColor = Color.Black;
+                }
+
+                if (!txt_CPF.MaskCompleted)
+                {
+                    txt_CPF.ForeColor = Color.Red;
+                }
+                else
+                {
+                    txt_CPF.ForeColor = Color.Black;
+                }
+
+                if (!txt_CEP.MaskCompleted)
+                {
+                    txt_CEP.ForeColor = Color.Red;
+                }
+                else
+                {
+                    txt_CEP.ForeColor = Color.Black;
+                }
+
+                if (!txt_Telefone.MaskCompleted && txt_Telefone.Text.Length != 0)
+                {
+                    txt_Telefone.ForeColor = Color.Red;
+                }
+                else
+                {
+                    txt_Telefone.ForeColor = Color.Black;
+                }
+                if (txt_Telefone.Text == string.Empty)
+                {
+                    txt_Telefone.ForeColor = Color.Black;
+                }
+
+                return true;
+            }
+            else
+            {
+                txt_Celular.ForeColor = Color.Black;
+                txt_RG.ForeColor = Color.Black;
+                txt_CPF.ForeColor = Color.Black;
+                txt_CEP.ForeColor = Color.Black;
+                txt_Telefone.ForeColor = Color.Black;
+
+                return false;
+            }
 
             #endregion
         }
