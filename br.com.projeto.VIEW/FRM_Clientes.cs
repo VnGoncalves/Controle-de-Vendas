@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Windows.Forms;
 
 namespace Controle_de_Vendas.br.com.projeto.VIEW
@@ -145,7 +146,7 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             txt_Celular.Text = tabelaCliente.CurrentRow.Cells[6].Value.ToString();
             txt_CEP.Text = tabelaCliente.CurrentRow.Cells[7].Value.ToString();
             txt_Endereco.Text = tabelaCliente.CurrentRow.Cells[8].Value.ToString();
-            txt_Numero1.Text = tabelaCliente.CurrentRow.Cells[9].Value.ToString();
+            txt_Numero.Text = tabelaCliente.CurrentRow.Cells[9].Value.ToString();
             txt_Complemento.Text = tabelaCliente.CurrentRow.Cells[10].Value.ToString();
             txt_Bairro.Text = tabelaCliente.CurrentRow.Cells[11].Value.ToString();
             txt_Cidade.Text = tabelaCliente.CurrentRow.Cells[12].Value.ToString();
@@ -226,7 +227,7 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             txt_Celular.Text = string.Empty;
             txt_CEP.Text = string.Empty;
             txt_Endereco.Text = string.Empty;
-            txt_Numero1.Text = string.Empty;
+            txt_Numero.Text = string.Empty;
             txt_Complemento.Text = string.Empty;
             txt_Bairro.Text = string.Empty;
             txt_Cidade.Text = string.Empty;
@@ -248,60 +249,51 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             if (txt_Codigo.Text == string.Empty)
             {
                 MessageBox.Show("Nenhum cliente identificado", "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
+            } else
             {
-                if (verificaTamanhoCampo() == true)
+                // Instancia dos objetos para os componentes do Form
+
+                obj.nome = txt_Nome.Text;
+                obj.rg = txt_RG.Text;
+                obj.cpf = txt_CPF.Text;
+                obj.email = txt_Email.Text;
+                obj.telefone = txt_Telefone.Text;
+                obj.celular = txt_Celular.Text;
+                obj.cep = txt_CEP.Text;
+                obj.endereco = txt_Endereco.Text;
+                obj.numero = IntNull.ForceInteger(txt_Numero.Text);
+                obj.complemento = txt_Complemento.Text;
+                obj.bairro = txt_Bairro.Text;
+                obj.cidade = txt_Cidade.Text;
+                obj.estado = cbo_UF.Text;
+                obj.codigo = txt_Codigo.Text;
+
+                // Verificando se todos os campos estão registrados
+
+                if (verificaCamposVazios() == true)
                 {
-                    MessageBox.Show("Preencha os campos em vermelho completo.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Preencha todos os campos obrigatórios.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
                 }
                 else
                 {
-                    // Instancia dos objetos para os componentes do Form
+                    // Verificando se o usuario tem certeza que vai modificar o registro
 
-                    obj.nome = txt_Nome.Text;
-                    obj.rg = txt_RG.Text;
-                    obj.cpf = txt_CPF.Text;
-                    obj.email = txt_Email.Text;
-                    obj.telefone = txt_Telefone.Text;
-                    obj.celular = txt_Celular.Text;
-                    obj.cep = txt_CEP.Text;
-                    obj.endereco = txt_Endereco.Text;
-                    obj.numero = IntNull.ForceInteger(txt_Numero.Text);
-                    obj.complemento = txt_Complemento.Text;
-                    obj.bairro = txt_Bairro.Text;
-                    obj.cidade = txt_Cidade.Text;
-                    obj.estado = cbo_UF.Text;
-                    obj.codigo = txt_Codigo.Text;
-
-
-                    // Verificando se todos os campos estão registrados
-
-                    if (verificaCamposVazios() == true)
+                    if (MessageBox.Show("Deseja alterar o registro ?", "ATENÇÃO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        MessageBox.Show("Preencha todos os campos.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        // Instanciando o metodo alterarCliente da classe ClienteDAO para alteramos os registro
 
-                    }
-                    else
-                    {
-                        // Verificando se o usuario tem certeza que vai modificar o registro
+                        ClienteDAO dao = new ClienteDAO();
+                        dao.alterarCliente(obj);
+                        tabelaCliente.DataSource = dao.listarClientes();
 
-                        if (MessageBox.Show("Deseja alterar o registro ?", "ATENÇÃO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                        {
-                            // Instanciando o metodo alterarCliente da classe ClienteDAO para alteramos os registro
+                        // Limpa os campos após remover o registro
 
-                            ClienteDAO dao = new ClienteDAO();
-                            dao.alterarCliente(obj);
-                            tabelaCliente.DataSource = dao.listarClientes();
-
-                            // Limpa os campos após remover o registro
-
-                            apagarCampos();
-                        }
+                        apagarCampos();
                     }
                 }
-
             }
+
             #endregion
         }
 
@@ -369,108 +361,64 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             #endregion
         }
 
+
         private bool verificaCamposVazios()
         {
-            // Verifca os campos vazios para nao deixar de cadastrar informacoes obrigatorias
+            // Valida se os componentes do form estao vazios
 
-            #region
+            TextBox[] textBoxObrigatorios = { txt_Nome, txt_Cidade };
+            ComboBox[] comboBoxObrigatorios = { cbo_UF };
+            MaskedTextBox[] MaskaraObrigatorias = { txt_Celular, txt_CEP, txt_RG, txt_CPF };
 
-            txt_Celular.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-            txt_Telefone.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-            txt_RG.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-            txt_CPF.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-            txt_CEP.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-            txt_Numero1.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-
-            if (txt_Nome.Text.Equals(string.Empty) ||
-                txt_CPF.Text.Equals(string.Empty) ||
-                txt_Celular.Text.Equals(string.Empty) ||
-                txt_RG.Text.Equals(string.Empty) ||
-                txt_Cidade.Text.Equals(string.Empty) ||
-                cbo_UF.Text.Equals(string.Empty) ||
-                txt_CEP.Text.Equals(string.Empty))
+            // Tratamento campos de texto
+            foreach (TextBox campo in textBoxObrigatorios)
             {
-                return true;
+                if (string.IsNullOrEmpty(campo.Text))
+                {
+                    campo.BackColor = Color.LightPink;
+                    return true;
+                } 
+            }
+            // Tratamento combo box
+            foreach (ComboBox campo in comboBoxObrigatorios)
+            {
+                if (string.IsNullOrEmpty(campo.Text))
+                {
+                    campo.BackColor = Color.LightPink;
+                    return true;
+                }
             }
 
-            return false;
-
-            #endregion
-        }
-
-        private bool verificaTamanhoCampo()
-        {
-            // Verifica se todos os campos do tipo Macara estao preenchidos completamente
-
-            #region
-
-            txt_Telefone.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-
-            if (!txt_Celular.MaskCompleted || !txt_RG.MaskCompleted || !txt_CPF.MaskCompleted || !txt_CEP.MaskCompleted || !txt_Telefone.MaskCompleted && txt_Telefone.Text.Length != 0)
+            // Tratamento maskara
+            foreach (MaskedTextBox campo in MaskaraObrigatorias)
             {
-                if (!txt_Celular.MaskCompleted)
+                if (!campo.MaskFull)
                 {
-                    txt_Celular.ForeColor = Color.Red;
-                }
-                else
+                    campo.ForeColor = Color.Red;
+                    return true;
+                } else
                 {
-                    txt_Celular.ForeColor = Color.Black;
+                    campo.ForeColor = Color.Black;
                 }
+            }
 
-                if (!txt_RG.MaskCompleted)
-                {
-                    txt_RG.ForeColor = Color.Red;
-                }
-                else
-                {
-                    txt_RG.ForeColor = Color.Black;
-                }
 
-                if (!txt_CPF.MaskCompleted)
-                {
-                    txt_CPF.ForeColor = Color.Red;
-                }
-                else
-                {
-                    txt_CPF.ForeColor = Color.Black;
-                }
-
-                if (!txt_CEP.MaskCompleted)
-                {
-                    txt_CEP.ForeColor = Color.Red;
-                }
-                else
-                {
-                    txt_CEP.ForeColor = Color.Black;
-                }
-
-                if (!txt_Telefone.MaskCompleted && txt_Telefone.Text.Length != 0)
-                {
-                    txt_Telefone.ForeColor = Color.Red;
-                }
-                else
-                {
-                    txt_Telefone.ForeColor = Color.Black;
-                }
-                if (txt_Telefone.Text == string.Empty)
-                {
-                    txt_Telefone.ForeColor = Color.Black;
-                }
-
-                return true;
+            // Tratamento para validar o campo maskara telefone não obrigatorio
+            txt_Telefone.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            
+            if (txt_Telefone.Text == string.Empty)
+            {
+                txt_Telefone.ForeColor = Color.Black;
             }
             else
             {
-                txt_Celular.ForeColor = Color.Black;
-                txt_RG.ForeColor = Color.Black;
-                txt_CPF.ForeColor = Color.Black;
-                txt_CEP.ForeColor = Color.Black;
-                txt_Telefone.ForeColor = Color.Black;
-
-                return false;
+                if (!txt_Telefone.MaskFull && txt_Telefone.TextLength != 0)
+                {
+                    txt_Telefone.ForeColor = Color.Red;
+                    return true;
+                }
             }
-
-            #endregion
+            return false;
         }
     }
 
