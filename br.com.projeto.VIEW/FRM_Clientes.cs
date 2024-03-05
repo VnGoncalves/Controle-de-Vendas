@@ -20,11 +20,10 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             InitializeComponent();
         }
 
+        #region Botao salvar
         private void btn_Salvar_Click(object sender, EventArgs e)
         {
             // Programa o botão Salvar
-
-            #region
 
             // 1 - Receber os dados dentro do objeto modelo de cliente
 
@@ -47,39 +46,33 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             {
                 // 2 - Criar um objeto da classe ClienteDAO e chamar o metodo cadastrarCliente
 
-                if (verificaTamanhoCampo() == true)
+                if (verificaCamposVazios() == true)
                 {
-                    MessageBox.Show("Preencha os campos em vermelho completo.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Preencha todos os campos.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
-                    if (verificaCamposVazios() == true)
-                    {
-                        MessageBox.Show("Preencha todos os campos.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                    else
-                    {
 
-                        if (MessageBox.Show("Deseja salvar o registro ?", "ATENÇÃO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                        {
-                            ClienteDAO dao = new ClienteDAO();
-                            dao.cadastrarCliente(obj);
-                            tabelaCliente.DataSource = dao.listarClientes();
+                    if (MessageBox.Show("Deseja salvar o registro ?", "ATENÇÃO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        ClienteDAO dao = new ClienteDAO();
+                        dao.cadastrarCliente(obj);
+                        tabelaCliente.DataSource = dao.listarClientes();
 
-                            apagarCampos();
-                        }
+                        apagarCampos();
                     }
                 }
             }
+
             catch (Exception)
             {
 
                 throw;
             }
-
-            #endregion 
         }
+        #endregion
 
+        #region Carregar Form
         private void FRM_Clientes_Load(object sender, EventArgs e)
         {
             // TODO: esta linha de código carrega dados na tabela 'bDVENDASDataSet.tb_clientes'. Você pode movê-la ou removê-la conforme necessário.
@@ -87,8 +80,6 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             this.tb_clientesTableAdapter.Fill(this.bDVENDASDataSet.tb_clientes);
 
             // Carrega as informações da tabela tb_clientes ao carregar o formulario
-
-            #region
 
             ClienteDAO dao = new ClienteDAO();
             tabelaCliente.DataSource = dao.listarClientes();
@@ -112,16 +103,13 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             tabelaCliente.Columns["NOME CLIENTE"].Width = 250;
             tabelaCliente.Columns["CPF"].Width = 130;
             tabelaCliente.Columns["E-MAIL"].Width = 220;
-
-
-            #endregion
         }
+        #endregion
 
+        #region Evento de clicar no data Grid
         private void tabelaCliente_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // Pegar os dados da linha selecionada
-
-            #region
 
             // Se houver uma linha selecionada, desative o botão "Salvar"
 
@@ -153,10 +141,10 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             cbo_UF.Text = tabelaCliente.CurrentRow.Cells[13].Value.ToString();
 
             tab_Clientes.SelectedTab = tab_DadosPessoais;
-
-
-            #endregion
         }
+        #endregion
+
+        #region Botao Novo
         private void btn_Novo_Click(object sender, EventArgs e)
         {
             // Habilitar o botao editar
@@ -167,6 +155,9 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
 
             apagarCampos();
         }
+        #endregion
+
+        #region Botão Excluir
 
         private void btn_Excluir_Click(object sender, EventArgs e)
         {
@@ -211,36 +202,45 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
 
             #endregion
         }
+        #endregion
 
+        #region Metodo para limpar os Controles do formulario
         private void apagarCampos()
+        {
+            foreach (Control controle in this.Controls)
+            {
+                limparControle(controle);
+            }
+        }
+        private void limparControle(Control controle)
         {
             // Limpando os campos Txt
 
-            #region
 
-            txt_Codigo.Text = string.Empty;
-            txt_Nome.Text = string.Empty;
-            txt_RG.Text = string.Empty;
-            txt_CPF.Text = string.Empty;
-            txt_Email.Text = string.Empty;
-            txt_Telefone.Text = string.Empty;
-            txt_Celular.Text = string.Empty;
-            txt_CEP.Text = string.Empty;
-            txt_Endereco.Text = string.Empty;
-            txt_Numero.Text = string.Empty;
-            txt_Complemento.Text = string.Empty;
-            txt_Bairro.Text = string.Empty;
-            txt_Cidade.Text = string.Empty;
-            cbo_UF.Text = string.Empty;
+            if (controle is TextBox text)
+            {
+                text.Text = string.Empty;
+            } else if (controle is ComboBox combo)
+            {
+                combo.SelectedIndex = -1;
+            } else if (controle is MaskedTextBox mask)
+            {
+                mask.Text = string.Empty;
+            }
 
-            #endregion
+            foreach (Control subControle in controle.Controls)
+            {
+                limparControle(subControle);
+            }
         }
+
+        #endregion
+
+        #region Botão Editar
 
         private void btn_Editar_Click(object sender, EventArgs e)
         {
             // 1 - Receber os dados dentro do objeto modelo de cliente
-
-            #region
 
             Cliente obj = new Cliente();
 
@@ -249,7 +249,8 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             if (txt_Codigo.Text == string.Empty)
             {
                 MessageBox.Show("Nenhum cliente identificado", "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            } else
+            }
+            else
             {
                 // Instancia dos objetos para os componentes do Form
 
@@ -294,28 +295,33 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
                 }
             }
 
-            #endregion
         }
+        #endregion
 
+        #region Pesquisar Cliente
         private void btn_Pesquisar_Click(object sender, EventArgs e)
         {
             // Chamando o metodo para listar os clientes no Data Grid
 
             ListarNomes();
         }
+        #endregion
 
+        #region Metodo para os clientes aparecer no DataGrid enquanto digita
         private void txt_Pesquisa_TextChanged(object sender, EventArgs e)
         {
             // Chamando o metodo para listar os clientes no Data Grid
 
             ListarNomes();
         }
+        #endregion
+
+        #region Listar nomes
 
         private void ListarNomes()
         {
             // Instancia para chamar o metodo listar clientes no ClienteDAO
 
-            #region
 
             // Declarando a variavel para receber o parametro LIKE do sql
 
@@ -323,15 +329,14 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
 
             ClienteDAO dao = new ClienteDAO();
             tabelaCliente.DataSource = dao.buscarClientePorNome(nome);
-
-            #endregion
         }
 
+        #endregion
+
+        #region Buscar CEP
         private void btn_Buscar_Click(object sender, EventArgs e)
         {
             // Botão para consultar cep com WebService
-
-            #region
 
             try
             {
@@ -357,11 +362,11 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
 
                 MessageBox.Show("Endereco não encontrado, digite manualmente.");
             }
-
-            #endregion
         }
 
+        #endregion
 
+        #region Valida campos vazios
         private bool verificaCamposVazios()
         {
             // Valida se os componentes do form estao vazios
@@ -377,7 +382,7 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
                 {
                     campo.BackColor = Color.LightPink;
                     return true;
-                } 
+                }
             }
             // Tratamento combo box
             foreach (ComboBox campo in comboBoxObrigatorios)
@@ -396,7 +401,8 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
                 {
                     campo.ForeColor = Color.Red;
                     return true;
-                } else
+                }
+                else
                 {
                     campo.ForeColor = Color.Black;
                 }
@@ -405,7 +411,7 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
 
             // Tratamento para validar o campo maskara telefone não obrigatorio
             txt_Telefone.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-            
+
             if (txt_Telefone.Text == string.Empty)
             {
                 txt_Telefone.ForeColor = Color.Black;
@@ -421,7 +427,9 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             return false;
         }
     }
+    #endregion
 
+    #region Metodo para tipo int receber vazio
     public static class IntNull
     {
         // Extensao de metodo para declarar a variavel do tipo int para o valor null
@@ -434,4 +442,5 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
                 return 0;
         }
     }
+    #endregion
 }
