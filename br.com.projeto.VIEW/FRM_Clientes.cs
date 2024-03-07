@@ -20,7 +20,7 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             InitializeComponent();
         }
 
-        #region Botao salvar
+        #region Evento Botao salvar
         private void btn_Salvar_Click(object sender, EventArgs e)
         {
             // Programa o botão Salvar
@@ -72,7 +72,7 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
         }
         #endregion
 
-        #region Carregar Form
+        #region Evento Carregar Form
         private void FRM_Clientes_Load(object sender, EventArgs e)
         {
             // TODO: esta linha de código carrega dados na tabela 'bDVENDASDataSet.tb_clientes'. Você pode movê-la ou removê-la conforme necessário.
@@ -144,7 +144,7 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
         }
         #endregion
 
-        #region Botao Novo
+        #region Evento Botao Novo
         private void btn_Novo_Click(object sender, EventArgs e)
         {
             // Habilitar o botao editar
@@ -157,7 +157,7 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
         }
         #endregion
 
-        #region Botão Excluir
+        #region Evento Botão Excluir
 
         private void btn_Excluir_Click(object sender, EventArgs e)
         {
@@ -220,12 +220,16 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             if (controle is TextBox text)
             {
                 text.Text = string.Empty;
+                text.BackColor = Color.White;
             } else if (controle is ComboBox combo)
             {
                 combo.SelectedIndex = -1;
-            } else if (controle is MaskedTextBox mask)
+                combo.BackColor = Color.White;
+            }
+            else if (controle is MaskedTextBox mask)
             {
                 mask.Text = string.Empty;
+                mask.ForeColor = Color.Black;
             }
 
             foreach (Control subControle in controle.Controls)
@@ -236,7 +240,7 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
 
         #endregion
 
-        #region Botão Editar
+        #region Evento Botão Editar
 
         private void btn_Editar_Click(object sender, EventArgs e)
         {
@@ -298,7 +302,7 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
         }
         #endregion
 
-        #region Pesquisar Cliente
+        #region Evento Pesquisar Cliente
         private void btn_Pesquisar_Click(object sender, EventArgs e)
         {
             // Chamando o metodo para listar os clientes no Data Grid
@@ -316,7 +320,7 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
         }
         #endregion
 
-        #region Listar nomes
+        #region Metodo para Listar nomes
 
         private void ListarNomes()
         {
@@ -333,7 +337,7 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
 
         #endregion
 
-        #region Buscar CEP
+        #region Evento Buscar CEP
         private void btn_Buscar_Click(object sender, EventArgs e)
         {
             // Botão para consultar cep com WebService
@@ -366,7 +370,7 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
 
         #endregion
 
-        #region Valida campos vazios
+        #region Metodo para Validar campos vazios
         private bool verificaCamposVazios()
         {
             // Valida se os componentes do form estao vazios

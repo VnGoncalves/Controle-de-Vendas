@@ -18,6 +18,7 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
         {
             this.conexao = new ConnectionFactory().getConnection();
         }
+
         #region Cadastrar Cliente
         public void cadastrarCliente(Cliente obj)
         {

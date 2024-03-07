@@ -1,4 +1,5 @@
-﻿using Controle_de_Vendas.br.com.projeto.MODEL;
+﻿using Controle_de_Vendas.br.com.projeto.DAO;
+using Controle_de_Vendas.br.com.projeto.MODEL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,6 +40,9 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             obj.cidade = txt_Cidade.Text;
             obj.estado = cbo_UF.SelectedItem.ToString();
             obj.cargo = cbo_Cargo.SelectedItem.ToString();
+
+            FuncionarioDAO dao = new FuncionarioDAO();
+            dao.cadastrarFuncionario(obj);
         }
     }
 }

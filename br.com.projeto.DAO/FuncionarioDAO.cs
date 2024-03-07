@@ -2,6 +2,7 @@
 using Controle_de_Vendas.br.com.projeto.MODEL;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -27,10 +28,10 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
             {
                 // Criar comando para inserir funcionario
 
-                string sql = "insert into tb_funcionarios (nome, rg, cpf, email, senha, cargo, nivel_acesso, celular," +
-                    " cep, endereco, numero, complemento, bairro, cidade, estado) " +
-                    "values (@nome, @rg, @cpf, @email, @senha, @cargo, @nivel_acesso, @celular, @cep, @endereco, @numero, @complemento" +
-                    "@bairro, @cidade, @estado)";
+                string sql = @"insert into tb_funcionarios (nome, rg, cpf, email, senha, cargo, nivel_acesso,telefone, celular, cep, endereco, 
+                                numero, complemento, bairro, cidade, estado)
+                                    values(@nome, @rg, @cpf, @email, @senha, @cargo, @nivel_acesso,@telefone, @celular, @cep, @endereco, 
+                                @numero, @complemento, @bairro, @cidade, @estado)";
                 // Organizar e executar o comando sql
 
                 SqlCommand executacmd = new SqlCommand(sql, conexao);
@@ -69,6 +70,55 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
             }
         }
 
+        #endregion
+
+        #region Evento listar funcionarios
+        public DataTable listarClientes()
+        {
+            try
+            {
+                // 1 Criar o DataTable e o comando SQL
+
+                DataTable tabelaCliente = new DataTable();
+                string sql = @"select 
+                                	id				[CODIGO],
+                                	nome			[NOME CLIENTE],
+                                	rg				[RG],
+                                	cpf				[CPF], 
+                                	email			[E-MAIL],
+                                    senha           [SENHÁ],
+                                    cargo           [CARGO],
+                                    nivel_acesso    [NIVEL ACESSO],
+                                	telefone		[TELEFONE],
+                                	celular			[CELULAR],
+                                	cep				[CEP],
+                                	endereco		[ENDERECO],
+                                	numero			[NUMERO],
+                                	complemento		[COMPLEMENTO],
+                                	bairro			[BAIRRO],
+                                	cidade			[CIDADE],
+                                	estado			[ESTADO]
+                                from tb_Funcionarrios";
+                // 2 Organizar o comando sql e executar
+
+                SqlCommand executacmd = new SqlCommand(sql, conexao);
+                conexao.Open();
+                executacmd.ExecuteNonQuery();
+
+                // 3 Criar o SqlDataAdapter para preencher os dados no DataTable
+
+                SqlDataAdapter da = new SqlDataAdapter(executacmd);
+                da.Fill(tabelaCliente);
+
+                conexao.Close();
+                return tabelaCliente;
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show("Aconteceu um erro: " + erro);
+                return null;
+            }
+        }
         #endregion
 
     }
