@@ -619,7 +619,7 @@
             this.btn_Pesquisar.BackColor = System.Drawing.SystemColors.Highlight;
             this.btn_Pesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Pesquisar.ForeColor = System.Drawing.Color.White;
-            this.btn_Pesquisar.Location = new System.Drawing.Point(625, 31);
+            this.btn_Pesquisar.Location = new System.Drawing.Point(631, 31);
             this.btn_Pesquisar.Name = "btn_Pesquisar";
             this.btn_Pesquisar.Size = new System.Drawing.Size(132, 37);
             this.btn_Pesquisar.TabIndex = 6;
@@ -641,6 +641,7 @@
             this.txt_Pesquisa.Name = "txt_Pesquisa";
             this.txt_Pesquisa.Size = new System.Drawing.Size(532, 26);
             this.txt_Pesquisa.TabIndex = 13;
+            this.txt_Pesquisa.TextChanged += new System.EventHandler(this.txt_Pesquisa_TextChanged);
             // 
             // FRM_Funcionario
             // 
@@ -653,6 +654,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FRM_Funcionario";
             this.Text = "Cadastro de Funcionários";
+            this.Load += new System.EventHandler(this.FRM_Funcionario_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.tab_Clientes.ResumeLayout(false);

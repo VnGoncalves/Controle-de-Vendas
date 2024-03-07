@@ -19,6 +19,7 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             InitializeComponent();
         }
 
+        #region Metodo Salvar
         private void btn_Salvar_Click(object sender, EventArgs e)
         {
             // Botao Salvar 
@@ -44,5 +45,47 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             FuncionarioDAO dao = new FuncionarioDAO();
             dao.cadastrarFuncionario(obj);
         }
+        #endregion
+
+        #region
+        private void txt_Pesquisa_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region Carregar Formulario
+        private void FRM_Funcionario_Load(object sender, EventArgs e)
+        {
+            FuncionarioDAO dao = new FuncionarioDAO();
+            tabelaFuncionario.DataSource = dao.listarFuncionarios();
+
+
+            // Ocultando campos desnecessarios do DataGrid tabelaClientes
+
+            this.tabelaFuncionario.Columns["CODIGO"].Visible = false;
+            this.tabelaFuncionario.Columns["RG"].Visible = false;
+            this.tabelaFuncionario.Columns["CPF"].Visible = false;
+            this.tabelaFuncionario.Columns["E-MAIL"].Visible = false;
+            this.tabelaFuncionario.Columns["SENHA"].Visible = false;
+            this.tabelaFuncionario.Columns["TELEFONE"].Visible = false;
+            this.tabelaFuncionario.Columns["CELULAR"].Visible = false;
+            this.tabelaFuncionario.Columns["CEP"].Visible = false;
+            this.tabelaFuncionario.Columns["ENDERECO"].Visible = false;
+            this.tabelaFuncionario.Columns["NUMERO"].Visible = false;
+            this.tabelaFuncionario.Columns["COMPLEMENTO"].Visible = false;
+            this.tabelaFuncionario.Columns["BAIRRO"].Visible = false;
+            this.tabelaFuncionario.Columns["CIDADE"].Visible = false;
+            this.tabelaFuncionario.Columns["ESTADO"].Visible = false;
+
+            // Ajustando o tamanho de cada coluna
+
+            tabelaFuncionario.Columns["NOME"].Width = 280;
+            tabelaFuncionario.Columns["CARGO"].Width = 200;
+            tabelaFuncionario.Columns["NIVEL ACESSO"].Width = 250;
+
+                      
+        }
+        #endregion
     }
 }
