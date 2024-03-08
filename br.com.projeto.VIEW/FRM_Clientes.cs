@@ -27,29 +27,23 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
         #region Evento Botao salvar
         private void btn_Salvar_Click(object sender, EventArgs e)
         {
-            // Programa o botão Salvar
-
-            // 1 - Receber os dados dentro do objeto modelo de cliente
-
-            Cliente obj = new Cliente();
-            obj.nome = txt_Nome.Text;
-            obj.rg = txt_RG.Text;
-            obj.cpf = txt_CPF.Text;
-            obj.email = txt_Email.Text;
-            obj.telefone = txt_Telefone.Text;
-            obj.celular = txt_Celular.Text;
-            obj.cep = txt_CEP.Text;
-            obj.endereco = txt_Endereco.Text;
-            obj.numero = IntNull.ForceInteger(txt_Numero.Text);
-            obj.complemento = txt_Complemento.Text;
-            obj.bairro = txt_Bairro.Text;
-            obj.cidade = txt_Cidade.Text;
-            obj.estado = cbo_UF.Text;
-
             try
             {
-                // Instancia a classe Metodo para usar o metodo de validar os controles vazio
-
+                // 1 - Receber os dados dentro do objeto modelo de cliente
+                Cliente obj = new Cliente();
+                obj.nome = txt_Nome.Text;
+                obj.rg = txt_RG.Text;
+                obj.cpf = txt_CPF.Text;
+                obj.email = txt_Email.Text;
+                obj.telefone = txt_Telefone.Text;
+                obj.celular = txt_Celular.Text;
+                obj.cep = txt_CEP.Text;
+                obj.endereco = txt_Endereco.Text;
+                obj.numero = IntNull.ForceInteger(txt_Numero.Text);
+                obj.complemento = txt_Complemento.Text;
+                obj.bairro = txt_Bairro.Text;
+                obj.cidade = txt_Cidade.Text;
+                obj.estado = cbo_UF.Text;
 
                 // Cria listas e insere somente os controles necessarios (Obrigatorios)
 
@@ -57,35 +51,43 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
                 List<TextBox> textBox = new List<TextBox> { txt_Nome, txt_Cidade };
                 List<ComboBox> comboBox = new List<ComboBox> { cbo_UF };
 
-                if (m.comboBoxVazio(comboBox) == true)
+                txt_Telefone.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+
+                if (txt_Telefone.Text.Length != 0 && !txt_Telefone.MaskFull)
                 {
-                    MessageBox.Show("Preencha o campo Estado", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else if (m.maskarasVazias(mascaras) == true)
-                {
-                    MessageBox.Show("Preencha os campos em vermelho completamente.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else if (m.textBoxVazio(textBox) == true)
-                {
+                    txt_Telefone.ForeColor = Color.Red;
                     MessageBox.Show("Preencha os campos em vermelho completamente.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    if (MessageBox.Show("Deseja salvar o registro ?", "ATENÇÃO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (m.comboBoxVazio(comboBox) == true)
                     {
-                        ClienteDAO dao = new ClienteDAO();
-                        dao.cadastrarCliente(obj);
-                        tabelaCliente.DataSource = dao.listarClientes();
+                        MessageBox.Show("Preencha o campo Estado", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if (m.maskarasVazias(mascaras) == true)
+                    {
+                        MessageBox.Show("Preencha os campos em vermelho completamente.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if (m.textBoxVazio(textBox) == true)
+                    {
+                        MessageBox.Show("Preencha os campos em vermelho completamente.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        if (MessageBox.Show("Deseja salvar o registro ?", "ATENÇÃO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            ClienteDAO dao = new ClienteDAO();
+                            dao.cadastrarCliente(obj);
+                            tabelaCliente.DataSource = dao.listarClientes();
 
-                        m.limparControle(this);
-                        m.apagarCampos();
+                            m.limparControle(this);
+                            m.apagarCampos();
+                        }
                     }
                 }
             }
-
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -256,34 +258,45 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
                 List<TextBox> textBox = new List<TextBox> { txt_Nome, txt_Cidade };
                 List<ComboBox> comboBox = new List<ComboBox> { cbo_UF };
 
-                if (m.comboBoxVazio(comboBox) == true)
-                {
-                    MessageBox.Show("Preencha o campo Estado", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else if (m.maskarasVazias(mascaras) == true)
-                {
-                    MessageBox.Show("Preencha os campos em vermelho completamente.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else if (m.textBoxVazio(textBox) == true)
-                {
-                    MessageBox.Show("Preencha os campos em vermelho completamente.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    // Verificando se o usuario tem certeza que vai modificar o registro
+                txt_Telefone.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
 
-                    if (MessageBox.Show("Deseja alterar o registro ?", "ATENÇÃO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (txt_Telefone.Text.Length != 0 && !txt_Telefone.MaskFull)
+                {
+                    txt_Telefone.ForeColor = Color.Red;
+                    MessageBox.Show("Preencha os campos em vermelho completamente.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                } else
+                {
+                    txt_Telefone.ForeColor = Color.Black;
+
+                    if (m.comboBoxVazio(comboBox) == true)
                     {
-                        // Instanciando o metodo alterarFuncionario da classe FuncionarioDAO para alteramos os registro
+                        MessageBox.Show("Preencha o campo Estado", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if (m.maskarasVazias(mascaras) == true)
+                    {
+                        MessageBox.Show("Preencha os campos em vermelho completamente.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if (m.textBoxVazio(textBox) == true)
+                    {
+                        MessageBox.Show("Preencha os campos em vermelho completamente.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        // Verificando se o usuario tem certeza que vai modificar o registro
 
-                        ClienteDAO dao = new ClienteDAO();
-                        dao.alterarCliente(obj);
-                        tabelaCliente.DataSource = dao.listarClientes();
+                        if (MessageBox.Show("Deseja alterar o registro ?", "ATENÇÃO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            // Instanciando o metodo alterarFuncionario da classe FuncionarioDAO para alteramos os registro
 
-                        // Limpa os campos após EDITAR o registro
+                            ClienteDAO dao = new ClienteDAO();
+                            dao.alterarCliente(obj);
+                            tabelaCliente.DataSource = dao.listarClientes();
 
-                        m.limparControle(this);
-                        m.apagarCampos();
+                            // Limpa os campos após EDITAR o registro
+
+                            m.limparControle(this);
+                            m.apagarCampos();
+                        }
                     }
                 }
             }

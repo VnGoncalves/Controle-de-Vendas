@@ -32,6 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tab_Clientes = new System.Windows.Forms.TabControl();
             this.tab_DadosPessoais = new System.Windows.Forms.TabPage();
+            this.txt_Numero = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btn_Buscar = new System.Windows.Forms.Button();
             this.cbo_UF = new System.Windows.Forms.ComboBox();
@@ -49,6 +50,8 @@
             this.txt_Endereco = new System.Windows.Forms.TextBox();
             this.btn_Editar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.cbo_Nivel = new System.Windows.Forms.ComboBox();
             this.cbo_Cargo = new System.Windows.Forms.ComboBox();
@@ -78,7 +81,6 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label17 = new System.Windows.Forms.Label();
             this.txt_Pesquisa = new System.Windows.Forms.TextBox();
-            this.txt_Numero = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.tab_Clientes.SuspendLayout();
             this.tab_DadosPessoais.SuspendLayout();
@@ -114,6 +116,9 @@
             // 
             // tab_Clientes
             // 
+            this.tab_Clientes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tab_Clientes.Controls.Add(this.tab_DadosPessoais);
             this.tab_Clientes.Controls.Add(this.tab_Consulta);
             this.tab_Clientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -141,6 +146,13 @@
             this.tab_DadosPessoais.TabIndex = 0;
             this.tab_DadosPessoais.Text = "Dados Pessoais";
             this.tab_DadosPessoais.UseVisualStyleBackColor = true;
+            // 
+            // txt_Numero
+            // 
+            this.txt_Numero.Location = new System.Drawing.Point(781, 376);
+            this.txt_Numero.Name = "txt_Numero";
+            this.txt_Numero.Size = new System.Drawing.Size(146, 29);
+            this.txt_Numero.TabIndex = 35;
             // 
             // groupBox2
             // 
@@ -177,6 +189,7 @@
             this.btn_Buscar.TabIndex = 26;
             this.btn_Buscar.Text = "Pesquisar";
             this.btn_Buscar.UseVisualStyleBackColor = false;
+            this.btn_Buscar.Click += new System.EventHandler(this.btn_Buscar_Click);
             // 
             // cbo_UF
             // 
@@ -217,20 +230,20 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(712, 111);
+            this.label16.Location = new System.Drawing.Point(700, 111);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(40, 24);
+            this.label16.Size = new System.Drawing.Size(52, 24);
             this.label16.TabIndex = 34;
-            this.label16.Text = "UF:";
+            this.label16.Text = "* UF:";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(63, 111);
+            this.label15.Location = new System.Drawing.Point(51, 111);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(75, 24);
+            this.label15.Size = new System.Drawing.Size(87, 24);
             this.label15.TabIndex = 32;
-            this.label15.Text = "Cidade:";
+            this.label15.Text = "* Cidade:";
             // 
             // txt_Cidade
             // 
@@ -282,11 +295,11 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(74, 40);
+            this.label12.Location = new System.Drawing.Point(73, 40);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(53, 24);
+            this.label12.Size = new System.Drawing.Size(65, 24);
             this.label12.TabIndex = 26;
-            this.label12.Text = "CEP:";
+            this.label12.Text = "* CEP:";
             // 
             // label11
             // 
@@ -328,6 +341,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label21);
+            this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.label20);
             this.groupBox1.Controls.Add(this.cbo_Nivel);
             this.groupBox1.Controls.Add(this.cbo_Cargo);
@@ -352,13 +367,37 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(23, 18);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(943, 272);
+            this.groupBox1.Size = new System.Drawing.Size(943, 281);
             this.groupBox1.TabIndex = 24;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Informações do funcionário";
             // 
+            // label21
+            // 
+            this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(494, 242);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(193, 24);
+            this.label21.TabIndex = 31;
+            this.label21.Text = "* Confirmação Senha:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Location = new System.Drawing.Point(684, 237);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.PasswordChar = '*';
+            this.textBox1.Size = new System.Drawing.Size(220, 29);
+            this.textBox1.TabIndex = 30;
+            // 
             // label20
             // 
+            this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label20.AutoSize = true;
             this.label20.Location = new System.Drawing.Point(742, 25);
             this.label20.Name = "label20";
@@ -368,17 +407,21 @@
             // 
             // cbo_Nivel
             // 
+            this.cbo_Nivel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cbo_Nivel.FormattingEnabled = true;
             this.cbo_Nivel.Items.AddRange(new object[] {
             "Administrador",
             "Usuário"});
-            this.cbo_Nivel.Location = new System.Drawing.Point(482, 189);
+            this.cbo_Nivel.Location = new System.Drawing.Point(552, 154);
             this.cbo_Nivel.Name = "cbo_Nivel";
-            this.cbo_Nivel.Size = new System.Drawing.Size(229, 32);
+            this.cbo_Nivel.Size = new System.Drawing.Size(349, 32);
             this.cbo_Nivel.TabIndex = 28;
             // 
             // cbo_Cargo
             // 
+            this.cbo_Cargo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cbo_Cargo.FormattingEnabled = true;
             this.cbo_Cargo.Items.AddRange(new object[] {
             "Gerente",
@@ -388,15 +431,17 @@
             "Recursos Humanos",
             "Analista de T.I",
             "Auxiliar de Produção"});
-            this.cbo_Cargo.Location = new System.Drawing.Point(482, 226);
+            this.cbo_Cargo.Location = new System.Drawing.Point(552, 191);
             this.cbo_Cargo.Name = "cbo_Cargo";
-            this.cbo_Cargo.Size = new System.Drawing.Size(229, 32);
+            this.cbo_Cargo.Size = new System.Drawing.Size(349, 32);
             this.cbo_Cargo.TabIndex = 27;
             // 
             // label19
             // 
+            this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(410, 226);
+            this.label19.Location = new System.Drawing.Point(480, 194);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(66, 24);
             this.label19.TabIndex = 26;
@@ -404,8 +449,10 @@
             // 
             // label18
             // 
+            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(327, 192);
+            this.label18.Location = new System.Drawing.Point(397, 157);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(149, 24);
             this.label18.TabIndex = 24;
@@ -413,23 +460,29 @@
             // 
             // label9
             // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(406, 160);
+            this.label9.Location = new System.Drawing.Point(185, 245);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(70, 24);
+            this.label9.Size = new System.Drawing.Size(82, 24);
             this.label9.TabIndex = 22;
-            this.label9.Text = "Senha:";
+            this.label9.Text = "* Senha:";
             // 
             // txt_Senha
             // 
-            this.txt_Senha.Location = new System.Drawing.Point(482, 157);
+            this.txt_Senha.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_Senha.Location = new System.Drawing.Point(268, 242);
             this.txt_Senha.Name = "txt_Senha";
             this.txt_Senha.PasswordChar = '*';
-            this.txt_Senha.Size = new System.Drawing.Size(229, 29);
+            this.txt_Senha.Size = new System.Drawing.Size(220, 29);
             this.txt_Senha.TabIndex = 21;
             // 
             // txt_RG
             // 
+            this.txt_RG.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_RG.Location = new System.Drawing.Point(734, 120);
             this.txt_RG.Mask = "##,###,###-##";
             this.txt_RG.Name = "txt_RG";
@@ -438,6 +491,9 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(30, 61);
             this.label2.Name = "label2";
@@ -447,6 +503,9 @@
             // 
             // txt_Codigo
             // 
+            this.txt_Codigo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_Codigo.Enabled = false;
             this.txt_Codigo.Location = new System.Drawing.Point(112, 56);
             this.txt_Codigo.Name = "txt_Codigo";
@@ -455,6 +514,9 @@
             // 
             // txt_Telefone
             // 
+            this.txt_Telefone.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_Telefone.Location = new System.Drawing.Point(110, 188);
             this.txt_Telefone.Mask = "(99) 0000-0000";
             this.txt_Telefone.Name = "txt_Telefone";
@@ -463,17 +525,23 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(38, 93);
+            this.label3.Location = new System.Drawing.Point(25, 93);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 24);
+            this.label3.Size = new System.Drawing.Size(79, 24);
             this.label3.TabIndex = 10;
-            this.label3.Text = "Nome:";
+            this.label3.Text = "* Nome:";
             // 
             // label8
             // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(18, 191);
+            this.label8.Location = new System.Drawing.Point(16, 191);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(90, 24);
             this.label8.TabIndex = 20;
@@ -481,6 +549,9 @@
             // 
             // txt_Nome
             // 
+            this.txt_Nome.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_Nome.Location = new System.Drawing.Point(112, 90);
             this.txt_Nome.Name = "txt_Nome";
             this.txt_Nome.Size = new System.Drawing.Size(550, 29);
@@ -488,6 +559,9 @@
             // 
             // txt_Celular
             // 
+            this.txt_Celular.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_Celular.Location = new System.Drawing.Point(110, 154);
             this.txt_Celular.Mask = "(99) 00000-0000";
             this.txt_Celular.Name = "txt_Celular";
@@ -496,6 +570,9 @@
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(36, 125);
             this.label4.Name = "label4";
@@ -505,22 +582,30 @@
             // 
             // label7
             // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(31, 157);
+            this.label7.Location = new System.Drawing.Point(18, 157);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(74, 24);
+            this.label7.Size = new System.Drawing.Size(86, 24);
             this.label7.TabIndex = 18;
-            this.label7.Text = "Celular:";
+            this.label7.Text = "* Celular:";
             // 
             // txt_Email
             // 
-            this.txt_Email.Location = new System.Drawing.Point(110, 122);
+            this.txt_Email.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_Email.Location = new System.Drawing.Point(112, 122);
             this.txt_Email.Name = "txt_Email";
-            this.txt_Email.Size = new System.Drawing.Size(552, 29);
+            this.txt_Email.Size = new System.Drawing.Size(550, 29);
             this.txt_Email.TabIndex = 3;
             // 
             // txt_CPF
             // 
+            this.txt_CPF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_CPF.Location = new System.Drawing.Point(735, 88);
             this.txt_CPF.Mask = "###,###,###-##";
             this.txt_CPF.Name = "txt_CPF";
@@ -529,21 +614,25 @@
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(690, 123);
+            this.label5.Location = new System.Drawing.Point(680, 123);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(42, 24);
+            this.label5.Size = new System.Drawing.Size(54, 24);
             this.label5.TabIndex = 14;
-            this.label5.Text = "RG:";
+            this.label5.Text = "* RG:";
             // 
             // label6
             // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(685, 91);
+            this.label6.Location = new System.Drawing.Point(670, 93);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(52, 24);
+            this.label6.Size = new System.Drawing.Size(64, 24);
             this.label6.TabIndex = 16;
-            this.label6.Text = "CPF:";
+            this.label6.Text = "* CPF:";
             // 
             // btn_Excluir
             // 
@@ -556,6 +645,7 @@
             this.btn_Excluir.TabIndex = 4;
             this.btn_Excluir.Text = "Excluir";
             this.btn_Excluir.UseVisualStyleBackColor = false;
+            this.btn_Excluir.Click += new System.EventHandler(this.btn_Excluir_Click);
             // 
             // btn_Novo
             // 
@@ -637,13 +727,6 @@
             this.txt_Pesquisa.Size = new System.Drawing.Size(883, 29);
             this.txt_Pesquisa.TabIndex = 13;
             this.txt_Pesquisa.TextChanged += new System.EventHandler(this.txt_Pesquisa_TextChanged);
-            // 
-            // txt_Numero
-            // 
-            this.txt_Numero.Location = new System.Drawing.Point(781, 376);
-            this.txt_Numero.Name = "txt_Numero";
-            this.txt_Numero.Size = new System.Drawing.Size(146, 29);
-            this.txt_Numero.TabIndex = 35;
             // 
             // FRM_Funcionario
             // 
@@ -727,5 +810,7 @@
         private System.Windows.Forms.ComboBox cbo_Nivel;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox txt_Numero;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

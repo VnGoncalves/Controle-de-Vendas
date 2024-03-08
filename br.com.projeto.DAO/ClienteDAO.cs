@@ -125,7 +125,7 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
                 executecmd.ExecuteNonQuery();
                 conexao.Close();
 
-                MessageBox.Show("Cliente excluido com sucesso.", "SUCESSO.");
+                MessageBox.Show("Cliente excluido com sucesso.", "SUCESSO.", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception erro)
             {

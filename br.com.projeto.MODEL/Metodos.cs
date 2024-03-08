@@ -21,6 +21,10 @@ namespace Controle_de_Vendas.br.com.projeto.MODEL
                     campo.BackColor = Color.LightPink;
                     return true;
                 }
+                else
+                {
+                    campo.BackColor = Color.White;
+                }
             }
             return false;
         }
@@ -34,6 +38,10 @@ namespace Controle_de_Vendas.br.com.projeto.MODEL
                 {
                     campo.BackColor = Color.LightPink;
                     return true;
+                }
+                else
+                {
+                    campo.BackColor = Color.White;
                 }
             }
             return false;
