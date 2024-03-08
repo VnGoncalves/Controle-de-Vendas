@@ -69,11 +69,11 @@
     <Compile Include="br.com.projeto.VIEW\FRM_Clientes.Designer.cs">
       <DependentUpon>FRM_Clientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="br.com.projeto.VIEW\FRM_Funcionario.cs">
+    <Compile Include="br.com.projeto.VIEW\FRM_Funcionarios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="br.com.projeto.VIEW\FRM_Funcionario.Designer.cs">
-      <DependentUpon>FRM_Funcionario.cs</DependentUpon>
+    <Compile Include="br.com.projeto.VIEW\FRM_Funcionarios.Designer.cs">
+      <DependentUpon>FRM_Funcionarios.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -86,8 +86,8 @@
     <EmbeddedResource Include="br.com.projeto.VIEW\FRM_Clientes.resx">
       <DependentUpon>FRM_Clientes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="br.com.projeto.VIEW\FRM_Funcionario.resx">
-      <DependentUpon>FRM_Funcionario.cs</DependentUpon>
+    <EmbeddedResource Include="br.com.projeto.VIEW\FRM_Funcionarios.resx">
+      <DependentUpon>FRM_Funcionarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -123,6 +123,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="br.com.projeto.IMAGENS\alterar.ico" />
+    <Content Include="br.com.projeto.IMAGENS\excluir.ico" />
+    <Content Include="br.com.projeto.IMAGENS\novo.ico" />
+    <Content Include="br.com.projeto.IMAGENS\salvar.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

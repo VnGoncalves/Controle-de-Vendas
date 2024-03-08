@@ -18,13 +18,92 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
         public FRM_Clientes()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
         }
-
         // Intancia classe Metodo
 
         Metodos m = new Metodos();
 
-        #region Evento Botao salvar
+        #region Evento Carregar Form
+        private void FRM_Clientes_Load(object sender, EventArgs e)
+        {
+            // Carrega as informações da tabela tb_clientes ao carregar o formulario
+
+            ClienteDAO dao = new ClienteDAO();
+            tabelaCliente.DataSource = dao.listarClientes();
+
+            // Ocultando campos desnecessarios do DataGrid tabelaClientes
+
+            this.tabelaCliente.Columns[0].Visible = false;
+            this.tabelaCliente.Columns[2].Visible = false;
+            this.tabelaCliente.Columns[5].Visible = false;
+            this.tabelaCliente.Columns[6].Visible = false;
+            this.tabelaCliente.Columns[7].Visible = false;
+            this.tabelaCliente.Columns[8].Visible = false;
+            this.tabelaCliente.Columns[9].Visible = false;
+            this.tabelaCliente.Columns[10].Visible = false;
+            this.tabelaCliente.Columns[11].Visible = false;
+            this.tabelaCliente.Columns[12].Visible = false;
+            this.tabelaCliente.Columns[13].Visible = false;
+
+            // Ajustando o tamanho de cada coluna
+
+            tabelaCliente.Columns["NOME CLIENTE"].Width = 450;
+            tabelaCliente.Columns["CPF"].Width = 350;
+            tabelaCliente.Columns["E-MAIL"].Width = 380;
+        }
+        #endregion
+      
+        #region Evento Buscar CEP
+        private void btn_Buscar_Click(object sender, EventArgs e)
+        {
+            // Botão para consultar cep com WebService
+
+            try
+            {
+                // Declarando as variaveis CEP e XML para obtermos os XML com o CEP
+
+                string cep = txt_CEP.Text;
+                string xml = "https://viacep.com.br/ws/" + cep + "/xml/";
+
+                DataSet dados = new DataSet();
+
+                dados.ReadXml(xml);
+
+                //Passando os valores dos campos textBox para os parametros do XML
+
+                txt_Endereco.Text = dados.Tables[0].Rows[0]["logradouro"].ToString();
+                txt_Bairro.Text = dados.Tables[0].Rows[0]["bairro"].ToString();
+                txt_Cidade.Text = dados.Tables[0].Rows[0]["localidade"].ToString();
+                txt_Complemento.Text = dados.Tables[0].Rows[0]["complemento"].ToString();
+                cbo_UF.Text = dados.Tables[0].Rows[0]["uf"].ToString();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Endereco não encontrado, digite manualmente.");
+            }
+        }
+
+        #endregion
+
+        #region Botao novo
+        // Botao novo
+        private void btn_Novo_Click(object sender, EventArgs e)
+        {
+            // Habilitar o botao editar
+
+            btn_Salvar.Enabled = true;
+
+            // Botão para limpar os campos
+
+            m.limparControle(this);
+            m.apagarCampos();
+        }
+        #endregion
+
+        #region Botao Salvar
+        // Botao Salvar
         private void btn_Salvar_Click(object sender, EventArgs e)
         {
             try
@@ -60,6 +139,8 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
                 }
                 else
                 {
+                    txt_Telefone.ForeColor = Color.Black;
+
                     if (m.comboBoxVazio(comboBox) == true)
                     {
                         MessageBox.Show("Preencha o campo Estado", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -93,90 +174,8 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
         }
         #endregion
 
-        #region Evento Carregar Form
-        private void FRM_Clientes_Load(object sender, EventArgs e)
-        {
-            // Carrega as informações da tabela tb_clientes ao carregar o formulario
-
-            ClienteDAO dao = new ClienteDAO();
-            tabelaCliente.DataSource = dao.listarClientes();
-
-            // Ocultando campos desnecessarios do DataGrid tabelaClientes
-
-            this.tabelaCliente.Columns[0].Visible = false;
-            this.tabelaCliente.Columns[2].Visible = false;
-            this.tabelaCliente.Columns[5].Visible = false;
-            this.tabelaCliente.Columns[6].Visible = false;
-            this.tabelaCliente.Columns[7].Visible = false;
-            this.tabelaCliente.Columns[8].Visible = false;
-            this.tabelaCliente.Columns[9].Visible = false;
-            this.tabelaCliente.Columns[10].Visible = false;
-            this.tabelaCliente.Columns[11].Visible = false;
-            this.tabelaCliente.Columns[12].Visible = false;
-            this.tabelaCliente.Columns[13].Visible = false;
-
-            // Ajustando o tamanho de cada coluna
-
-            tabelaCliente.Columns["NOME CLIENTE"].Width = 340;
-            tabelaCliente.Columns["CPF"].Width = 250;
-            tabelaCliente.Columns["E-MAIL"].Width = 300;
-        }
-        #endregion
-
-        #region Evento de clicar no data Grid
-        private void tabelaCliente_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            // Pegar os dados da linha selecionada
-
-            // Se houver uma linha selecionada, desative o botão "Salvar"
-
-            btn_Salvar.Enabled = false;
-
-            // Este codigo e feito para quando eu cadastrar mais de um registro, os campos de mascara seja cadastrados certinhos no banco de dados.
-
-            txt_Celular.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
-            txt_Telefone.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
-            txt_RG.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
-            txt_CPF.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
-            txt_CEP.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
-
-            // Seta os campos no cadastro de clientes quando eu clicar em algum cliente ja cadastrado
-
-            txt_Codigo.Text = tabelaCliente.CurrentRow.Cells[0].Value.ToString();
-            txt_Nome.Text = tabelaCliente.CurrentRow.Cells[1].Value.ToString();
-            txt_RG.Text = tabelaCliente.CurrentRow.Cells[2].Value.ToString();
-            txt_CPF.Text = tabelaCliente.CurrentRow.Cells[3].Value.ToString();
-            txt_Email.Text = tabelaCliente.CurrentRow.Cells[4].Value.ToString();
-            txt_Telefone.Text = tabelaCliente.CurrentRow.Cells[5].Value.ToString();
-            txt_Celular.Text = tabelaCliente.CurrentRow.Cells[6].Value.ToString();
-            txt_CEP.Text = tabelaCliente.CurrentRow.Cells[7].Value.ToString();
-            txt_Endereco.Text = tabelaCliente.CurrentRow.Cells[8].Value.ToString();
-            txt_Numero.Text = tabelaCliente.CurrentRow.Cells[9].Value.ToString();
-            txt_Complemento.Text = tabelaCliente.CurrentRow.Cells[10].Value.ToString();
-            txt_Bairro.Text = tabelaCliente.CurrentRow.Cells[11].Value.ToString();
-            txt_Cidade.Text = tabelaCliente.CurrentRow.Cells[12].Value.ToString();
-            cbo_UF.Text = tabelaCliente.CurrentRow.Cells[13].Value.ToString();
-
-            tab_Clientes.SelectedTab = tab_DadosPessoais;
-        }
-        #endregion
-
-        #region Evento Botao Novo
-        private void btn_Novo_Click(object sender, EventArgs e)
-        {
-            // Habilitar o botao editar
-
-            btn_Salvar.Enabled = true;
-
-            // Botão para limpar os campos
-
-            m.limparControle(this);
-            m.apagarCampos();
-        }
-        #endregion
-
-        #region Evento Botão Excluir
-
+        #region Botao Excluir
+        // Botao excluir
         private void btn_Excluir_Click(object sender, EventArgs e)
         {
             // Verifica se o usuario tem certeza que vai deletar o registro
@@ -216,8 +215,8 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
         }
         #endregion
 
-        #region Evento Botão Editar
-        private void btn_Editar_Click(object sender, EventArgs e)
+        #region Botao Alterar
+        private void btn_Alterar_Click(object sender, EventArgs e)
         {
             // 1 - Receber os dados dentro do objeto modelo de cliente
 
@@ -264,7 +263,8 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
                 {
                     txt_Telefone.ForeColor = Color.Red;
                     MessageBox.Show("Preencha os campos em vermelho completamente.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                } else
+                }
+                else
                 {
                     txt_Telefone.ForeColor = Color.Black;
 
@@ -302,9 +302,40 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             }
         }
         #endregion
-      
-        #region Metodo para os clientes aparecer no DataGrid enquanto digita
-        private void txt_Pesquisa_TextChanged(object sender, EventArgs e)
+
+        private void tabelaCliente_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Se houver uma linha selecionada, desative o botão "Salvar"
+
+            btn_Salvar.Enabled = false;
+
+            // Este codigo e feito para quando eu cadastrar mais de um registro, os campos de mascara seja cadastrados certinhos no banco de dados.
+
+            txt_Celular.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
+            txt_Telefone.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
+            txt_RG.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
+            txt_CPF.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
+            txt_CEP.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
+
+            // Seta os campos no cadastro de clientes quando eu clicar em algum cliente ja cadastrado
+
+            txt_Codigo.Text = tabelaCliente.CurrentRow.Cells[0].Value.ToString();
+            txt_Nome.Text = tabelaCliente.CurrentRow.Cells[1].Value.ToString();
+            txt_RG.Text = tabelaCliente.CurrentRow.Cells[2].Value.ToString();
+            txt_CPF.Text = tabelaCliente.CurrentRow.Cells[3].Value.ToString();
+            txt_Email.Text = tabelaCliente.CurrentRow.Cells[4].Value.ToString();
+            txt_Telefone.Text = tabelaCliente.CurrentRow.Cells[5].Value.ToString();
+            txt_Celular.Text = tabelaCliente.CurrentRow.Cells[6].Value.ToString();
+            txt_CEP.Text = tabelaCliente.CurrentRow.Cells[7].Value.ToString();
+            txt_Endereco.Text = tabelaCliente.CurrentRow.Cells[8].Value.ToString();
+            txt_Numero.Text = tabelaCliente.CurrentRow.Cells[9].Value.ToString();
+            txt_Complemento.Text = tabelaCliente.CurrentRow.Cells[10].Value.ToString();
+            txt_Bairro.Text = tabelaCliente.CurrentRow.Cells[11].Value.ToString();
+            txt_Cidade.Text = tabelaCliente.CurrentRow.Cells[12].Value.ToString();
+            cbo_UF.Text = tabelaCliente.CurrentRow.Cells[13].Value.ToString();
+        }
+
+        private void txt_Pesquisa_TextChanged_1(object sender, EventArgs e)
         {
             // Chamando o metodo para listar os clientes no Data Grid
             string nome = "%" + txt_Pesquisa.Text + "%";
@@ -312,39 +343,5 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             ClienteDAO dao = new ClienteDAO();
             tabelaCliente.DataSource = dao.buscarClientePorNome(nome);
         }
-        #endregion
-
-        #region Evento Buscar CEP
-        private void btn_Buscar_Click(object sender, EventArgs e)
-        {
-            // Botão para consultar cep com WebService
-
-            try
-            {
-                // Declarando as variaveis CEP e XML para obtermos os XML com o CEP
-
-                string cep = txt_CEP.Text;
-                string xml = "https://viacep.com.br/ws/" + cep + "/xml/";
-
-                DataSet dados = new DataSet();
-
-                dados.ReadXml(xml);
-
-                //Passando os valores dos campos textBox para os parametros do XML
-
-                txt_Endereco.Text = dados.Tables[0].Rows[0]["logradouro"].ToString();
-                txt_Bairro.Text = dados.Tables[0].Rows[0]["bairro"].ToString();
-                txt_Cidade.Text = dados.Tables[0].Rows[0]["localidade"].ToString();
-                txt_Complemento.Text = dados.Tables[0].Rows[0]["complemento"].ToString();
-                cbo_UF.Text = dados.Tables[0].Rows[0]["uf"].ToString();
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Endereco não encontrado, digite manualmente.");
-            }
-        }
-
-        #endregion
     }
 }
