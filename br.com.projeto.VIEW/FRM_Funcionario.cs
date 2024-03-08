@@ -17,13 +17,12 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
         public FRM_Funcionario()
         {
             InitializeComponent();
-            
+
         }
         // Instancia a classe Metodos
 
         Metodos m = new Metodos();
         Funcionario obj = new Funcionario();
-
 
         #region Metodo Salvar
         private void btn_Salvar_Click(object sender, EventArgs e)
@@ -127,6 +126,9 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
                 obj.rg = txt_RG.Text;
                 obj.cpf = txt_CPF.Text;
                 obj.email = txt_Email.Text;
+                obj.senha = txt_Senha.Text;
+                obj.cargo = cbo_Cargo.Text;
+                obj.nivel_acesso = cbo_Nivel.Text;
                 obj.telefone = txt_Telefone.Text;
                 obj.celular = txt_Celular.Text;
                 obj.cep = txt_CEP.Text;
@@ -137,6 +139,42 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
                 obj.cidade = txt_Cidade.Text;
                 obj.estado = cbo_UF.Text;
                 obj.codigo = txt_Codigo.Text;
+
+
+                List<MaskedTextBox> mascaras = new List<MaskedTextBox> { txt_Celular, txt_RG, txt_CPF, txt_CEP };
+                List<TextBox> textBox = new List<TextBox> { txt_Nome, txt_Cidade };
+                List<ComboBox> comboBox = new List<ComboBox> { cbo_UF };
+
+                if (m.comboBoxVazio(comboBox) == true)
+                {
+                    MessageBox.Show("Preencha o campo Estado", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (m.maskarasVazias(mascaras) == true)
+                {
+                    MessageBox.Show("Preencha os campos em vermelho completamente.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (m.textBoxVazio(textBox) == true)
+                {
+                    MessageBox.Show("Preencha os campos em vermelho completamente.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    // Verificando se o usuario tem certeza que vai modificar o registro
+
+                    if (MessageBox.Show("Deseja alterar o registro ?", "ATENÇÃO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        // Instanciando o metodo alterarCliente da classe ClienteDAO para alteramos os registro
+
+                        FuncionarioDAO dao = new FuncionarioDAO();
+                        dao.alterarFuncionario(obj);
+                        tabelaFuncionario.DataSource = dao.listarFuncionarios();
+
+                        // Limpa os campos após remover o registro
+
+                        m.limparControle(this);
+                        m.apagarCampos();
+                    }
+                }
             }
         }
         #endregion

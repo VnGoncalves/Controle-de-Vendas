@@ -180,13 +180,26 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
             try
             {
                 // 1 - comando sql para alterar os campos desejados
-                string sql = @"update tb_Funcionarios set nome = @nome, rg = @rg, cpf = @cpf, email = @email, 
-                                                  senha = @senha, cargo = @cargo, nivel_acesso = @nivel_acesso
-                                                  telefone = @telefone,
-                                                  celular = @celular, cep = @cep, endereco = @cep, 
-                                                  numero = @numero, complemento = @complemento, bairro = @bairro, 
-                                                  cidade = @cidade, estado = @estado
-                              where id = @id";
+                string sql = @"update 
+                                    tb_funcionarios
+                                set nome = @nome,
+                                    rg = @rg,
+                                    cpf = @cpf,
+                                    email = @email,
+                                    senha = @senha,
+                                    cargo = @cargo,
+                                    nivel_acesso = @nivel_acesso,
+                                    telefone = @telefone,
+                                    celular = @celular,
+                                    cep = @cep,
+                                    endereco = @endereco,
+                                    numero = @numero,
+                                    complemento = @complemento,
+                                    bairro = @bairro,
+                                    cidade = @cidade,
+                                    estado = @estado
+                                where id = @id";
+
 
                 //2 - Associando os parametros dos campos do sistema ao codigo sql
                 SqlCommand executacmd = new SqlCommand(sql, conexao);
@@ -203,7 +216,7 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
                 executacmd.Parameters.AddWithValue("@endereco", obj.endereco);
                 executacmd.Parameters.AddWithValue("@numero", obj.numero);
                 executacmd.Parameters.AddWithValue("@complemento", obj.complemento);
-                executacmd.Parameters.AddWithValue("@bairro", obj.bairro);
+                executacmd.Parameters.AddWithValue("@bairro", obj.cidade);
                 executacmd.Parameters.AddWithValue("@cidade", obj.cidade);
                 executacmd.Parameters.AddWithValue("@estado", obj.estado);
                 executacmd.Parameters.AddWithValue("@id", obj.codigo);

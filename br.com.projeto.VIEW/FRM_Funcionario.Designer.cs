@@ -28,14 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.tab_Clientes = new System.Windows.Forms.TabControl();
             this.tab_DadosPessoais = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txt_Numero = new System.Windows.Forms.MaskedTextBox();
             this.btn_Buscar = new System.Windows.Forms.Button();
             this.cbo_UF = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -81,6 +78,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label17 = new System.Windows.Forms.Label();
             this.txt_Pesquisa = new System.Windows.Forms.TextBox();
+            this.txt_Numero = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.tab_Clientes.SuspendLayout();
             this.tab_DadosPessoais.SuspendLayout();
@@ -128,6 +126,7 @@
             // 
             // tab_DadosPessoais
             // 
+            this.tab_DadosPessoais.Controls.Add(this.txt_Numero);
             this.tab_DadosPessoais.Controls.Add(this.groupBox2);
             this.tab_DadosPessoais.Controls.Add(this.btn_Editar);
             this.tab_DadosPessoais.Controls.Add(this.groupBox1);
@@ -145,7 +144,6 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.txt_Numero);
             this.groupBox2.Controls.Add(this.btn_Buscar);
             this.groupBox2.Controls.Add(this.cbo_UF);
             this.groupBox2.Controls.Add(this.label16);
@@ -167,14 +165,6 @@
             this.groupBox2.TabIndex = 25;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Informações de endereço";
-            // 
-            // txt_Numero
-            // 
-            this.txt_Numero.Location = new System.Drawing.Point(758, 71);
-            this.txt_Numero.Mask = "######";
-            this.txt_Numero.Name = "txt_Numero";
-            this.txt_Numero.Size = new System.Drawing.Size(144, 29);
-            this.txt_Numero.TabIndex = 29;
             // 
             // btn_Buscar
             // 
@@ -610,23 +600,7 @@
             // 
             this.tabelaFuncionario.AllowUserToAddRows = false;
             this.tabelaFuncionario.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tabelaFuncionario.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.tabelaFuncionario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.tabelaFuncionario.DefaultCellStyle = dataGridViewCellStyle2;
             this.tabelaFuncionario.Location = new System.Drawing.Point(7, 115);
             this.tabelaFuncionario.Name = "tabelaFuncionario";
             this.tabelaFuncionario.ReadOnly = true;
@@ -664,6 +638,13 @@
             this.txt_Pesquisa.TabIndex = 13;
             this.txt_Pesquisa.TextChanged += new System.EventHandler(this.txt_Pesquisa_TextChanged);
             // 
+            // txt_Numero
+            // 
+            this.txt_Numero.Location = new System.Drawing.Point(781, 376);
+            this.txt_Numero.Name = "txt_Numero";
+            this.txt_Numero.Size = new System.Drawing.Size(146, 29);
+            this.txt_Numero.TabIndex = 35;
+            // 
             // FRM_Funcionario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -680,6 +661,7 @@
             this.panel1.PerformLayout();
             this.tab_Clientes.ResumeLayout(false);
             this.tab_DadosPessoais.ResumeLayout(false);
+            this.tab_DadosPessoais.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -743,7 +725,7 @@
         private System.Windows.Forms.TextBox txt_Senha;
         private System.Windows.Forms.ComboBox cbo_Cargo;
         private System.Windows.Forms.ComboBox cbo_Nivel;
-        private System.Windows.Forms.MaskedTextBox txt_Numero;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox txt_Numero;
     }
 }

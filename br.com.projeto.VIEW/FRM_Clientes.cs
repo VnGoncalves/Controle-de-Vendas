@@ -274,13 +274,13 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
 
                     if (MessageBox.Show("Deseja alterar o registro ?", "ATENÇÃO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        // Instanciando o metodo alterarCliente da classe ClienteDAO para alteramos os registro
+                        // Instanciando o metodo alterarFuncionario da classe FuncionarioDAO para alteramos os registro
 
                         ClienteDAO dao = new ClienteDAO();
                         dao.alterarCliente(obj);
                         tabelaCliente.DataSource = dao.listarClientes();
 
-                        // Limpa os campos após remover o registro
+                        // Limpa os campos após EDITAR o registro
 
                         m.limparControle(this);
                         m.apagarCampos();
