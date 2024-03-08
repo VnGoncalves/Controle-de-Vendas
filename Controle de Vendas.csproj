@@ -60,6 +60,9 @@
     <Compile Include="br.com.projeto.DAO\FuncionarioDAO.cs" />
     <Compile Include="br.com.projeto.MODEL\Cliente.cs" />
     <Compile Include="br.com.projeto.MODEL\Funcionario.cs" />
+    <Compile Include="br.com.projeto.MODEL\Metodos.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="br.com.projeto.VIEW\FRM_Clientes.cs">
       <SubType>Form</SubType>
     </Compile>

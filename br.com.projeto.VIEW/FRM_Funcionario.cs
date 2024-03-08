@@ -17,7 +17,11 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
         public FRM_Funcionario()
         {
             InitializeComponent();
+            
         }
+        // Instancia a classe Metodos
+
+        Metodos m = new Metodos();
 
         #region Metodo Salvar
         private void btn_Salvar_Click(object sender, EventArgs e)
@@ -30,20 +34,45 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             obj.cpf = txt_CPF.Text;
             obj.email = txt_Email.Text;
             obj.senha = txt_Senha.Text;
-            obj.nivel_acesso = cbo_Nivel.SelectedItem.ToString();
+            obj.nivel_acesso = cbo_Nivel.Text;
             obj.telefone = txt_Telefone.Text;
             obj.celular = txt_Celular.Text;
             obj.cep = txt_CEP.Text;
             obj.endereco = txt_Endereco.Text;
-            obj.numero = int. Parse(txt_Numero.Text);
+            obj.numero = IntNull.ForceInteger(txt_Numero.Text);
             obj.complemento = txt_Complemento.Text;
             obj.bairro = txt_Bairro.Text;
             obj.cidade = txt_Cidade.Text;
-            obj.estado = cbo_UF.SelectedItem.ToString();
-            obj.cargo = cbo_Cargo.SelectedItem.ToString();
+            obj.estado = cbo_UF.Text;
+            obj.cargo = cbo_Cargo.Text;
 
-            FuncionarioDAO dao = new FuncionarioDAO();
-            dao.cadastrarFuncionario(obj);
+            Metodos m = new Metodos();
+
+            List<MaskedTextBox> mascaras = new List<MaskedTextBox> { txt_Celular, txt_RG, txt_CPF, txt_CEP };
+            List<TextBox> textBox = new List<TextBox> { txt_Nome, txt_Cidade, txt_Senha };
+            List<ComboBox> comboBox = new List<ComboBox> { cbo_UF, cbo_Nivel, cbo_Cargo };
+
+            if (m.comboBoxVazio(comboBox) == true)
+            {
+                MessageBox.Show("Preencha os campos em vermelho completamente.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (m.maskarasVazias(mascaras) == true)
+            {
+                MessageBox.Show("Preencha os campos em vermelho completamente.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (m.textBoxVazio(textBox) == true)
+            {
+                MessageBox.Show("Preencha os campos em vermelho completamente.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                if (MessageBox.Show("Deseja salvar o registro ?", "ATENÇÃO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    FuncionarioDAO dao = new FuncionarioDAO();
+                    dao.cadastrarFuncionario(obj);
+                    tabelaFuncionario.DataSource = dao.listarFuncionarios();
+                }
+            }
         }
         #endregion
 
@@ -59,7 +88,6 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
         {
             FuncionarioDAO dao = new FuncionarioDAO();
             tabelaFuncionario.DataSource = dao.listarFuncionarios();
-
 
             // Ocultando campos desnecessarios do DataGrid tabelaClientes
 
@@ -83,9 +111,39 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             tabelaFuncionario.Columns["NOME"].Width = 280;
             tabelaFuncionario.Columns["CARGO"].Width = 200;
             tabelaFuncionario.Columns["NIVEL ACESSO"].Width = 250;
-
-                      
         }
         #endregion
+
+        private void btn_Editar_Click(object sender, EventArgs e)
+        {
+            Funcionario obj = new Funcionario();
+            if (txt_Codigo.Text == string.Empty)
+            {
+                MessageBox.Show("Nenhum cliente identificado", "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                obj.nome = txt_Nome.Text;
+                obj.rg = txt_RG.Text;
+                obj.cpf = txt_CPF.Text;
+                obj.email = txt_Email.Text;
+                obj.telefone = txt_Telefone.Text;
+                obj.celular = txt_Celular.Text;
+                obj.cep = txt_CEP.Text;
+                obj.endereco = txt_Endereco.Text;
+                obj.numero = IntNull.ForceInteger(txt_Numero.Text);
+                obj.complemento = txt_Complemento.Text;
+                obj.bairro = txt_Bairro.Text;
+                obj.cidade = txt_Cidade.Text;
+                obj.estado = cbo_UF.Text;
+                obj.codigo = txt_Codigo.Text;
+            }
+        }
+
+        private void btn_Novo_Click(object sender, EventArgs e)
+        {
+            m.limparControle(this);
+            m.apagarCampos();
+        }
     }
 }

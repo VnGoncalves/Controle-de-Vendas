@@ -20,6 +20,10 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             InitializeComponent();
         }
 
+        // Intancia classe Metodo
+
+        Metodos m = new Metodos();
+
         #region Evento Botao salvar
         private void btn_Salvar_Click(object sender, EventArgs e)
         {
@@ -44,22 +48,37 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
 
             try
             {
-                // 2 - Criar um objeto da classe ClienteDAO e chamar o metodo cadastrarCliente
+                // Instancia a classe Metodo para usar o metodo de validar os controles vazio
 
-                if (verificaCamposVazios() == true)
+
+                // Cria listas e insere somente os controles necessarios (Obrigatorios)
+
+                List<MaskedTextBox> mascaras = new List<MaskedTextBox> { txt_Celular, txt_RG, txt_CPF, txt_CEP };
+                List<TextBox> textBox = new List<TextBox> { txt_Nome, txt_Cidade };
+                List<ComboBox> comboBox = new List<ComboBox> { cbo_UF };
+
+                if (m.comboBoxVazio(comboBox) == true)
                 {
-                    MessageBox.Show("Preencha todos os campos.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Preencha o campo Estado", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (m.maskarasVazias(mascaras) == true)
+                {
+                    MessageBox.Show("Preencha os campos em vermelho completamente.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (m.textBoxVazio(textBox) == true)
+                {
+                    MessageBox.Show("Preencha os campos em vermelho completamente.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-
                     if (MessageBox.Show("Deseja salvar o registro ?", "ATENÇÃO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         ClienteDAO dao = new ClienteDAO();
                         dao.cadastrarCliente(obj);
                         tabelaCliente.DataSource = dao.listarClientes();
 
-                        apagarCampos();
+                        m.limparControle(this);
+                        m.apagarCampos();
                     }
                 }
             }
@@ -75,10 +94,6 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
         #region Evento Carregar Form
         private void FRM_Clientes_Load(object sender, EventArgs e)
         {
-            // TODO: esta linha de código carrega dados na tabela 'bDVENDASDataSet.tb_clientes'. Você pode movê-la ou removê-la conforme necessário.
-
-            this.tb_clientesTableAdapter.Fill(this.bDVENDASDataSet.tb_clientes);
-
             // Carrega as informações da tabela tb_clientes ao carregar o formulario
 
             ClienteDAO dao = new ClienteDAO();
@@ -153,7 +168,8 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
 
             // Botão para limpar os campos
 
-            apagarCampos();
+            m.limparControle(this);
+            m.apagarCampos();
         }
         #endregion
 
@@ -161,11 +177,6 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
 
         private void btn_Excluir_Click(object sender, EventArgs e)
         {
-
-            // Botão excluir
-
-            #region
-
             // Verifica se o usuario tem certeza que vai deletar o registro
 
             if (txt_Codigo.Text == string.Empty)
@@ -196,52 +207,14 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
 
                     // Limpa os campos após remover o registro
 
-                    apagarCampos();
+                    m.limparControle(this);
+                    m.apagarCampos();
                 }
             }
-
-            #endregion
         }
-        #endregion
-
-        #region Metodo para limpar os Controles do formulario
-        private void apagarCampos()
-        {
-            foreach (Control controle in this.Controls)
-            {
-                limparControle(controle);
-            }
-        }
-        private void limparControle(Control controle)
-        {
-            // Limpando os campos Txt
-
-
-            if (controle is TextBox text)
-            {
-                text.Text = string.Empty;
-                text.BackColor = Color.White;
-            } else if (controle is ComboBox combo)
-            {
-                combo.SelectedIndex = -1;
-                combo.BackColor = Color.White;
-            }
-            else if (controle is MaskedTextBox mask)
-            {
-                mask.Text = string.Empty;
-                mask.ForeColor = Color.Black;
-            }
-
-            foreach (Control subControle in controle.Controls)
-            {
-                limparControle(subControle);
-            }
-        }
-
         #endregion
 
         #region Evento Botão Editar
-
         private void btn_Editar_Click(object sender, EventArgs e)
         {
             // 1 - Receber os dados dentro do objeto modelo de cliente
@@ -273,12 +246,27 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
                 obj.estado = cbo_UF.Text;
                 obj.codigo = txt_Codigo.Text;
 
-                // Verificando se todos os campos estão registrados
+                // Instancia a classe Metodo para usar o metodo de validar os controles vazio
 
-                if (verificaCamposVazios() == true)
+                Metodos m = new Metodos();
+
+                // Cria listas e insere somente os controles necessarios (Obrigatorios)
+
+                List<MaskedTextBox> mascaras = new List<MaskedTextBox> { txt_Celular, txt_RG, txt_CPF, txt_CEP };
+                List<TextBox> textBox = new List<TextBox> { txt_Nome, txt_Cidade };
+                List<ComboBox> comboBox = new List<ComboBox> { cbo_UF };
+
+                if (m.comboBoxVazio(comboBox) == true)
                 {
-                    MessageBox.Show("Preencha todos os campos obrigatórios.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
+                    MessageBox.Show("Preencha o campo Estado", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (m.maskarasVazias(mascaras) == true)
+                {
+                    MessageBox.Show("Preencha os campos em vermelho completamente.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (m.textBoxVazio(textBox) == true)
+                {
+                    MessageBox.Show("Preencha os campos em vermelho completamente.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
@@ -294,11 +282,11 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
 
                         // Limpa os campos após remover o registro
 
-                        apagarCampos();
+                        m.limparControle(this);
+                        m.apagarCampos();
                     }
                 }
             }
-
         }
         #endregion
 
@@ -370,81 +358,5 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
 
         #endregion
 
-        #region Metodo para Validar campos vazios
-        private bool verificaCamposVazios()
-        {
-            // Valida se os componentes do form estao vazios
-
-            TextBox[] textBoxObrigatorios = { txt_Nome, txt_Cidade };
-            ComboBox[] comboBoxObrigatorios = { cbo_UF };
-            MaskedTextBox[] MaskaraObrigatorias = { txt_Celular, txt_CEP, txt_RG, txt_CPF };
-
-            // Tratamento campos de texto
-            foreach (TextBox campo in textBoxObrigatorios)
-            {
-                if (string.IsNullOrEmpty(campo.Text))
-                {
-                    campo.BackColor = Color.LightPink;
-                    return true;
-                }
-            }
-            // Tratamento combo box
-            foreach (ComboBox campo in comboBoxObrigatorios)
-            {
-                if (string.IsNullOrEmpty(campo.Text))
-                {
-                    campo.BackColor = Color.LightPink;
-                    return true;
-                }
-            }
-
-            // Tratamento maskara
-            foreach (MaskedTextBox campo in MaskaraObrigatorias)
-            {
-                if (!campo.MaskFull)
-                {
-                    campo.ForeColor = Color.Red;
-                    return true;
-                }
-                else
-                {
-                    campo.ForeColor = Color.Black;
-                }
-            }
-
-
-            // Tratamento para validar o campo maskara telefone não obrigatorio
-            txt_Telefone.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-
-            if (txt_Telefone.Text == string.Empty)
-            {
-                txt_Telefone.ForeColor = Color.Black;
-            }
-            else
-            {
-                if (!txt_Telefone.MaskFull && txt_Telefone.TextLength != 0)
-                {
-                    txt_Telefone.ForeColor = Color.Red;
-                    return true;
-                }
-            }
-            return false;
-        }
     }
-    #endregion
-
-    #region Metodo para tipo int receber vazio
-    public static class IntNull
-    {
-        // Extensao de metodo para declarar a variavel do tipo int para o valor null
-        public static int ForceInteger(this string valor)
-        {
-            int resultado;
-            if (int.TryParse(valor, out resultado))
-                return resultado;
-            else
-                return 0;
-        }
-    }
-    #endregion
 }

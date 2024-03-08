@@ -330,6 +330,7 @@
             this.btn_Editar.TabIndex = 5;
             this.btn_Editar.Text = "Editar";
             this.btn_Editar.UseVisualStyleBackColor = false;
+            this.btn_Editar.Click += new System.EventHandler(this.btn_Editar_Click);
             // 
             // groupBox1
             // 
@@ -562,6 +563,7 @@
             this.btn_Novo.TabIndex = 2;
             this.btn_Novo.Text = "Novo";
             this.btn_Novo.UseVisualStyleBackColor = false;
+            this.btn_Novo.Click += new System.EventHandler(this.btn_Novo_Click);
             // 
             // btn_Salvar
             // 

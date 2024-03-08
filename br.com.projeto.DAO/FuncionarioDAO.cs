@@ -170,7 +170,6 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
                 MessageBox.Show("Aconteceu um erro" + e);
             }
         }
-
         #endregion
     }
 }
