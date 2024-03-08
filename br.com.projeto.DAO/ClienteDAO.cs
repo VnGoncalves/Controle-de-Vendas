@@ -62,53 +62,6 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
         }
         #endregion
 
-        #region Listar Clientes
-
-        public DataTable listarClientes()
-        {
-            try
-            {
-                // 1 Criar o DataTable e o comando SQL
-
-                DataTable tabelaCliente = new DataTable();
-                string sql = @"select 
-                                	id				[CODIGO],
-                                	nome			[NOME CLIENTE],
-                                	rg				[RG],
-                                	cpf				[CPF], 
-                                	email			[E-MAIL],
-                                	telefone		[TELEFONE],
-                                	celular			[CELULAR],
-                                	cep				[CEP],
-                                	endereco		[ENDERECO],
-                                	numero			[NUMERO],
-                                	complemento		[COMPLEMENTO],
-                                	bairro			[BAIRRO],
-                                	cidade			[CIDADE],
-                                	estado			[ESTADO]
-                                from tb_clientes";
-                // 2 Organizar o comando sql e executar
-
-                SqlCommand executacmd = new SqlCommand(sql, conexao);
-                conexao.Open();
-                executacmd.ExecuteNonQuery();
-
-                // 3 Criar o SqlDataAdapter para preencher os dados no DataTable
-
-                SqlDataAdapter da = new SqlDataAdapter(executacmd);
-                da.Fill(tabelaCliente);
-
-                conexao.Close();
-                return tabelaCliente;
-            }
-            catch (Exception erro)
-            {
-                MessageBox.Show("Aconteceu um erro: " + erro);
-                return null;
-            }
-        }
-        #endregion
-
         #region Alterar Cliente
         
         public void alterarCliente(Cliente obj)
@@ -211,6 +164,53 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
 
                 SqlCommand executacmd = new SqlCommand(sql, conexao);
                 executacmd.Parameters.AddWithValue("@nome", nome);
+                conexao.Open();
+                executacmd.ExecuteNonQuery();
+
+                // 3 Criar o SqlDataAdapter para preencher os dados no DataTable
+
+                SqlDataAdapter da = new SqlDataAdapter(executacmd);
+                da.Fill(tabelaCliente);
+
+                conexao.Close();
+                return tabelaCliente;
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show("Aconteceu um erro: " + erro);
+                return null;
+            }
+        }
+        #endregion
+
+        #region Listar Clientes
+
+        public DataTable listarClientes()
+        {
+            try
+            {
+                // 1 Criar o DataTable e o comando SQL
+
+                DataTable tabelaCliente = new DataTable();
+                string sql = @"select 
+                                	id				[CODIGO],
+                                	nome			[NOME CLIENTE],
+                                	rg				[RG],
+                                	cpf				[CPF], 
+                                	email			[E-MAIL],
+                                	telefone		[TELEFONE],
+                                	celular			[CELULAR],
+                                	cep				[CEP],
+                                	endereco		[ENDERECO],
+                                	numero			[NUMERO],
+                                	complemento		[COMPLEMENTO],
+                                	bairro			[BAIRRO],
+                                	cidade			[CIDADE],
+                                	estado			[ESTADO]
+                                from tb_clientes";
+                // 2 Organizar o comando sql e executar
+
+                SqlCommand executacmd = new SqlCommand(sql, conexao);
                 conexao.Open();
                 executacmd.ExecuteNonQuery();
 

@@ -22,12 +22,13 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
         // Instancia a classe Metodos
 
         Metodos m = new Metodos();
+        Funcionario obj = new Funcionario();
+
 
         #region Metodo Salvar
         private void btn_Salvar_Click(object sender, EventArgs e)
         {
             // Botao Salvar 
-            Funcionario obj = new Funcionario();
 
             obj.nome = txt_Nome.Text;
             obj.rg = txt_RG.Text;
@@ -45,8 +46,6 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             obj.cidade = txt_Cidade.Text;
             obj.estado = cbo_UF.Text;
             obj.cargo = cbo_Cargo.Text;
-
-            Metodos m = new Metodos();
 
             List<MaskedTextBox> mascaras = new List<MaskedTextBox> { txt_Celular, txt_RG, txt_CPF, txt_CEP };
             List<TextBox> textBox = new List<TextBox> { txt_Nome, txt_Cidade, txt_Senha };
@@ -76,10 +75,10 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
         }
         #endregion
 
-        #region
+        #region Metodo Pesquisar Funcionario
         private void txt_Pesquisa_TextChanged(object sender, EventArgs e)
         {
-
+            ();
         }
         #endregion
 
@@ -114,6 +113,7 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
         }
         #endregion
 
+        #region Metodo botao Editar
         private void btn_Editar_Click(object sender, EventArgs e)
         {
             Funcionario obj = new Funcionario();
@@ -139,11 +139,70 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
                 obj.codigo = txt_Codigo.Text;
             }
         }
+        #endregion
 
+        #region Metodo botao Novo
         private void btn_Novo_Click(object sender, EventArgs e)
         {
             m.limparControle(this);
             m.apagarCampos();
         }
+        #endregion
+
+        #region Metodo Clicar no form
+        private void tabelaFuncionario_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btn_Salvar.Enabled = false;
+
+            // Este codigo e feito para quando eu cadastrar mais de um registro, os campos de mascara seja cadastrados certinhos no banco de dados.
+
+            txt_Celular.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
+            txt_Telefone.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
+            txt_RG.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
+            txt_CPF.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
+            txt_CEP.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
+
+            // Seta os campos no cadastro de clientes quando eu clicar em algum cliente ja cadastrado
+
+            txt_Codigo.Text = tabelaFuncionario.CurrentRow.Cells[0].Value.ToString();
+            txt_Nome.Text = tabelaFuncionario.CurrentRow.Cells[1].Value.ToString();
+            txt_RG.Text = tabelaFuncionario.CurrentRow.Cells[2].Value.ToString();
+            txt_CPF.Text = tabelaFuncionario.CurrentRow.Cells[3].Value.ToString();
+            txt_Email.Text = tabelaFuncionario.CurrentRow.Cells[4].Value.ToString();
+
+            txt_Senha.Text = tabelaFuncionario.CurrentRow.Cells[5].Value.ToString();
+            cbo_Cargo.Text = tabelaFuncionario.CurrentRow.Cells[6].Value.ToString();
+            cbo_Nivel.Text = tabelaFuncionario.CurrentRow.Cells[7].Value.ToString();
+
+            txt_Telefone.Text = tabelaFuncionario.CurrentRow.Cells[8].Value.ToString();
+            txt_Celular.Text = tabelaFuncionario.CurrentRow.Cells[9].Value.ToString();
+            txt_CEP.Text = tabelaFuncionario.CurrentRow.Cells[10].Value.ToString();
+            txt_Endereco.Text = tabelaFuncionario.CurrentRow.Cells[11].Value.ToString();
+            txt_Numero.Text = tabelaFuncionario.CurrentRow.Cells[12].Value.ToString();
+            txt_Complemento.Text = tabelaFuncionario.CurrentRow.Cells[13].Value.ToString();
+            txt_Bairro.Text = tabelaFuncionario.CurrentRow.Cells[14].Value.ToString();
+            txt_Cidade.Text = tabelaFuncionario.CurrentRow.Cells[15].Value.ToString();
+            cbo_UF.Text = tabelaFuncionario.CurrentRow.Cells[16].Value.ToString();
+
+            tab_Clientes.SelectedTab = tab_DadosPessoais;
+        }
+        #endregion
+
+        #region Metodo para Listar nomes
+
+        private void ListarNomes()
+        {
+            // Instancia para chamar o metodo listar clientes no ClienteDAO
+
+
+            // Declarando a variavel para receber o parametro LIKE do sql
+
+            string nome = "%" + txt_Pesquisa.Text + "%";
+
+            ClienteDAO dao = new ClienteDAO();
+            tabelaFuncionario.DataSource = dao.buscarClientePorNome(nome);
+        }
+
+        #endregion
     }
 }

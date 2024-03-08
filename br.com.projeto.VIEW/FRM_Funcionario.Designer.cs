@@ -603,6 +603,7 @@
             this.tabelaFuncionario.RowTemplate.Height = 24;
             this.tabelaFuncionario.Size = new System.Drawing.Size(763, 482);
             this.tabelaFuncionario.TabIndex = 1;
+            this.tabelaFuncionario.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelaFuncionario_CellClick);
             // 
             // groupBox3
             // 

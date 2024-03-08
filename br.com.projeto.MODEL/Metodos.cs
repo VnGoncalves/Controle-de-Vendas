@@ -10,6 +10,8 @@ namespace Controle_de_Vendas.br.com.projeto.MODEL
 {
     public class Metodos : Form
     {
+
+        // Metodo para colocar os TextBox do form vazios
         public bool textBoxVazio(List<TextBox> textBox)
         {
             foreach (TextBox campo in textBox)
@@ -22,6 +24,8 @@ namespace Controle_de_Vendas.br.com.projeto.MODEL
             }
             return false;
         }
+
+        // Metodo para deixar os comboBox vazios
         public bool comboBoxVazio(List<ComboBox> comboBox)
         {
             foreach (ComboBox campo in comboBox)
@@ -34,6 +38,8 @@ namespace Controle_de_Vendas.br.com.projeto.MODEL
             }
             return false;
         }
+
+        // Metodo para deixar as Mascaras vazias
         public bool maskarasVazias(List<MaskedTextBox> mascaras)
         {
             // Tratamento maskara
@@ -53,6 +59,8 @@ namespace Controle_de_Vendas.br.com.projeto.MODEL
             return false;
         }
 
+
+        //Metodo para zerar todas as informacoes preenchidas
         public void apagarCampos()
         {
             foreach (Control controle in Controls)
@@ -87,9 +95,9 @@ namespace Controle_de_Vendas.br.com.projeto.MODEL
             }
         }
     }
+    // Extensao de metodo para declarar a variavel do tipo int para o valor null
     public static class IntNull
     {
-        // Extensao de metodo para declarar a variavel do tipo int para o valor null
         public static int ForceInteger(this string valor)
         {
             int resultado;
