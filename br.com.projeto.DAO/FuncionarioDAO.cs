@@ -122,6 +122,57 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
         }
         #endregion
 
+        #region Buscar Funcionario por nome
+
+        public DataTable buscarFuncionarioPorNome(string nome)
+        {
+            try
+            {
+                // 1 Criar o DataTable e o comando SQL
+
+                DataTable tabelaCliente = new DataTable();
+                string sql = @"select 
+                                	id				[CODIGO],
+                                	nome			[NOME],
+                                	rg				[RG],
+                                	cpf				[CPF], 
+                                	email			[E-MAIL],
+                                    senha           [SENHA],
+                                    cargo           [CARGO],
+                                    nivel_acesso    [NIVEL ACESSO],
+                                	telefone		[TELEFONE],
+                                	celular			[CELULAR],
+                                	cep				[CEP],
+                                	endereco		[ENDERECO],
+                                	numero			[NUMERO],
+                                	complemento		[COMPLEMENTO],
+                                	bairro			[BAIRRO],
+                                	cidade			[CIDADE],
+                                	estado			[ESTADO]
+                                from tb_Funcionarios where nome like @nome";
+                // 2 Organizar o comando sql e executar
+
+                SqlCommand executacmd = new SqlCommand(sql, conexao);
+                executacmd.Parameters.AddWithValue("@nome", nome);
+                conexao.Open();
+                executacmd.ExecuteNonQuery();
+
+                // 3 Criar o SqlDataAdapter para preencher os dados no DataTable
+
+                SqlDataAdapter da = new SqlDataAdapter(executacmd);
+                da.Fill(tabelaCliente);
+
+                conexao.Close();
+                return tabelaCliente;
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show("Aconteceu um erro: " + erro);
+                return null;
+            }
+        }
+        #endregion
+
         #region Metodo Alterar Funcionario
 
         public void alterarFuncionario(Funcionario obj)
@@ -171,6 +222,5 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
             }
         }
         #endregion
-      
     }
 }

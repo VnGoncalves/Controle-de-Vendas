@@ -298,16 +298,7 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             ListarNomes();
         }
         #endregion
-
-        #region Metodo para os clientes aparecer no DataGrid enquanto digita
-        private void txt_Pesquisa_TextChanged(object sender, EventArgs e)
-        {
-            // Chamando o metodo para listar os clientes no Data Grid
-
-            ListarNomes();
-        }
-        #endregion
-
+        
         #region Metodo para Listar nomes
 
         private void ListarNomes()
@@ -323,6 +314,15 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             tabelaCliente.DataSource = dao.buscarClientePorNome(nome);
         }
 
+        #endregion
+
+        #region Metodo para os clientes aparecer no DataGrid enquanto digita
+        private void txt_Pesquisa_TextChanged(object sender, EventArgs e)
+        {
+            // Chamando o metodo para listar os clientes no Data Grid
+
+            ListarNomes();
+        }
         #endregion
 
         #region Evento Buscar CEP
@@ -357,6 +357,5 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
         }
 
         #endregion
-
     }
 }

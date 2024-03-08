@@ -78,7 +78,7 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
         #region Metodo Pesquisar Funcionario
         private void txt_Pesquisa_TextChanged(object sender, EventArgs e)
         {
-            ();
+            ListarNomes();
         }
         #endregion
 
@@ -199,10 +199,9 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
 
             string nome = "%" + txt_Pesquisa.Text + "%";
 
-            ClienteDAO dao = new ClienteDAO();
-            tabelaFuncionario.DataSource = dao.buscarClientePorNome(nome);
+            FuncionarioDAO dao = new FuncionarioDAO();
+            tabelaFuncionario.DataSource = dao.buscarFuncionarioPorNome(nome);
         }
-
         #endregion
     }
 }
