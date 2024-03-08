@@ -82,7 +82,7 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
                 DataTable tabelaFuncionario = new DataTable();
                 string sql = @"select 
                                 	id				[CODIGO],
-                                	nome			[NOME],
+                                	nome			[FUNCIONARIO],
                                 	rg				[RG],
                                 	cpf				[CPF], 
                                 	email			[E-MAIL],
@@ -133,7 +133,7 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
                 DataTable tabelaCliente = new DataTable();
                 string sql = @"select 
                                 	id				[CODIGO],
-                                	nome			[NOME],
+                                	nome			[FUNCIONARIO],
                                 	rg				[RG],
                                 	cpf				[CPF], 
                                 	email			[E-MAIL],

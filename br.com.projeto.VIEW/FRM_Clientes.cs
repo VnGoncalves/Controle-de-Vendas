@@ -115,9 +115,9 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
 
             // Ajustando o tamanho de cada coluna
 
-            tabelaCliente.Columns["NOME CLIENTE"].Width = 250;
-            tabelaCliente.Columns["CPF"].Width = 130;
-            tabelaCliente.Columns["E-MAIL"].Width = 220;
+            tabelaCliente.Columns["NOME CLIENTE"].Width = 340;
+            tabelaCliente.Columns["CPF"].Width = 250;
+            tabelaCliente.Columns["E-MAIL"].Width = 300;
         }
         #endregion
 
@@ -289,39 +289,15 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             }
         }
         #endregion
-
-        #region Evento Pesquisar Cliente
-        private void btn_Pesquisar_Click(object sender, EventArgs e)
-        {
-            // Chamando o metodo para listar os clientes no Data Grid
-
-            ListarNomes();
-        }
-        #endregion
-        
-        #region Metodo para Listar nomes
-
-        private void ListarNomes()
-        {
-            // Instancia para chamar o metodo listar clientes no ClienteDAO
-
-
-            // Declarando a variavel para receber o parametro LIKE do sql
-
-            string nome = "%" + txt_Pesquisa.Text + "%";
-
-            ClienteDAO dao = new ClienteDAO();
-            tabelaCliente.DataSource = dao.buscarClientePorNome(nome);
-        }
-
-        #endregion
-
+      
         #region Metodo para os clientes aparecer no DataGrid enquanto digita
         private void txt_Pesquisa_TextChanged(object sender, EventArgs e)
         {
             // Chamando o metodo para listar os clientes no Data Grid
+            string nome = "%" + txt_Pesquisa.Text + "%";
 
-            ListarNomes();
+            ClienteDAO dao = new ClienteDAO();
+            tabelaCliente.DataSource = dao.buscarClientePorNome(nome);
         }
         #endregion
 

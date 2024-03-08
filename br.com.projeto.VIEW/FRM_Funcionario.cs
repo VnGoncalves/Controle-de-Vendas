@@ -107,9 +107,9 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
 
             // Ajustando o tamanho de cada coluna
 
-            tabelaFuncionario.Columns["NOME"].Width = 280;
-            tabelaFuncionario.Columns["CARGO"].Width = 200;
-            tabelaFuncionario.Columns["NIVEL ACESSO"].Width = 250;
+            tabelaFuncionario.Columns["FUNCIONARIO"].Width = 340;
+            tabelaFuncionario.Columns["CARGO"].Width = 250;
+            tabelaFuncionario.Columns["NIVEL ACESSO"].Width = 300;
         }
         #endregion
 
@@ -189,12 +189,8 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
         #endregion
 
         #region Metodo para Listar nomes
-
         private void ListarNomes()
         {
-            // Instancia para chamar o metodo listar clientes no ClienteDAO
-
-
             // Declarando a variavel para receber o parametro LIKE do sql
 
             string nome = "%" + txt_Pesquisa.Text + "%";
