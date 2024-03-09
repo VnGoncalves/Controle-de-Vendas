@@ -17,7 +17,7 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
         public FRM_Funcionario()
         {
             InitializeComponent();
-
+            this.WindowState = FormWindowState.Maximized;
         }
         // Instancia as classes necessarias
 
@@ -25,11 +25,96 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
         Funcionario obj = new Funcionario();
         FuncionarioDAO dao = new FuncionarioDAO();
 
-        #region Metodo Salvar
+        #region Carregar Formulario
+        private void FRM_Funcionario_Load(object sender, EventArgs e)
+        {
+            FuncionarioDAO dao = new FuncionarioDAO();
+            tabelaFuncionario.DataSource = dao.listarFuncionarios();
+
+            // Ocultando campos desnecessarios do DataGrid tabelaClientes
+
+            this.tabelaFuncionario.Columns["CODIGO"].Visible = false;
+            this.tabelaFuncionario.Columns["RG"].Visible = false;
+            this.tabelaFuncionario.Columns["CPF"].Visible = false;
+            this.tabelaFuncionario.Columns["E-MAIL"].Visible = false;
+            this.tabelaFuncionario.Columns["SENHA"].Visible = false;
+            this.tabelaFuncionario.Columns["TELEFONE"].Visible = false;
+            this.tabelaFuncionario.Columns["CELULAR"].Visible = false;
+            this.tabelaFuncionario.Columns["CEP"].Visible = false;
+            this.tabelaFuncionario.Columns["ENDERECO"].Visible = false;
+            this.tabelaFuncionario.Columns["NUMERO"].Visible = false;
+            this.tabelaFuncionario.Columns["COMPLEMENTO"].Visible = false;
+            this.tabelaFuncionario.Columns["BAIRRO"].Visible = false;
+            this.tabelaFuncionario.Columns["CIDADE"].Visible = false;
+            this.tabelaFuncionario.Columns["ESTADO"].Visible = false;
+
+            // Ajustando o tamanho de cada coluna
+
+            tabelaFuncionario.Columns["FUNCIONARIO"].Width = 450;
+            tabelaFuncionario.Columns["CARGO"].Width = 350;
+            tabelaFuncionario.Columns["NIVEL ACESSO"].Width = 380;
+        }
+        #endregion
+
+        #region Metodo para Listar nomes
+        private void ListarNomes()
+        {
+            // Declarando a variavel para receber o parametro LIKE do sql
+
+            string nome = "%" + txt_Pesquisa.Text + "%";
+
+            FuncionarioDAO dao = new FuncionarioDAO();
+            tabelaFuncionario.DataSource = dao.buscarFuncionarioPorNome(nome);
+        }
+        #endregion
+
+        #region Metodo buscar CEP
+        private void btn_Buscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Declarando as variaveis CEP e XML para obtermos os XML com o CEP
+
+                string cep = txt_CEP.Text;
+                string xml = "https://viacep.com.br/ws/" + cep + "/xml/";
+
+                DataSet dados = new DataSet();
+
+                dados.ReadXml(xml);
+
+                //Passando os valores dos campos textBox para os parametros do XML
+
+                txt_Endereco.Text = dados.Tables[0].Rows[0]["logradouro"].ToString();
+                txt_Bairro.Text = dados.Tables[0].Rows[0]["bairro"].ToString();
+                txt_Cidade.Text = dados.Tables[0].Rows[0]["localidade"].ToString();
+                txt_Complemento.Text = dados.Tables[0].Rows[0]["complemento"].ToString();
+                cbo_UF.Text = dados.Tables[0].Rows[0]["uf"].ToString();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Endereco não encontrado, digite manualmente.");
+            }
+        }
+        #endregion
+
+        #region Botao Novo
+
+        // Botao Novo
+        private void btn_Novo_Click(object sender, EventArgs e)
+        {
+            btn_Salvar.Enabled = true;
+
+            m.limparControle(this);
+            m.apagarCampos();
+        }
+        #endregion
+
+        #region Botao Salvar
+
+        // Botao Salvar 
         private void btn_Salvar_Click(object sender, EventArgs e)
         {
-            // Botao Salvar 
-
             try
             {
                 obj.nome = txt_Nome.Text;
@@ -95,46 +180,54 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
         }
         #endregion
 
-        #region Metodo Pesquisar Funcionario
-        private void txt_Pesquisa_TextChanged(object sender, EventArgs e)
+        #region Metodo Excluir
+        // Metodo Excluir
+        private void btn_Excluir_Click(object sender, EventArgs e)
         {
-            ListarNomes();
+            try
+            {
+                // Verifica se o usuario tem certeza que vai deletar o registro
+                if (txt_Codigo.Text == string.Empty)
+                {
+                    MessageBox.Show("Nenhum registro foi selecionado.", "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+
+                    if (MessageBox.Show("Deseja excluir o registro ?", "ATENÇÃO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        btn_Salvar.Enabled = true;
+
+                        // pegar o codigo do cliente
+
+                        obj.codigo = txt_Codigo.Text;
+
+                        // Instanciando a classe ClienteDAO e chamando o método ExcluirCliente
+
+                        dao.excluirCliente(obj);
+
+                        // Chamando o metodo para atualizar a lista no DataGrid após apagar
+
+                        tabelaFuncionario.DataSource = dao.listarFuncionarios();
+
+                        // Limpa os campos após remover o registro
+
+                        m.limparControle(this);
+                        m.apagarCampos();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
         #endregion
 
-        #region Carregar Formulario
-        private void FRM_Funcionario_Load(object sender, EventArgs e)
-        {
-            FuncionarioDAO dao = new FuncionarioDAO();
-            tabelaFuncionario.DataSource = dao.listarFuncionarios();
+        #region Botao Alterar
 
-            // Ocultando campos desnecessarios do DataGrid tabelaClientes
-
-            this.tabelaFuncionario.Columns["CODIGO"].Visible = false;
-            this.tabelaFuncionario.Columns["RG"].Visible = false;
-            this.tabelaFuncionario.Columns["CPF"].Visible = false;
-            this.tabelaFuncionario.Columns["E-MAIL"].Visible = false;
-            this.tabelaFuncionario.Columns["SENHA"].Visible = false;
-            this.tabelaFuncionario.Columns["TELEFONE"].Visible = false;
-            this.tabelaFuncionario.Columns["CELULAR"].Visible = false;
-            this.tabelaFuncionario.Columns["CEP"].Visible = false;
-            this.tabelaFuncionario.Columns["ENDERECO"].Visible = false;
-            this.tabelaFuncionario.Columns["NUMERO"].Visible = false;
-            this.tabelaFuncionario.Columns["COMPLEMENTO"].Visible = false;
-            this.tabelaFuncionario.Columns["BAIRRO"].Visible = false;
-            this.tabelaFuncionario.Columns["CIDADE"].Visible = false;
-            this.tabelaFuncionario.Columns["ESTADO"].Visible = false;
-
-            // Ajustando o tamanho de cada coluna
-
-            tabelaFuncionario.Columns["FUNCIONARIO"].Width = 340;
-            tabelaFuncionario.Columns["CARGO"].Width = 250;
-            tabelaFuncionario.Columns["NIVEL ACESSO"].Width = 300;
-        }
-        #endregion
-
-        #region Metodo botao Editar
-        private void btn_Editar_Click(object sender, EventArgs e)
+        private void btn_Alterar_Click(object sender, EventArgs e)
         {
             try
             {
@@ -217,18 +310,12 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
         }
         #endregion
 
-        #region Metodo botao Novo
-        private void btn_Novo_Click(object sender, EventArgs e)
+        private void txt_Pesquisa_TextChanged(object sender, EventArgs e)
         {
-            btn_Salvar.Enabled = true;
-
-            m.limparControle(this);
-            m.apagarCampos();
+            ListarNomes();
         }
-        #endregion
 
-        #region Metodo Clicar no form
-        private void tabelaFuncionario_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void tabelaFuncionario_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
             btn_Salvar.Enabled = false;
 
@@ -261,93 +348,6 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             txt_Bairro.Text = tabelaFuncionario.CurrentRow.Cells[14].Value.ToString();
             txt_Cidade.Text = tabelaFuncionario.CurrentRow.Cells[15].Value.ToString();
             cbo_UF.Text = tabelaFuncionario.CurrentRow.Cells[16].Value.ToString();
-
-            tab_Clientes.SelectedTab = tab_DadosPessoais;
-        }
-        #endregion
-
-        #region Metodo para Listar nomes
-        private void ListarNomes()
-        {
-            // Declarando a variavel para receber o parametro LIKE do sql
-
-            string nome = "%" + txt_Pesquisa.Text + "%";
-
-            FuncionarioDAO dao = new FuncionarioDAO();
-            tabelaFuncionario.DataSource = dao.buscarFuncionarioPorNome(nome);
-        }
-        #endregion
-
-        #region Metodo buscar CEP
-        private void btn_Buscar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // Declarando as variaveis CEP e XML para obtermos os XML com o CEP
-
-                string cep = txt_CEP.Text;
-                string xml = "https://viacep.com.br/ws/" + cep + "/xml/";
-
-                DataSet dados = new DataSet();
-
-                dados.ReadXml(xml);
-
-                //Passando os valores dos campos textBox para os parametros do XML
-
-                txt_Endereco.Text = dados.Tables[0].Rows[0]["logradouro"].ToString();
-                txt_Bairro.Text = dados.Tables[0].Rows[0]["bairro"].ToString();
-                txt_Cidade.Text = dados.Tables[0].Rows[0]["localidade"].ToString();
-                txt_Complemento.Text = dados.Tables[0].Rows[0]["complemento"].ToString();
-                cbo_UF.Text = dados.Tables[0].Rows[0]["uf"].ToString();
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Endereco não encontrado, digite manualmente.");
-            }
-        }
-        #endregion
-
-        private void btn_Excluir_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // Verifica se o usuario tem certeza que vai deletar o registro
-                if (txt_Codigo.Text == string.Empty)
-                {
-                    MessageBox.Show("Nenhum registro foi selecionado.", "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-
-                    if (MessageBox.Show("Deseja excluir o registro ?", "ATENÇÃO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    {
-                        btn_Salvar.Enabled = true;
-
-                        // pegar o codigo do cliente
-
-                        obj.codigo = txt_Codigo.Text;
-
-                        // Instanciando a classe ClienteDAO e chamando o método ExcluirCliente
-
-                        dao.excluirCliente(obj);
-
-                        // Chamando o metodo para atualizar a lista no DataGrid após apagar
-
-                        tabelaFuncionario.DataSource = dao.listarFuncionarios();
-
-                        // Limpa os campos após remover o registro
-
-                        m.limparControle(this);
-                        m.apagarCampos();
-                    }
-                }
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
         }
     }
 }
