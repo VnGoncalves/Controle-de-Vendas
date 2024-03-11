@@ -24,9 +24,10 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
 
         Metodos m = new Metodos();
         Fornecedor obj = new Fornecedor();
-        FuncionarioDAO dao = new FuncionarioDAO();
+        FornecedorDAO dao = new FornecedorDAO();
 
         #region Buscar CEP
+
         private void btn_Buscar_Click(object sender, EventArgs e)
         {
             try
@@ -54,9 +55,11 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
                 MessageBox.Show("Endereco não encontrado, digite manualmente.");
             }
         }
+
         #endregion
 
         #region Botao Novo
+
         private void btn_Novo_Click(object sender, EventArgs e)
         {
             btn_Salvar.Enabled = true;
@@ -130,11 +133,59 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
                 throw;
             }
         }
+
+        #endregion
+
+        #region Botao Excluir
+
+        private void btn_Excluir_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Verifica se o usuario tem certeza que vai deletar o registro
+                if (txt_Codigo.Text == string.Empty)
+                {
+                    MessageBox.Show("Nenhum registro foi selecionado.", "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+
+                    if (MessageBox.Show("Deseja excluir o registro ?", "ATENÇÃO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        btn_Salvar.Enabled = true;
+
+                        // pegar o codigo do cliente
+
+                        obj.codigo = txt_Codigo.Text;
+
+                        // Instanciando a classe ClienteDAO e chamando o método ExcluirCliente
+
+                        dao.excluirFornecedor(obj);
+
+                        // Chamando o metodo para atualizar a lista no DataGrid após apagar
+
+                        tabelaFornecedores.DataSource = dao.listarFornecedores();
+
+                        // Limpa os campos após remover o registro
+
+                        m.limparControle(this);
+                        m.apagarCampos();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         #endregion
 
 
 
         #region Clicar no Formulario
+
         private void tabelaFornecedores_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             btn_Salvar.Enabled = false;
@@ -161,9 +212,11 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             txt_Cidade.Text = tabelaFornecedores.CurrentRow.Cells[11].Value.ToString();
             cbo_UF.Text = tabelaFornecedores.CurrentRow.Cells[12].Value.ToString();
         }
+
         #endregion
 
         #region Carregar Form
+
         private void FRM_Fornecedores_Load(object sender, EventArgs e)
         {
             FornecedorDAO dao = new FornecedorDAO();
@@ -188,16 +241,20 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             tabelaFornecedores.Columns["FORNECEDOR"].Width = 450;
             tabelaFornecedores.Columns["CNPJ"].Width = 350;
         }
+
         #endregion
 
         #region Pesquisar Fornecedor
+
         private void txt_Pesquisa_TextChanged(object sender, EventArgs e)
         {
             ListarNomes();
         }
+
         #endregion
 
         #region Metodo para Listar nomes
+
         private void ListarNomes()
         {
             // Declarando a variavel para receber o parametro LIKE do sql
@@ -207,6 +264,8 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             FornecedorDAO dao = new FornecedorDAO();
             tabelaFornecedores.DataSource = dao.buscarFornecedorPorNome(nome);
         }
+
         #endregion
+
     }
 }

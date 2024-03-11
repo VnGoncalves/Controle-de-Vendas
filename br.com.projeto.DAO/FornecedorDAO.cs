@@ -65,6 +65,86 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
         }
         #endregion
 
+        #region Excluir Fornecedor
+
+        public void excluirFornecedor(Fornecedor obj)
+        {
+            try
+            {
+                string sql = "delete from tb_fornecedores where id = @id";
+
+                SqlCommand executacmd = new SqlCommand(sql, conexao);
+                executacmd.Parameters.AddWithValue("@id", obj.codigo);
+
+                conexao.Open() ;
+                executacmd.ExecuteNonQuery();
+                conexao.Close();
+                
+                MessageBox.Show("Fornecedor excluido com sucesso", "SUCESSO.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show("Aconteceu algum erro: " + erro);
+            }
+        }
+
+        #endregion
+
+        #region Alterar Fornecedor
+
+        public void alterarFornecedor(Fornecedor obj)
+        {
+            try
+            {
+                // 1 - comando sql para alterar os campos desejados
+                string sql = @"update 
+                                    tb_fornecedor
+                                    set nome = @nome,
+                                    cnpj = @cnpj
+                                    email = @email,
+                                    senha = @senha,
+                                    telefone = @telefone,
+                                    celular = @celular,
+                                    cep = @cep,
+                                    endereco = @endereco,
+                                    numero = @numero,
+                                    complemento = @complemento,
+                                    bairro = @bairro,
+                                    cidade = @cidade,
+                                    estado = @estado
+                                where id = @id";
+
+
+                //2 - Associando os parametros dos campos do sistema ao codigo sql
+                SqlCommand executacmd = new SqlCommand(sql, conexao);
+                executacmd.Parameters.AddWithValue("@nome", obj.nome);
+                executacmd.Parameters.AddWithValue("@email", obj.email);
+                executacmd.Parameters.AddWithValue("@telefone", obj.telefone);
+                executacmd.Parameters.AddWithValue("@celular", obj.celular);
+                executacmd.Parameters.AddWithValue("@cep", obj.cep);
+                executacmd.Parameters.AddWithValue("@endereco", obj.endereco);
+                executacmd.Parameters.AddWithValue("@numero", obj.numero);
+                executacmd.Parameters.AddWithValue("@complemento", obj.complemento);
+                executacmd.Parameters.AddWithValue("@bairro", obj.cidade);
+                executacmd.Parameters.AddWithValue("@cidade", obj.cidade);
+                executacmd.Parameters.AddWithValue("@estado", obj.estado);
+                executacmd.Parameters.AddWithValue("@id", obj.codigo);
+
+                //3 - Executando o codigo sql
+                conexao.Open();
+                executacmd.ExecuteNonQuery();
+                conexao.Close();
+
+                MessageBox.Show("Fornecedor alterado com sucesso", "SUCESSO.");
+            }
+            catch (Exception e)
+            {
+
+                MessageBox.Show("Aconteceu um erro" + e);
+            }
+        }
+        #endregion
+
         #region Listar Fornecedores
 
         public DataTable listarFornecedores()
@@ -158,5 +238,6 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
             }
         }
         #endregion
+
     }
 }
