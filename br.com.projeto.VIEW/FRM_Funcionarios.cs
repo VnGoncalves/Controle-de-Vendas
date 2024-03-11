@@ -83,11 +83,9 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             txt_RG.Text = tabelaFuncionario.CurrentRow.Cells[2].Value.ToString();
             txt_CPF.Text = tabelaFuncionario.CurrentRow.Cells[3].Value.ToString();
             txt_Email.Text = tabelaFuncionario.CurrentRow.Cells[4].Value.ToString();
-
             txt_Senha.Text = tabelaFuncionario.CurrentRow.Cells[5].Value.ToString();
             cbo_Cargo.Text = tabelaFuncionario.CurrentRow.Cells[6].Value.ToString();
             cbo_Nivel.Text = tabelaFuncionario.CurrentRow.Cells[7].Value.ToString();
-
             txt_Telefone.Text = tabelaFuncionario.CurrentRow.Cells[8].Value.ToString();
             txt_Celular.Text = tabelaFuncionario.CurrentRow.Cells[9].Value.ToString();
             txt_CEP.Text = tabelaFuncionario.CurrentRow.Cells[10].Value.ToString();
@@ -106,8 +104,6 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             // Declarando a variavel para receber o parametro LIKE do sql
 
             string nome = "%" + txt_Pesquisa.Text + "%";
-
-            FuncionarioDAO dao = new FuncionarioDAO();
             tabelaFuncionario.DataSource = dao.buscarFuncionarioPorNome(nome);
         }
         #endregion
@@ -209,7 +205,6 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
                     {
                         if (MessageBox.Show("Deseja salvar o registro ?", "ATENÇÃO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
-                            FuncionarioDAO dao = new FuncionarioDAO();
                             dao.cadastrarFuncionario(obj);
                             tabelaFuncionario.DataSource = dao.listarFuncionarios();
                         }
@@ -334,7 +329,6 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
                             {
                                 // Instanciando o metodo alterarCliente da classe ClienteDAO para alteramos os registro
 
-                                FuncionarioDAO dao = new FuncionarioDAO();
                                 dao.alterarFuncionario(obj);
                                 tabelaFuncionario.DataSource = dao.listarFuncionarios();
 

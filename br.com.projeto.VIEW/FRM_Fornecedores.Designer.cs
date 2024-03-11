@@ -187,6 +187,7 @@
             this.btn_Alterar.Name = "btn_Alterar";
             this.btn_Alterar.Size = new System.Drawing.Size(32, 32);
             this.btn_Alterar.Text = "Alterar";
+            this.btn_Alterar.Click += new System.EventHandler(this.btn_Alterar_Click);
             // 
             // tabelaFornecedores
             // 

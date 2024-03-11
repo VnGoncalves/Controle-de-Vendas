@@ -98,11 +98,10 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
             {
                 // 1 - comando sql para alterar os campos desejados
                 string sql = @"update 
-                                    tb_fornecedor
+                                    tb_fornecedores
                                     set nome = @nome,
-                                    cnpj = @cnpj
+                                    cnpj = @cnpj,
                                     email = @email,
-                                    senha = @senha,
                                     telefone = @telefone,
                                     celular = @celular,
                                     cep = @cep,
@@ -118,6 +117,7 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
                 //2 - Associando os parametros dos campos do sistema ao codigo sql
                 SqlCommand executacmd = new SqlCommand(sql, conexao);
                 executacmd.Parameters.AddWithValue("@nome", obj.nome);
+                executacmd.Parameters.AddWithValue("@cnpj", obj.CNPJ);
                 executacmd.Parameters.AddWithValue("@email", obj.email);
                 executacmd.Parameters.AddWithValue("@telefone", obj.telefone);
                 executacmd.Parameters.AddWithValue("@celular", obj.celular);
@@ -238,6 +238,5 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
             }
         }
         #endregion
-
     }
 }

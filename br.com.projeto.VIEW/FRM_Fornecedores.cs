@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -182,7 +183,86 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
 
         #endregion
 
+        #region Alterar Fornecedor
 
+        private void btn_Alterar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txt_Codigo.Text == string.Empty)
+                {
+                    MessageBox.Show("Nenhum cliente identificado", "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    obj.nome = txt_Nome.Text;
+                    obj.CNPJ = txt_CNPJ.Text;
+                    obj.email = txt_Email.Text;
+                    obj.telefone = txt_Telefone.Text;
+                    obj.celular = txt_Celular.Text;
+                    obj.cep = txt_CEP.Text;
+                    obj.endereco = txt_Endereco.Text;
+                    obj.numero = IntNull.ForceInteger(txt_Numero.Text);
+                    obj.complemento = txt_Complemento.Text;
+                    obj.bairro = txt_Bairro.Text;
+                    obj.cidade = txt_Cidade.Text;
+                    obj.estado = cbo_UF.Text;
+                    obj.codigo = txt_Codigo.Text;
+
+                    List<MaskedTextBox> mascaras = new List<MaskedTextBox> { txt_Celular, txt_CEP, txt_CNPJ };
+                    List<TextBox> textBox = new List<TextBox> { txt_Nome, txt_Cidade };
+                    List<ComboBox> comboBox = new List<ComboBox> { cbo_UF };
+
+                    txt_Telefone.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+
+                    if (txt_Telefone.Text.Length != 0 && !txt_Telefone.MaskFull)
+                    {
+                        txt_Telefone.ForeColor = Color.Red;
+                        MessageBox.Show("Preencha os campos em vermelho completamente.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        txt_Telefone.ForeColor = Color.Black;
+
+                        if (m.comboBoxVazio(comboBox) == true)
+                        {
+                            MessageBox.Show("Preencha os campos em vermelho completamente.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else if (m.maskarasVazias(mascaras) == true)
+                        {
+                            MessageBox.Show("Preencha os campos em vermelho completamente.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else if (m.textBoxVazio(textBox) == true)
+                        {
+                            MessageBox.Show("Preencha os campos em vermelho completamente.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            // Verificando se o usuario tem certeza que vai modificar o registro
+
+                            if (MessageBox.Show("Deseja alterar o registro ?", "ATENÇÃO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            {
+                                // Instanciando o metodo alterarCliente da classe ClienteDAO para alteramos os registro
+
+                                dao.alterarFornecedor(obj);
+                                tabelaFornecedores.DataSource = dao.listarFornecedores();
+
+                                // Limpa os campos após remover o registro
+
+                                m.limparControle(this);
+                                m.apagarCampos();
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        #endregion
 
         #region Clicar no Formulario
 
@@ -200,8 +280,8 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
 
             txt_Codigo.Text = tabelaFornecedores.CurrentRow.Cells[0].Value.ToString();
             txt_Nome.Text = tabelaFornecedores.CurrentRow.Cells[1].Value.ToString();
-            txt_Email.Text = tabelaFornecedores.CurrentRow.Cells[2].Value.ToString();
-            txt_CNPJ.Text = tabelaFornecedores.CurrentRow.Cells[3].Value.ToString();
+            txt_CNPJ.Text = tabelaFornecedores.CurrentRow.Cells[2].Value.ToString();
+            txt_Email.Text = tabelaFornecedores.CurrentRow.Cells[3].Value.ToString();
             txt_Telefone.Text = tabelaFornecedores.CurrentRow.Cells[4].Value.ToString();
             txt_Celular.Text = tabelaFornecedores.CurrentRow.Cells[5].Value.ToString();
             txt_CEP.Text = tabelaFornecedores.CurrentRow.Cells[6].Value.ToString();
@@ -266,6 +346,5 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
         }
 
         #endregion
-
     }
 }
