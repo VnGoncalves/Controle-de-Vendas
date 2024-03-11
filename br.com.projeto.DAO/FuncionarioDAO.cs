@@ -18,6 +18,7 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
         public FuncionarioDAO()
         {
             this.conexao = new ConnectionFactory().getConnection();
+
         }
 
         #region Cadastrar Funcionario
@@ -236,7 +237,7 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
         }
         #endregion
 
-        #region 
+        #region Excluir Funcionario
 
         public void excluirCliente(Funcionario obj)
         {

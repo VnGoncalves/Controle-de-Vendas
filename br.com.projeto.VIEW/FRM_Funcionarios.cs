@@ -56,6 +56,50 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
         }
         #endregion
 
+        #region Pesquisar Funcionarios
+        private void txt_Pesquisa_TextChanged(object sender, EventArgs e)
+        {
+            ListarNomes();
+        }
+        #endregion
+
+        #region Clicar no formulario
+        private void tabelaFuncionario_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            btn_Salvar.Enabled = false;
+
+            // Este codigo e feito para quando eu cadastrar mais de um registro, os campos de mascara seja cadastrados certinhos no banco de dados.
+
+            txt_Celular.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
+            txt_Telefone.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
+            txt_RG.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
+            txt_CPF.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
+            txt_CEP.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
+
+            // Seta os campos no cadastro de clientes quando eu clicar em algum cliente ja cadastrado
+
+            txt_Codigo.Text = tabelaFuncionario.CurrentRow.Cells[0].Value.ToString();
+            txt_Nome.Text = tabelaFuncionario.CurrentRow.Cells[1].Value.ToString();
+            txt_RG.Text = tabelaFuncionario.CurrentRow.Cells[2].Value.ToString();
+            txt_CPF.Text = tabelaFuncionario.CurrentRow.Cells[3].Value.ToString();
+            txt_Email.Text = tabelaFuncionario.CurrentRow.Cells[4].Value.ToString();
+
+            txt_Senha.Text = tabelaFuncionario.CurrentRow.Cells[5].Value.ToString();
+            cbo_Cargo.Text = tabelaFuncionario.CurrentRow.Cells[6].Value.ToString();
+            cbo_Nivel.Text = tabelaFuncionario.CurrentRow.Cells[7].Value.ToString();
+
+            txt_Telefone.Text = tabelaFuncionario.CurrentRow.Cells[8].Value.ToString();
+            txt_Celular.Text = tabelaFuncionario.CurrentRow.Cells[9].Value.ToString();
+            txt_CEP.Text = tabelaFuncionario.CurrentRow.Cells[10].Value.ToString();
+            txt_Endereco.Text = tabelaFuncionario.CurrentRow.Cells[11].Value.ToString();
+            txt_Numero.Text = tabelaFuncionario.CurrentRow.Cells[12].Value.ToString();
+            txt_Complemento.Text = tabelaFuncionario.CurrentRow.Cells[13].Value.ToString();
+            txt_Bairro.Text = tabelaFuncionario.CurrentRow.Cells[14].Value.ToString();
+            txt_Cidade.Text = tabelaFuncionario.CurrentRow.Cells[15].Value.ToString();
+            cbo_UF.Text = tabelaFuncionario.CurrentRow.Cells[16].Value.ToString();
+        }
+        #endregion
+
         #region Metodo para Listar nomes
         private void ListarNomes()
         {
@@ -310,44 +354,5 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
         }
         #endregion
 
-        private void txt_Pesquisa_TextChanged(object sender, EventArgs e)
-        {
-            ListarNomes();
-        }
-
-        private void tabelaFuncionario_CellClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-            btn_Salvar.Enabled = false;
-
-            // Este codigo e feito para quando eu cadastrar mais de um registro, os campos de mascara seja cadastrados certinhos no banco de dados.
-
-            txt_Celular.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
-            txt_Telefone.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
-            txt_RG.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
-            txt_CPF.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
-            txt_CEP.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
-
-            // Seta os campos no cadastro de clientes quando eu clicar em algum cliente ja cadastrado
-
-            txt_Codigo.Text = tabelaFuncionario.CurrentRow.Cells[0].Value.ToString();
-            txt_Nome.Text = tabelaFuncionario.CurrentRow.Cells[1].Value.ToString();
-            txt_RG.Text = tabelaFuncionario.CurrentRow.Cells[2].Value.ToString();
-            txt_CPF.Text = tabelaFuncionario.CurrentRow.Cells[3].Value.ToString();
-            txt_Email.Text = tabelaFuncionario.CurrentRow.Cells[4].Value.ToString();
-
-            txt_Senha.Text = tabelaFuncionario.CurrentRow.Cells[5].Value.ToString();
-            cbo_Cargo.Text = tabelaFuncionario.CurrentRow.Cells[6].Value.ToString();
-            cbo_Nivel.Text = tabelaFuncionario.CurrentRow.Cells[7].Value.ToString();
-
-            txt_Telefone.Text = tabelaFuncionario.CurrentRow.Cells[8].Value.ToString();
-            txt_Celular.Text = tabelaFuncionario.CurrentRow.Cells[9].Value.ToString();
-            txt_CEP.Text = tabelaFuncionario.CurrentRow.Cells[10].Value.ToString();
-            txt_Endereco.Text = tabelaFuncionario.CurrentRow.Cells[11].Value.ToString();
-            txt_Numero.Text = tabelaFuncionario.CurrentRow.Cells[12].Value.ToString();
-            txt_Complemento.Text = tabelaFuncionario.CurrentRow.Cells[13].Value.ToString();
-            txt_Bairro.Text = tabelaFuncionario.CurrentRow.Cells[14].Value.ToString();
-            txt_Cidade.Text = tabelaFuncionario.CurrentRow.Cells[15].Value.ToString();
-            cbo_UF.Text = tabelaFuncionario.CurrentRow.Cells[16].Value.ToString();
-        }
     }
 }

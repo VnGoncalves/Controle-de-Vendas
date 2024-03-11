@@ -1,6 +1,6 @@
 ﻿namespace Controle_de_Vendas.br.com.projeto.VIEW
 {
-    partial class FRM_Funcionario
+    partial class FRM_Fornecedores
     {
         /// <summary>
         /// Required designer variable.
@@ -28,17 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FRM_Funcionario));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FRM_Fornecedores));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.tab_Funcionario = new System.Windows.Forms.TabControl();
+            this.tab_Fornecedores = new System.Windows.Forms.TabControl();
             this.tab_DadosPessoais = new System.Windows.Forms.TabPage();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btn_Novo = new System.Windows.Forms.ToolStripButton();
             this.btn_Salvar = new System.Windows.Forms.ToolStripButton();
             this.btn_Excluir = new System.Windows.Forms.ToolStripButton();
             this.btn_Alterar = new System.Windows.Forms.ToolStripButton();
-            this.tabelaFuncionario = new System.Windows.Forms.DataGridView();
+            this.tabelaFornecedores = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txt_Numero = new System.Windows.Forms.TextBox();
             this.btn_Buscar = new System.Windows.Forms.Button();
@@ -56,16 +56,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.txt_Endereco = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.cbo_Nivel = new System.Windows.Forms.ComboBox();
-            this.cbo_Cargo = new System.Windows.Forms.ComboBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txt_Senha = new System.Windows.Forms.TextBox();
-            this.txt_RG = new System.Windows.Forms.MaskedTextBox();
+            this.txt_CNPJ = new System.Windows.Forms.MaskedTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txt_Codigo = new System.Windows.Forms.TextBox();
             this.txt_Telefone = new System.Windows.Forms.MaskedTextBox();
@@ -76,17 +68,15 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txt_Email = new System.Windows.Forms.TextBox();
-            this.txt_CPF = new System.Windows.Forms.MaskedTextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label17 = new System.Windows.Forms.Label();
             this.txt_Pesquisa = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
-            this.tab_Funcionario.SuspendLayout();
+            this.tab_Fornecedores.SuspendLayout();
             this.tab_DadosPessoais.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tabelaFuncionario)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabelaFornecedores)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -101,7 +91,7 @@
             this.panel1.Margin = new System.Windows.Forms.Padding(6);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1506, 202);
-            this.panel1.TabIndex = 1;
+            this.panel1.TabIndex = 2;
             // 
             // label1
             // 
@@ -111,28 +101,28 @@
             this.label1.Location = new System.Drawing.Point(60, 87);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(349, 33);
+            this.label1.Size = new System.Drawing.Size(361, 33);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Cadastro de Funcionários";
+            this.label1.Text = "Cadastro de Fornecedores";
             // 
-            // tab_Funcionario
+            // tab_Fornecedores
             // 
-            this.tab_Funcionario.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tab_Fornecedores.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tab_Funcionario.Controls.Add(this.tab_DadosPessoais);
-            this.tab_Funcionario.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tab_Funcionario.Location = new System.Drawing.Point(0, 203);
-            this.tab_Funcionario.Margin = new System.Windows.Forms.Padding(6);
-            this.tab_Funcionario.Name = "tab_Funcionario";
-            this.tab_Funcionario.SelectedIndex = 0;
-            this.tab_Funcionario.Size = new System.Drawing.Size(1491, 849);
-            this.tab_Funcionario.TabIndex = 2;
+            this.tab_Fornecedores.Controls.Add(this.tab_DadosPessoais);
+            this.tab_Fornecedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tab_Fornecedores.Location = new System.Drawing.Point(0, 205);
+            this.tab_Fornecedores.Margin = new System.Windows.Forms.Padding(6);
+            this.tab_Fornecedores.Name = "tab_Fornecedores";
+            this.tab_Fornecedores.SelectedIndex = 0;
+            this.tab_Fornecedores.Size = new System.Drawing.Size(1491, 849);
+            this.tab_Fornecedores.TabIndex = 3;
             // 
             // tab_DadosPessoais
             // 
             this.tab_DadosPessoais.Controls.Add(this.toolStrip1);
-            this.tab_DadosPessoais.Controls.Add(this.tabelaFuncionario);
+            this.tab_DadosPessoais.Controls.Add(this.tabelaFornecedores);
             this.tab_DadosPessoais.Controls.Add(this.groupBox2);
             this.tab_DadosPessoais.Controls.Add(this.groupBox1);
             this.tab_DadosPessoais.Controls.Add(this.groupBox3);
@@ -187,7 +177,6 @@
             this.btn_Excluir.Name = "btn_Excluir";
             this.btn_Excluir.Size = new System.Drawing.Size(32, 32);
             this.btn_Excluir.Text = "toolStripButton3";
-            this.btn_Excluir.Click += new System.EventHandler(this.btn_Excluir_Click);
             // 
             // btn_Alterar
             // 
@@ -197,24 +186,23 @@
             this.btn_Alterar.Name = "btn_Alterar";
             this.btn_Alterar.Size = new System.Drawing.Size(32, 32);
             this.btn_Alterar.Text = "toolStripButton4";
-            this.btn_Alterar.Click += new System.EventHandler(this.btn_Alterar_Click);
             // 
-            // tabelaFuncionario
+            // tabelaFornecedores
             // 
-            this.tabelaFuncionario.AllowUserToAddRows = false;
-            this.tabelaFuncionario.AllowUserToDeleteRows = false;
-            this.tabelaFuncionario.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tabelaFornecedores.AllowUserToAddRows = false;
+            this.tabelaFornecedores.AllowUserToDeleteRows = false;
+            this.tabelaFornecedores.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabelaFuncionario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tabelaFuncionario.Location = new System.Drawing.Point(1006, 202);
-            this.tabelaFuncionario.Margin = new System.Windows.Forms.Padding(5);
-            this.tabelaFuncionario.Name = "tabelaFuncionario";
-            this.tabelaFuncionario.ReadOnly = true;
-            this.tabelaFuncionario.RowHeadersWidth = 51;
-            this.tabelaFuncionario.RowTemplate.Height = 24;
-            this.tabelaFuncionario.Size = new System.Drawing.Size(467, 590);
-            this.tabelaFuncionario.TabIndex = 27;
-            this.tabelaFuncionario.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelaFuncionario_CellClick_1);
+            this.tabelaFornecedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tabelaFornecedores.Location = new System.Drawing.Point(1006, 202);
+            this.tabelaFornecedores.Margin = new System.Windows.Forms.Padding(5);
+            this.tabelaFornecedores.Name = "tabelaFornecedores";
+            this.tabelaFornecedores.ReadOnly = true;
+            this.tabelaFornecedores.RowHeadersWidth = 51;
+            this.tabelaFornecedores.RowTemplate.Height = 24;
+            this.tabelaFornecedores.Size = new System.Drawing.Size(467, 590);
+            this.tabelaFornecedores.TabIndex = 27;
+            this.tabelaFornecedores.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelaFornecedores_CellClick);
             // 
             // groupBox2
             // 
@@ -415,16 +403,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label21);
-            this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.label20);
-            this.groupBox1.Controls.Add(this.cbo_Nivel);
-            this.groupBox1.Controls.Add(this.cbo_Cargo);
-            this.groupBox1.Controls.Add(this.label19);
-            this.groupBox1.Controls.Add(this.label18);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.txt_Senha);
-            this.groupBox1.Controls.Add(this.txt_RG);
+            this.groupBox1.Controls.Add(this.txt_CNPJ);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txt_Codigo);
             this.groupBox1.Controls.Add(this.txt_Telefone);
@@ -435,9 +415,7 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.txt_Email);
-            this.groupBox1.Controls.Add(this.txt_CPF);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(10, 46);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(5);
@@ -447,25 +425,6 @@
             this.groupBox1.TabIndex = 24;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Informações do funcionário";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(30, 284);
-            this.label21.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(193, 24);
-            this.label21.TabIndex = 31;
-            this.label21.Text = "* Confirmação Senha:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(233, 281);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(5);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PasswordChar = '*';
-            this.textBox1.Size = new System.Drawing.Size(224, 29);
-            this.textBox1.TabIndex = 30;
             // 
             // label20
             // 
@@ -480,82 +439,14 @@
             this.label20.TabIndex = 29;
             this.label20.Text = "Campos obrigatórios *";
             // 
-            // cbo_Nivel
+            // txt_CNPJ
             // 
-            this.cbo_Nivel.FormattingEnabled = true;
-            this.cbo_Nivel.Items.AddRange(new object[] {
-            "Administrador",
-            "Usuário"});
-            this.cbo_Nivel.Location = new System.Drawing.Point(638, 171);
-            this.cbo_Nivel.Margin = new System.Windows.Forms.Padding(5);
-            this.cbo_Nivel.Name = "cbo_Nivel";
-            this.cbo_Nivel.Size = new System.Drawing.Size(253, 32);
-            this.cbo_Nivel.TabIndex = 28;
-            // 
-            // cbo_Cargo
-            // 
-            this.cbo_Cargo.FormattingEnabled = true;
-            this.cbo_Cargo.Items.AddRange(new object[] {
-            "Gerente",
-            "Vendedor",
-            "Estágiario",
-            "Aprendiz",
-            "Recursos Humanos",
-            "Analista de T.I",
-            "Auxiliar de Produção"});
-            this.cbo_Cargo.Location = new System.Drawing.Point(638, 208);
-            this.cbo_Cargo.Margin = new System.Windows.Forms.Padding(5);
-            this.cbo_Cargo.Name = "cbo_Cargo";
-            this.cbo_Cargo.Size = new System.Drawing.Size(253, 32);
-            this.cbo_Cargo.TabIndex = 27;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(564, 212);
-            this.label19.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(66, 24);
-            this.label19.TabIndex = 26;
-            this.label19.Text = "Cargo:";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(547, 174);
-            this.label18.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(83, 24);
-            this.label18.TabIndex = 24;
-            this.label18.Text = " Acesso:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(26, 247);
-            this.label9.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(82, 24);
-            this.label9.TabIndex = 22;
-            this.label9.Text = "* Senha:";
-            // 
-            // txt_Senha
-            // 
-            this.txt_Senha.Location = new System.Drawing.Point(118, 244);
-            this.txt_Senha.Margin = new System.Windows.Forms.Padding(5);
-            this.txt_Senha.Name = "txt_Senha";
-            this.txt_Senha.PasswordChar = '*';
-            this.txt_Senha.Size = new System.Drawing.Size(339, 29);
-            this.txt_Senha.TabIndex = 21;
-            // 
-            // txt_RG
-            // 
-            this.txt_RG.Location = new System.Drawing.Point(371, 207);
-            this.txt_RG.Margin = new System.Windows.Forms.Padding(5);
-            this.txt_RG.Mask = "##,###,###-##";
-            this.txt_RG.Name = "txt_RG";
-            this.txt_RG.Size = new System.Drawing.Size(166, 29);
-            this.txt_RG.TabIndex = 6;
+            this.txt_CNPJ.Location = new System.Drawing.Point(391, 174);
+            this.txt_CNPJ.Margin = new System.Windows.Forms.Padding(5);
+            this.txt_CNPJ.Mask = "##,###,###/####-##";
+            this.txt_CNPJ.Name = "txt_CNPJ";
+            this.txt_CNPJ.Size = new System.Drawing.Size(193, 29);
+            this.txt_CNPJ.TabIndex = 6;
             // 
             // label2
             // 
@@ -610,7 +501,7 @@
             this.txt_Nome.Location = new System.Drawing.Point(118, 99);
             this.txt_Nome.Margin = new System.Windows.Forms.Padding(5);
             this.txt_Nome.Name = "txt_Nome";
-            this.txt_Nome.Size = new System.Drawing.Size(773, 29);
+            this.txt_Nome.Size = new System.Drawing.Size(644, 29);
             this.txt_Nome.TabIndex = 2;
             // 
             // txt_Celular
@@ -647,37 +538,18 @@
             this.txt_Email.Location = new System.Drawing.Point(119, 135);
             this.txt_Email.Margin = new System.Windows.Forms.Padding(5);
             this.txt_Email.Name = "txt_Email";
-            this.txt_Email.Size = new System.Drawing.Size(772, 29);
+            this.txt_Email.Size = new System.Drawing.Size(643, 29);
             this.txt_Email.TabIndex = 3;
-            // 
-            // txt_CPF
-            // 
-            this.txt_CPF.Location = new System.Drawing.Point(371, 174);
-            this.txt_CPF.Margin = new System.Windows.Forms.Padding(5);
-            this.txt_CPF.Mask = "###,###,###-##";
-            this.txt_CPF.Name = "txt_CPF";
-            this.txt_CPF.Size = new System.Drawing.Size(166, 29);
-            this.txt_CPF.TabIndex = 7;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(307, 210);
+            this.label5.Location = new System.Drawing.Point(306, 179);
             this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(54, 24);
+            this.label5.Size = new System.Drawing.Size(75, 24);
             this.label5.TabIndex = 14;
-            this.label5.Text = "* RG:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(297, 174);
-            this.label6.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(64, 24);
-            this.label6.TabIndex = 16;
-            this.label6.Text = "* CPF:";
+            this.label5.Text = "* CNPJ:";
             // 
             // groupBox3
             // 
@@ -692,7 +564,7 @@
             this.groupBox3.Size = new System.Drawing.Size(467, 145);
             this.groupBox3.TabIndex = 26;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Pesquisar funcionários";
+            this.groupBox3.Text = "Pesquisar fornecedores";
             // 
             // label17
             // 
@@ -714,26 +586,26 @@
             this.txt_Pesquisa.Size = new System.Drawing.Size(360, 31);
             this.txt_Pesquisa.TabIndex = 13;
             // 
-            // FRM_Funcionario
+            // FRM_Fornecedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1506, 1069);
-            this.Controls.Add(this.tab_Funcionario);
+            this.Controls.Add(this.tab_Fornecedores);
             this.Controls.Add(this.panel1);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(6);
-            this.Name = "FRM_Funcionario";
-            this.Text = "Cadastro de Funcionários";
-            this.Load += new System.EventHandler(this.FRM_Funcionario_Load);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.Margin = new System.Windows.Forms.Padding(7);
+            this.Name = "FRM_Fornecedores";
+            this.Text = "Cadastro de Fornecedores";
+            this.Load += new System.EventHandler(this.FRM_Fornecedores_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.tab_Funcionario.ResumeLayout(false);
+            this.tab_Fornecedores.ResumeLayout(false);
             this.tab_DadosPessoais.ResumeLayout(false);
             this.tab_DadosPessoais.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tabelaFuncionario)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabelaFornecedores)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -748,9 +620,16 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TabControl tab_Funcionario;
+        private System.Windows.Forms.TabControl tab_Fornecedores;
         private System.Windows.Forms.TabPage tab_DadosPessoais;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton btn_Novo;
+        private System.Windows.Forms.ToolStripButton btn_Salvar;
+        private System.Windows.Forms.ToolStripButton btn_Excluir;
+        private System.Windows.Forms.ToolStripButton btn_Alterar;
+        private System.Windows.Forms.DataGridView tabelaFornecedores;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox txt_Numero;
         private System.Windows.Forms.Button btn_Buscar;
         private System.Windows.Forms.ComboBox cbo_UF;
         private System.Windows.Forms.Label label16;
@@ -766,7 +645,8 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txt_Endereco;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.MaskedTextBox txt_RG;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.MaskedTextBox txt_CNPJ;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txt_Codigo;
         private System.Windows.Forms.MaskedTextBox txt_Telefone;
@@ -777,27 +657,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txt_Email;
-        private System.Windows.Forms.MaskedTextBox txt_CPF;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txt_Senha;
-        private System.Windows.Forms.ComboBox cbo_Cargo;
-        private System.Windows.Forms.ComboBox cbo_Nivel;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox txt_Numero;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.DataGridView tabelaFuncionario;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox txt_Pesquisa;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton btn_Novo;
-        private System.Windows.Forms.ToolStripButton btn_Salvar;
-        private System.Windows.Forms.ToolStripButton btn_Excluir;
-        private System.Windows.Forms.ToolStripButton btn_Alterar;
     }
 }

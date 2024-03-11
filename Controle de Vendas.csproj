@@ -57,8 +57,10 @@
     </Compile>
     <Compile Include="br.com.projeto.CONEXAO\ConnectionFactory.cs" />
     <Compile Include="br.com.projeto.DAO\ClienteDAO.cs" />
+    <Compile Include="br.com.projeto.DAO\FornecedorDAO.cs" />
     <Compile Include="br.com.projeto.DAO\FuncionarioDAO.cs" />
     <Compile Include="br.com.projeto.MODEL\Cliente.cs" />
+    <Compile Include="br.com.projeto.MODEL\Fornecedor.cs" />
     <Compile Include="br.com.projeto.MODEL\Funcionario.cs" />
     <Compile Include="br.com.projeto.MODEL\Metodos.cs">
       <SubType>Form</SubType>
@@ -75,6 +77,12 @@
     <Compile Include="br.com.projeto.VIEW\FRM_Funcionarios.Designer.cs">
       <DependentUpon>FRM_Funcionarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="br.com.projeto.VIEW\FRM_Fornecedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="br.com.projeto.VIEW\FRM_Fornecedores.Designer.cs">
+      <DependentUpon>FRM_Fornecedores.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +93,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="br.com.projeto.VIEW\FRM_Clientes.resx">
       <DependentUpon>FRM_Clientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="br.com.projeto.VIEW\FRM_Fornecedores.resx">
+      <DependentUpon>FRM_Fornecedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="br.com.projeto.VIEW\FRM_Funcionarios.resx">
       <DependentUpon>FRM_Funcionarios.cs</DependentUpon>
