@@ -131,7 +131,7 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
             {
                 // 1 Criar o DataTable e o comando SQL
 
-                DataTable tabelaCliente = new DataTable();
+                DataTable tabelaFuncionario = new DataTable();
                 string sql = @"select 
                                 	id				[CODIGO],
                                 	nome			[FUNCIONARIO],
@@ -161,10 +161,10 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
                 // 3 Criar o SqlDataAdapter para preencher os dados no DataTable
 
                 SqlDataAdapter da = new SqlDataAdapter(executacmd);
-                da.Fill(tabelaCliente);
+                da.Fill(tabelaFuncionario);
 
                 conexao.Close();
-                return tabelaCliente;
+                return tabelaFuncionario;
             }
             catch (Exception erro)
             {

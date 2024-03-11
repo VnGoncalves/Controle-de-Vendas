@@ -132,6 +132,9 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
         }
         #endregion
 
+
+
+        #region Clicar no Formulario
         private void tabelaFornecedores_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             btn_Salvar.Enabled = false;
@@ -158,7 +161,9 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             txt_Cidade.Text = tabelaFornecedores.CurrentRow.Cells[11].Value.ToString();
             cbo_UF.Text = tabelaFornecedores.CurrentRow.Cells[12].Value.ToString();
         }
+        #endregion
 
+        #region Carregar Form
         private void FRM_Fornecedores_Load(object sender, EventArgs e)
         {
             FornecedorDAO dao = new FornecedorDAO();
@@ -183,5 +188,25 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             tabelaFornecedores.Columns["FORNECEDOR"].Width = 450;
             tabelaFornecedores.Columns["CNPJ"].Width = 350;
         }
+        #endregion
+
+        #region Pesquisar Fornecedor
+        private void txt_Pesquisa_TextChanged(object sender, EventArgs e)
+        {
+            ListarNomes();
+        }
+        #endregion
+
+        #region Metodo para Listar nomes
+        private void ListarNomes()
+        {
+            // Declarando a variavel para receber o parametro LIKE do sql
+
+            string nome = "%" + txt_Pesquisa.Text + "%";
+
+            FornecedorDAO dao = new FornecedorDAO();
+            tabelaFornecedores.DataSource = dao.buscarFornecedorPorNome(nome);
+        }
+        #endregion
     }
 }

@@ -585,6 +585,7 @@
             this.txt_Pesquisa.Name = "txt_Pesquisa";
             this.txt_Pesquisa.Size = new System.Drawing.Size(360, 31);
             this.txt_Pesquisa.TabIndex = 13;
+            this.txt_Pesquisa.TextChanged += new System.EventHandler(this.txt_Pesquisa_TextChanged);
             // 
             // FRM_Fornecedores
             // 
