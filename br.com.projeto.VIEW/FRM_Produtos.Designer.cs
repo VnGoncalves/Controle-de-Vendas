@@ -41,7 +41,7 @@
             this.tabelaProdutos = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.cbo_Fornecedor = new System.Windows.Forms.ComboBox();
+            this.cbo_FornecedorID = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txt_QtdEstoque = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -184,7 +184,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.cbo_Fornecedor);
+            this.groupBox1.Controls.Add(this.cbo_FornecedorID);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.txt_QtdEstoque);
             this.groupBox1.Controls.Add(this.label4);
@@ -214,13 +214,13 @@
             this.label6.TabIndex = 35;
             this.label6.Text = "Fornecedor:";
             // 
-            // cbo_Fornecedor
+            // cbo_FornecedorID
             // 
-            this.cbo_Fornecedor.FormattingEnabled = true;
-            this.cbo_Fornecedor.Location = new System.Drawing.Point(263, 276);
-            this.cbo_Fornecedor.Name = "cbo_Fornecedor";
-            this.cbo_Fornecedor.Size = new System.Drawing.Size(460, 32);
-            this.cbo_Fornecedor.TabIndex = 34;
+            this.cbo_FornecedorID.FormattingEnabled = true;
+            this.cbo_FornecedorID.Location = new System.Drawing.Point(263, 276);
+            this.cbo_FornecedorID.Name = "cbo_FornecedorID";
+            this.cbo_FornecedorID.Size = new System.Drawing.Size(460, 32);
+            this.cbo_FornecedorID.TabIndex = 34;
             // 
             // label5
             // 
@@ -397,6 +397,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txt_Preco;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox cbo_Fornecedor;
+        private System.Windows.Forms.ComboBox cbo_FornecedorID;
     }
 }

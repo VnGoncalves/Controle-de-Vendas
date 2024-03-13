@@ -22,9 +22,9 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
         private void FRM_Produtos_Load(object sender, EventArgs e)
         {
             FornecedorDAO f_dao = new FornecedorDAO();
-            cbo_Fornecedor.DataSource = f_dao.listarFornecedores();
-            cbo_Fornecedor.DisplayMember = "FORNECEDOR";
-            cbo_Fornecedor.ValueMember = "CODIGO";
+            cbo_FornecedorID.DataSource = f_dao.listarFornecedores();
+            cbo_FornecedorID.DisplayMember = "FORNECEDOR";
+            cbo_FornecedorID.ValueMember = "CODIGO";
         }
     }
 }
