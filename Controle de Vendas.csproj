@@ -83,6 +83,12 @@
     <Compile Include="br.com.projeto.VIEW\FRM_Fornecedores.Designer.cs">
       <DependentUpon>FRM_Fornecedores.cs</DependentUpon>
     </Compile>
+    <Compile Include="br.com.projeto.VIEW\FRM_Produtos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="br.com.projeto.VIEW\FRM_Produtos.Designer.cs">
+      <DependentUpon>FRM_Produtos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="br.com.projeto.VIEW\FRM_Funcionarios.resx">
       <DependentUpon>FRM_Funcionarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="br.com.projeto.VIEW\FRM_Produtos.resx">
+      <DependentUpon>FRM_Produtos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -446,7 +446,7 @@
             this.groupBox1.Size = new System.Drawing.Size(976, 362);
             this.groupBox1.TabIndex = 24;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Informações do funcionário";
+            this.groupBox1.Text = "Informações do funcionários";
             // 
             // label21
             // 

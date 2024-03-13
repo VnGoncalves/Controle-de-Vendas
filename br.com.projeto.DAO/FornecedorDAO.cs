@@ -153,7 +153,7 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
             {
                 // 1 Criar o DataTable e o comando SQL
 
-                DataTable tabelaFuncionario = new DataTable();
+                DataTable tabelaFornecedor = new DataTable();
                 string sql = @"select 
                                 	id				[CODIGO],
                                 	nome			[FORNECEDOR],
@@ -179,10 +179,10 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
                 // 3 Criar o SqlDataAdapter para preencher os dados no DataTable
 
                 SqlDataAdapter da = new SqlDataAdapter(executacmd);
-                da.Fill(tabelaFuncionario);
+                da.Fill(tabelaFornecedor);
 
                 conexao.Close();
-                return tabelaFuncionario;
+                return tabelaFornecedor;
             }
             catch (Exception erro)
             {
