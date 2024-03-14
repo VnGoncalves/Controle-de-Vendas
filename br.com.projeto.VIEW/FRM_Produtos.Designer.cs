@@ -50,7 +50,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txt_Codigo = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txt_Nome = new System.Windows.Forms.TextBox();
+            this.txt_Descricao = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label17 = new System.Windows.Forms.Label();
             this.txt_Pesquisa = new System.Windows.Forms.TextBox();
@@ -146,6 +146,7 @@
             this.btn_Salvar.Name = "btn_Salvar";
             this.btn_Salvar.Size = new System.Drawing.Size(32, 32);
             this.btn_Salvar.Text = "Salvar";
+            this.btn_Salvar.Click += new System.EventHandler(this.btn_Salvar_Click);
             // 
             // btn_Excluir
             // 
@@ -193,7 +194,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txt_Codigo);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.txt_Nome);
+            this.groupBox1.Controls.Add(this.txt_Descricao);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(10, 46);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(5);
@@ -239,6 +240,7 @@
             this.txt_QtdEstoque.Name = "txt_QtdEstoque";
             this.txt_QtdEstoque.Size = new System.Drawing.Size(460, 29);
             this.txt_QtdEstoque.TabIndex = 32;
+            this.txt_QtdEstoque.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_QtdEstoque_KeyPress);
             // 
             // label4
             // 
@@ -257,6 +259,7 @@
             this.txt_Preco.Name = "txt_Preco";
             this.txt_Preco.Size = new System.Drawing.Size(526, 29);
             this.txt_Preco.TabIndex = 30;
+            this.txt_Preco.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Preco_KeyPress);
             // 
             // label20
             // 
@@ -300,13 +303,13 @@
             this.label3.TabIndex = 10;
             this.label3.Text = "* Descrição:";
             // 
-            // txt_Nome
+            // txt_Descricao
             // 
-            this.txt_Nome.Location = new System.Drawing.Point(197, 161);
-            this.txt_Nome.Margin = new System.Windows.Forms.Padding(5);
-            this.txt_Nome.Name = "txt_Nome";
-            this.txt_Nome.Size = new System.Drawing.Size(526, 29);
-            this.txt_Nome.TabIndex = 2;
+            this.txt_Descricao.Location = new System.Drawing.Point(197, 161);
+            this.txt_Descricao.Margin = new System.Windows.Forms.Padding(5);
+            this.txt_Descricao.Name = "txt_Descricao";
+            this.txt_Descricao.Size = new System.Drawing.Size(526, 29);
+            this.txt_Descricao.TabIndex = 2;
             // 
             // groupBox3
             // 
@@ -388,7 +391,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txt_Codigo;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txt_Nome;
+        private System.Windows.Forms.TextBox txt_Descricao;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox txt_Pesquisa;

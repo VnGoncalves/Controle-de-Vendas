@@ -59,6 +59,7 @@
     <Compile Include="br.com.projeto.DAO\ClienteDAO.cs" />
     <Compile Include="br.com.projeto.DAO\FornecedorDAO.cs" />
     <Compile Include="br.com.projeto.DAO\FuncionarioDAO.cs" />
+    <Compile Include="br.com.projeto.DAO\ProdutoDAO.cs" />
     <Compile Include="br.com.projeto.MODEL\Cliente.cs" />
     <Compile Include="br.com.projeto.MODEL\Fornecedor.cs" />
     <Compile Include="br.com.projeto.MODEL\Funcionario.cs" />
