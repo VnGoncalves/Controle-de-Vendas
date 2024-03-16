@@ -28,7 +28,6 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
         #region Carregar Formulario
         private void FRM_Funcionario_Load(object sender, EventArgs e)
         {
-            FuncionarioDAO dao = new FuncionarioDAO();
             tabelaFuncionario.DataSource = dao.listarFuncionarios();
 
             // Ocultando campos desnecessarios do DataGrid tabelaClientes
@@ -50,7 +49,7 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
 
             // Ajustando o tamanho de cada coluna
 
-            tabelaFuncionario.Columns["FUNCIONARIO"].Width = 450;
+            tabelaFuncionario.Columns["DESCRICAO"].Width = 450;
             tabelaFuncionario.Columns["CARGO"].Width = 350;
             tabelaFuncionario.Columns["NIVEL ACESSO"].Width = 380;
         }

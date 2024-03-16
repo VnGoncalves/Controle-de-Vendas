@@ -2,6 +2,7 @@
 using Controle_de_Vendas.br.com.projeto.MODEL;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -44,6 +45,33 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
             {
                 MessageBox.Show("Aconteceu um erro: " + erro);
             }
+        }
+
+        #endregion
+
+        #region Listar Produtos
+
+        public DataTable listarProdutos()
+        {
+            DataTable tabelaProduto = new DataTable();
+
+            string sql = @"SELECT 
+	                        TP.DESCRICAO,
+	                        TP.PRECO,
+	                        TP.QTD_ESTOQUE [QUANTIDADE ESTOQUE],
+	                        TF.NOME [FORNECEDOR]
+                            FROM TB_PRODUTOS TP
+	                        INNER JOIN TB_FORNECEDORES TF ON TF.ID = TP.FOR_ID";
+            
+            SqlCommand executacmd = new SqlCommand(sql, conexao);
+            conexao.Open();
+            executacmd.ExecuteNonQuery();
+
+            SqlDataAdapter da = new SqlDataAdapter(executacmd);
+            da.Fill(tabelaProduto);
+            conexao.Close();
+
+            return tabelaProduto;
         }
 
         #endregion

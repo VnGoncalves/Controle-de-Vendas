@@ -34,9 +34,19 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             cbo_FornecedorID.DataSource = f_dao.listarFornecedores();
             cbo_FornecedorID.DisplayMember = "FORNECEDOR";
             cbo_FornecedorID.ValueMember = "CODIGO";
+
+            tabelaProdutos.DataSource = dao.listarProdutos();
+
+            tabelaProdutos.Columns["DESCRICAO"].Width = 450;
+            tabelaProdutos.Columns["PRECO"].Width = 350;
+            tabelaProdutos.Columns["QUANTIDADE ESTOQUE"].Width = 380;
+            tabelaProdutos.Columns["FORNECEDOR"].Width = 380;
+
         }
 
         #endregion
+
+        #region 
 
         #region Botao Salvar
 
@@ -109,5 +119,6 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
         }
 
         #endregion
+     
     }
 }
