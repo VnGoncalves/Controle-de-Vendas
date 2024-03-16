@@ -56,12 +56,13 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
             DataTable tabelaProduto = new DataTable();
 
             string sql = @"SELECT 
-	                        TP.DESCRICAO,
-	                        TP.PRECO,
-	                        TP.QTD_ESTOQUE [QUANTIDADE ESTOQUE],
-	                        TF.NOME [FORNECEDOR]
-                            FROM TB_PRODUTOS TP
-	                        INNER JOIN TB_FORNECEDORES TF ON TF.ID = TP.FOR_ID";
+                        	TP.ID [CODIGO],
+                        	TP.DESCRICAO,
+                        	TP.PRECO,
+                        	TP.QTD_ESTOQUE [QTD ESTOQUE],
+                        	TF.NOME [FORNECEDOR]
+                          FROM TB_PRODUTOS TP
+                        	INNER JOIN TB_FORNECEDORES TF ON TF.ID = TP.FOR_ID";
             
             SqlCommand executacmd = new SqlCommand(sql, conexao);
             conexao.Open();

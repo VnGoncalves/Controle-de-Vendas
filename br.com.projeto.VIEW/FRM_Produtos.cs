@@ -30,23 +30,48 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
 
         private void FRM_Produtos_Load(object sender, EventArgs e)
         {
+
             FornecedorDAO f_dao = new FornecedorDAO();
             cbo_FornecedorID.DataSource = f_dao.listarFornecedores();
+            
+            // Este codigo define um troca de valores para chave estrangeira
+            
             cbo_FornecedorID.DisplayMember = "FORNECEDOR";
             cbo_FornecedorID.ValueMember = "CODIGO";
 
             tabelaProdutos.DataSource = dao.listarProdutos();
 
-            tabelaProdutos.Columns["DESCRICAO"].Width = 450;
-            tabelaProdutos.Columns["PRECO"].Width = 350;
-            tabelaProdutos.Columns["QUANTIDADE ESTOQUE"].Width = 380;
+            // Ocultando colunas desnecessarios do DataGrid tabelaProdutos
+
+            this.tabelaProdutos.Columns["CODIGO"].Visible = false;
+
+            // Define o tamanho das colunas
+
+            tabelaProdutos.Columns["DESCRICAO"].Width = 380;
+            tabelaProdutos.Columns["PRECO"].Width = 250;
+            tabelaProdutos.Columns["QTD ESTOQUE"].Width = 150;
             tabelaProdutos.Columns["FORNECEDOR"].Width = 380;
 
         }
 
         #endregion
 
-        #region 
+        #region Clicar no formulario
+
+        private void tabelaProdutos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btn_Salvar.Enabled = false;
+
+            // Seta os campos no cadastro de clientes quando eu clicar em algum cliente ja cadastrado
+
+            txt_Codigo.Text = tabelaProdutos.CurrentRow.Cells[0].Value.ToString();
+            txt_Descricao.Text = tabelaProdutos.CurrentRow.Cells[1].Value.ToString();
+            txt_Preco.Text = tabelaProdutos.CurrentRow.Cells[2].Value.ToString();
+            txt_QtdEstoque.Text = tabelaProdutos.CurrentRow.Cells[3].Value.ToString();
+            cbo_FornecedorID.Text = tabelaProdutos.CurrentRow.Cells[4].Value.ToString();
+        }
+
+        #endregion
 
         #region Botao Salvar
 
@@ -119,6 +144,6 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
         }
 
         #endregion
-     
+
     }
 }

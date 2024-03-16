@@ -181,6 +181,7 @@
             this.tabelaProdutos.RowTemplate.Height = 24;
             this.tabelaProdutos.Size = new System.Drawing.Size(467, 590);
             this.tabelaProdutos.TabIndex = 27;
+            this.tabelaProdutos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelaProdutos_CellClick);
             // 
             // groupBox1
             // 
@@ -277,7 +278,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(80, 121);
+            this.label2.Location = new System.Drawing.Point(111, 121);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 24);
@@ -287,7 +288,7 @@
             // txt_Codigo
             // 
             this.txt_Codigo.Enabled = false;
-            this.txt_Codigo.Location = new System.Drawing.Point(166, 120);
+            this.txt_Codigo.Location = new System.Drawing.Point(197, 121);
             this.txt_Codigo.Margin = new System.Windows.Forms.Padding(5);
             this.txt_Codigo.Name = "txt_Codigo";
             this.txt_Codigo.Size = new System.Drawing.Size(57, 29);
