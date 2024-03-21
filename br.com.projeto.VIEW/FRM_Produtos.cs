@@ -51,7 +51,6 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             tabelaProdutos.Columns["PRECO"].Width = 250;
             tabelaProdutos.Columns["QTD ESTOQUE"].Width = 150;
             tabelaProdutos.Columns["FORNECEDOR"].Width = 380;
-
         }
 
         #endregion
@@ -60,6 +59,8 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
 
         private void tabelaProdutos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            // Desabilita o botao salvar quando clicado no form
+
             btn_Salvar.Enabled = false;
 
             // Seta os campos no cadastro de clientes quando eu clicar em algum cliente ja cadastrado
@@ -145,5 +146,15 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
 
         #endregion
 
+
+        #region Metodo Pesquisar produto
+
+        private void txt_Pesquisa_TextChanged(object sender, EventArgs e)
+        {
+            string nome = "%" + txt_Pesquisa.Text + "%";
+            tabelaProdutos.DataSource = dao.buscarProdutoPorNome(nome);
+        }
+
+        #endregion
     }
 }

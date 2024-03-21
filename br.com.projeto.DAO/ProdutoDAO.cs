@@ -76,5 +76,48 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
         }
 
         #endregion
+
+        #region Procurar Produto por nome
+
+        public DataTable buscarProdutoPorNome(string nome)
+        {
+            try
+            {
+                // 1 Criar o DataTable e o comando SQL
+
+                DataTable tabelaProduto = new DataTable();
+                string sql = @"SELECT 
+                        	TP.ID [CODIGO],
+                        	TP.DESCRICAO,
+                        	TP.PRECO,
+                        	TP.QTD_ESTOQUE [QTD ESTOQUE],
+                        	TF.NOME [FORNECEDOR]
+                          FROM TB_PRODUTOS TP
+                        	INNER JOIN TB_FORNECEDORES TF ON TF.ID = TP.FOR_ID
+                          WHERE DESCRICAO like @NOME";
+                // 2 Organizar o comando sql e executar
+
+                SqlCommand executacmd = new SqlCommand(sql, conexao);
+                executacmd.Parameters.AddWithValue("@nome", nome);
+                conexao.Open();
+                executacmd.ExecuteNonQuery();
+
+                // 3 Criar o SqlDataAdapter para preencher os dados no DataTable
+
+                SqlDataAdapter da = new SqlDataAdapter(executacmd);
+                da.Fill(tabelaProduto);
+
+                conexao.Close();
+                return tabelaProduto;
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show("Aconteceu um erro: " + erro);
+                return null;
+            }
+        }
+
+        #endregion
+
     }
 }
