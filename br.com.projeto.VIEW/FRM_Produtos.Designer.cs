@@ -157,6 +157,7 @@
             this.btn_Excluir.Name = "btn_Excluir";
             this.btn_Excluir.Size = new System.Drawing.Size(32, 32);
             this.btn_Excluir.Text = "Excluir";
+            this.btn_Excluir.Click += new System.EventHandler(this.btn_Excluir_Click);
             // 
             // btn_Alterar
             // 

@@ -119,5 +119,31 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
 
         #endregion
 
+        #region Excluir Produto
+
+        public void excluirProduto(Produto obj)
+        {
+            try
+            {
+                string sql = "delete from tb_Produtos where id = @id";
+
+                SqlCommand executacmd = new SqlCommand(sql, conexao);
+                executacmd.Parameters.AddWithValue("@id", obj.codigo);
+
+                conexao.Open();
+                executacmd.ExecuteNonQuery();
+                conexao.Close();
+
+                MessageBox.Show("Produto excluído.", "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show("Aconteceu algum erro: " + erro);
+            }
+        }
+
+        #endregion
+
     }
 }

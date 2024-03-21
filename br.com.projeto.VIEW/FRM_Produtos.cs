@@ -33,9 +33,9 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
 
             FornecedorDAO f_dao = new FornecedorDAO();
             cbo_FornecedorID.DataSource = f_dao.listarFornecedores();
-            
+
             // Este codigo define um troca de valores para chave estrangeira
-            
+
             cbo_FornecedorID.DisplayMember = "FORNECEDOR";
             cbo_FornecedorID.ValueMember = "CODIGO";
 
@@ -164,6 +164,52 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
 
             m.limparControle(this);
             m.apagarCampos();
+        }
+
+        #endregion
+
+        #region Botao Excluir
+
+        private void btn_Excluir_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Verifica se o usuario tem certeza que vai deletar o registro
+                if (txt_Codigo.Text == string.Empty)
+                {
+                    MessageBox.Show("Nenhum registro foi selecionado.", "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+
+                    if (MessageBox.Show("Deseja excluir o registro ?", "ATENÇÃO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        btn_Salvar.Enabled = true;
+
+                        // pegar o codigo do cliente
+
+                        obj.codigo = int.Parse(txt_Codigo.Text);
+
+                        // Instanciando a classe ProdutoDAO e chamando o método ExcluirProduto
+
+                        dao.excluirProduto(obj);
+
+                        // Chamando o metodo para atualizar a lista no DataGrid após apagar
+
+                        tabelaProdutos.DataSource = dao.listarProdutos();
+
+                        // Limpa os campos após remover o registro
+
+                        m.limparControle(this);
+                        m.apagarCampos();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         #endregion
