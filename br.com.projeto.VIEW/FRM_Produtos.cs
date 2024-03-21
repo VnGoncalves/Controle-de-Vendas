@@ -146,13 +146,24 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
 
         #endregion
 
-
         #region Metodo Pesquisar produto
 
         private void txt_Pesquisa_TextChanged(object sender, EventArgs e)
         {
             string nome = "%" + txt_Pesquisa.Text + "%";
             tabelaProdutos.DataSource = dao.buscarProdutoPorNome(nome);
+        }
+
+        #endregion
+
+        #region Botao Novo
+
+        private void btn_Novo_Click(object sender, EventArgs e)
+        {
+            btn_Salvar.Enabled = true;
+
+            m.limparControle(this);
+            m.apagarCampos();
         }
 
         #endregion

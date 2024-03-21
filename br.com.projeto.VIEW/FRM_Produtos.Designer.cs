@@ -137,6 +137,7 @@
             this.btn_Novo.Name = "btn_Novo";
             this.btn_Novo.Size = new System.Drawing.Size(32, 32);
             this.btn_Novo.Text = "Novo";
+            this.btn_Novo.Click += new System.EventHandler(this.btn_Novo_Click);
             // 
             // btn_Salvar
             // 
