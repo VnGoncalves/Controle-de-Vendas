@@ -14,7 +14,7 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
     public class ProdutoDAO
     {
         private SqlConnection conexao;
-        public ProdutoDAO() 
+        public ProdutoDAO()
         {
             this.conexao = new ConnectionFactory().getConnection();
         }
@@ -63,7 +63,7 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
                         	TF.NOME [FORNECEDOR]
                           FROM TB_PRODUTOS TP
                         	INNER JOIN TB_FORNECEDORES TF ON TF.ID = TP.FOR_ID";
-            
+
             SqlCommand executacmd = new SqlCommand(sql, conexao);
             conexao.Open();
             executacmd.ExecuteNonQuery();
@@ -145,5 +145,43 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
 
         #endregion
 
+        #region Alterar Produto
+
+        public void alterarProduto(Produto obj)
+        {
+            try
+            {
+                try
+                {
+                    string sql = @"update tb_Produtos set descricao = @descricao, preco = @preco, qtd_estoque = @qtd_estoque, for_id = @for_id where id = @id";
+
+                    SqlCommand executacmd = new SqlCommand(sql, conexao);
+                    executacmd.Parameters.AddWithValue("@descricao", obj.descricao);
+                    executacmd.Parameters.AddWithValue("@preco", obj.preco);
+                    executacmd.Parameters.AddWithValue("@qtd_estoque", obj.qtd_estoque);
+                    executacmd.Parameters.AddWithValue("@for_id", obj.fornecedorID);
+                    executacmd.Parameters.AddWithValue("@id", obj.codigo);
+
+
+                    conexao.Open();
+                    executacmd.ExecuteNonQuery();
+                    conexao.Close();
+
+                    MessageBox.Show("Produto cadastrado com sucesso", "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                catch (Exception erro)
+                {
+                    MessageBox.Show("Aconteceu um erro: " + erro);
+                }
+            }
+            catch (Exception e)
+            {
+
+                MessageBox.Show("Aconteceu um erro" + e);
+            }
+        }
+
+        #endregion
     }
 }

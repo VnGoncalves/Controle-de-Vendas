@@ -104,7 +104,7 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
                     {
 
                         dao.cadastrarProduto(obj);
-                        //tabelaProdutos.DataSource = dao.ListarProdutos();
+                        tabelaProdutos.DataSource = dao.listarProdutos();
 
                         m.limparControle(this);
                         m.apagarCampos();
@@ -209,6 +209,70 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             {
 
                 throw;
+            }
+        }
+
+        #endregion
+
+        #region Botao Alterar
+
+        private void btn_Alterar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txt_Codigo.Text == string.Empty)
+                {
+                    MessageBox.Show("Nenhum cliente identificado", "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    obj.codigo = int.Parse(txt_Codigo.Text);
+                    obj.descricao = txt_Descricao.Text;
+                    obj.preco = decimal.Parse(txt_Preco.Text);
+                    obj.qtd_estoque = int.Parse(txt_QtdEstoque.Text);
+                    obj.fornecedorID = int.Parse(cbo_FornecedorID.SelectedValue.ToString());
+
+                    List<TextBox> textBox = new List<TextBox> { txt_Descricao, txt_Preco, txt_QtdEstoque, };
+                    List<ComboBox> comboBox = new List<ComboBox> { cbo_FornecedorID };
+
+
+                    if (m.comboBoxVazio(comboBox) == true)
+                    {
+                        MessageBox.Show("Preencha os campos em vermelho completamente.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if (m.textBoxVazio(textBox) == true)
+                    {
+                        MessageBox.Show("Preencha os campos em vermelho completamente.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        // Verificando se o usuario tem certeza que vai modificar o registro
+
+                        if (MessageBox.Show("Deseja alterar o registro ?", "ATENÇÃO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            // Instanciando o metodo alterarCliente da classe ClienteDAO para alteramos os registro
+
+                            dao.alterarProduto(obj);
+                            tabelaProdutos.DataSource = dao.listarProdutos();
+
+                            // Limpa os campos após remover o registro
+
+                            m.limparControle(this);
+                            m.apagarCampos();
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                if (cbo_FornecedorID.Text == string.Empty)
+                    MessageBox.Show("Selecione um Fornecedor", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                else if (txt_QtdEstoque.Text == string.Empty)
+                    MessageBox.Show("Preencha o campo Quantidade Estoque", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                else if (txt_Preco.Text == string.Empty)
+                    MessageBox.Show("Preencha o campo Preço", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
