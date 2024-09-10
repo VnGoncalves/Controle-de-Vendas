@@ -151,6 +151,7 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
                                 	cidade			[CIDADE],
                                 	estado			[ESTADO]
                                 from tb_Funcionarios where nome like @nome";
+
                 // 2 Organizar o comando sql e executar
 
                 SqlCommand executacmd = new SqlCommand(sql, conexao);

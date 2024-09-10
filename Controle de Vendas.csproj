@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -59,6 +74,7 @@
     <Compile Include="br.com.projeto.DAO\ClienteDAO.cs" />
     <Compile Include="br.com.projeto.DAO\FornecedorDAO.cs" />
     <Compile Include="br.com.projeto.DAO\FuncionarioDAO.cs" />
+    <Compile Include="br.com.projeto.DAO\Login.cs" />
     <Compile Include="br.com.projeto.DAO\ProdutoDAO.cs" />
     <Compile Include="br.com.projeto.MODEL\Cliente.cs" />
     <Compile Include="br.com.projeto.MODEL\Fornecedor.cs" />
@@ -67,6 +83,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="br.com.projeto.MODEL\Produto.cs" />
+    <Compile Include="br.com.projeto.MODEL\Venda.cs" />
     <Compile Include="br.com.projeto.VIEW\FRM_Clientes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,11 +102,29 @@
     <Compile Include="br.com.projeto.VIEW\FRM_Fornecedores.Designer.cs">
       <DependentUpon>FRM_Fornecedores.cs</DependentUpon>
     </Compile>
+    <Compile Include="br.com.projeto.VIEW\FRM_Principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="br.com.projeto.VIEW\FRM_Principal.Designer.cs">
+      <DependentUpon>FRM_Principal.cs</DependentUpon>
+    </Compile>
     <Compile Include="br.com.projeto.VIEW\FRM_Produtos.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="br.com.projeto.VIEW\FRM_Produtos.Designer.cs">
       <DependentUpon>FRM_Produtos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="br.com.projeto.VIEW\FRM_Vendas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="br.com.projeto.VIEW\FRM_Vendas.Designer.cs">
+      <DependentUpon>FRM_Vendas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="br.com.projeto.VIEW\FRM_TelaLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="br.com.projeto.VIEW\FRM_TelaLogin.Designer.cs">
+      <DependentUpon>FRM_TelaLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -108,8 +143,17 @@
     <EmbeddedResource Include="br.com.projeto.VIEW\FRM_Funcionarios.resx">
       <DependentUpon>FRM_Funcionarios.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="br.com.projeto.VIEW\FRM_Principal.resx">
+      <DependentUpon>FRM_Principal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="br.com.projeto.VIEW\FRM_Produtos.resx">
       <DependentUpon>FRM_Produtos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="br.com.projeto.VIEW\FRM_Vendas.resx">
+      <DependentUpon>FRM_Vendas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="br.com.projeto.VIEW\FRM_TelaLogin.resx">
+      <DependentUpon>FRM_TelaLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -119,6 +163,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="BDVENDASDataSet.xsc">
       <DependentUpon>BDVENDASDataSet.xsd</DependentUpon>
@@ -147,9 +192,24 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="br.com.projeto.IMAGENS\alterar.ico" />
+    <Content Include="br.com.projeto.IMAGENS\black-friday-concept-with-cart-basket.jpg" />
     <Content Include="br.com.projeto.IMAGENS\excluir.ico" />
+    <Content Include="br.com.projeto.IMAGENS\Fundo_sistema.jpg" />
+    <Content Include="br.com.projeto.IMAGENS\laptop-near-smartphone-digital-devices-shopping-trolley.jpg" />
     <Content Include="br.com.projeto.IMAGENS\novo.ico" />
     <Content Include="br.com.projeto.IMAGENS\salvar.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 e x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

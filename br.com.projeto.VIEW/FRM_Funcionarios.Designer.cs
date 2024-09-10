@@ -166,7 +166,7 @@
             this.btn_Novo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_Novo.Name = "btn_Novo";
             this.btn_Novo.Size = new System.Drawing.Size(32, 32);
-            this.btn_Novo.Text = "toolStripButton1";
+            this.btn_Novo.Text = "Novo";
             this.btn_Novo.Click += new System.EventHandler(this.btn_Novo_Click);
             // 
             // btn_Salvar
@@ -176,7 +176,7 @@
             this.btn_Salvar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_Salvar.Name = "btn_Salvar";
             this.btn_Salvar.Size = new System.Drawing.Size(32, 32);
-            this.btn_Salvar.Text = "toolStripButton2";
+            this.btn_Salvar.Text = "Salvar";
             this.btn_Salvar.Click += new System.EventHandler(this.btn_Salvar_Click);
             // 
             // btn_Excluir
@@ -186,7 +186,7 @@
             this.btn_Excluir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_Excluir.Name = "btn_Excluir";
             this.btn_Excluir.Size = new System.Drawing.Size(32, 32);
-            this.btn_Excluir.Text = "toolStripButton3";
+            this.btn_Excluir.Text = "Excluir";
             this.btn_Excluir.Click += new System.EventHandler(this.btn_Excluir_Click);
             // 
             // btn_Alterar
@@ -196,7 +196,7 @@
             this.btn_Alterar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_Alterar.Name = "btn_Alterar";
             this.btn_Alterar.Size = new System.Drawing.Size(32, 32);
-            this.btn_Alterar.Text = "toolStripButton4";
+            this.btn_Alterar.Text = "Alterar";
             this.btn_Alterar.Click += new System.EventHandler(this.btn_Alterar_Click);
             // 
             // tabelaFuncionario
@@ -713,6 +713,7 @@
             this.txt_Pesquisa.Name = "txt_Pesquisa";
             this.txt_Pesquisa.Size = new System.Drawing.Size(360, 31);
             this.txt_Pesquisa.TabIndex = 13;
+            this.txt_Pesquisa.TextChanged += new System.EventHandler(this.txt_Pesquisa_TextChanged_1);
             // 
             // FRM_Funcionario
             // 

@@ -49,16 +49,17 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
 
             // Ajustando o tamanho de cada coluna
 
-            tabelaFuncionario.Columns["DESCRICAO"].Width = 450;
+            tabelaFuncionario.Columns["FUNCIONARIO"].Width = 450;
             tabelaFuncionario.Columns["CARGO"].Width = 350;
             tabelaFuncionario.Columns["NIVEL ACESSO"].Width = 380;
         }
         #endregion
 
         #region Pesquisar Funcionarios
-        private void txt_Pesquisa_TextChanged(object sender, EventArgs e)
+        private void txt_Pesquisa_TextChanged_1(object sender, EventArgs e)
         {
-            ListarNomes();
+            string nome = "%" + txt_Pesquisa.Text + "%";
+            tabelaFuncionario.DataSource = dao.buscarFuncionarioPorNome(nome);
         }
         #endregion
 
@@ -94,16 +95,6 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             txt_Bairro.Text = tabelaFuncionario.CurrentRow.Cells[14].Value.ToString();
             txt_Cidade.Text = tabelaFuncionario.CurrentRow.Cells[15].Value.ToString();
             cbo_UF.Text = tabelaFuncionario.CurrentRow.Cells[16].Value.ToString();
-        }
-        #endregion
-
-        #region Metodo para Listar nomes
-        private void ListarNomes()
-        {
-            // Declarando a variavel para receber o parametro LIKE do sql
-
-            string nome = "%" + txt_Pesquisa.Text + "%";
-            tabelaFuncionario.DataSource = dao.buscarFuncionarioPorNome(nome);
         }
         #endregion
 
@@ -346,5 +337,6 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             }
         }
         #endregion
+
     }
 }
