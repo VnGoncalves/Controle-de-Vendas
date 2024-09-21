@@ -97,6 +97,12 @@ namespace Controle_de_Vendas.br.com.projeto.MODEL
                 mask.ForeColor = Color.Black;
             }
 
+            else if (controle is CheckBox check)
+            {
+                check.Checked = false;
+                check.ForeColor = Color.Black;
+            }
+
             foreach (Control subControle in controle.Controls)
             {
                 limparControle(subControle);

@@ -17,7 +17,7 @@ namespace Controle_de_Vendas
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FRM_Principal());
+            Application.Run(new FRM_TelaLogin());
         }
     }
 }

@@ -57,5 +57,10 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             fornecedor.MdiParent = this;
             fornecedor.Show();
         }
+
+        private void sairToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

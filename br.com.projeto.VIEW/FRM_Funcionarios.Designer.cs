@@ -82,6 +82,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label17 = new System.Windows.Forms.Label();
             this.txt_Pesquisa = new System.Windows.Forms.TextBox();
+            this.check_Ativo = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.tab_Funcionario.SuspendLayout();
             this.tab_DadosPessoais.SuspendLayout();
@@ -415,6 +416,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.check_Ativo);
             this.groupBox1.Controls.Add(this.label21);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.label20);
@@ -715,6 +717,16 @@
             this.txt_Pesquisa.TabIndex = 13;
             this.txt_Pesquisa.TextChanged += new System.EventHandler(this.txt_Pesquisa_TextChanged_1);
             // 
+            // check_Ativo
+            // 
+            this.check_Ativo.AutoSize = true;
+            this.check_Ativo.Location = new System.Drawing.Point(560, 247);
+            this.check_Ativo.Name = "check_Ativo";
+            this.check_Ativo.Size = new System.Drawing.Size(70, 28);
+            this.check_Ativo.TabIndex = 17;
+            this.check_Ativo.Text = "Ativo";
+            this.check_Ativo.UseVisualStyleBackColor = true;
+            // 
             // FRM_Funcionario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
@@ -800,5 +812,6 @@
         private System.Windows.Forms.ToolStripButton btn_Salvar;
         private System.Windows.Forms.ToolStripButton btn_Excluir;
         private System.Windows.Forms.ToolStripButton btn_Alterar;
+        private System.Windows.Forms.CheckBox check_Ativo;
     }
 }

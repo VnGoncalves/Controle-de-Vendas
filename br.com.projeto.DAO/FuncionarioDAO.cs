@@ -30,9 +30,9 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
                 // Criar comando para inserir funcionario
 
                 string sql = @"insert into tb_funcionarios (nome, rg, cpf, email, senha, cargo, nivel_acesso,telefone, celular, cep, endereco, 
-                                numero, complemento, bairro, cidade, estado)
+                                numero, complemento, bairro, cidade, estado, ativo)
                                     values(@nome, @rg, @cpf, @email, @senha, @cargo, @nivel_acesso,@telefone, @celular, @cep, @endereco, 
-                                @numero, @complemento, @bairro, @cidade, @estado)";
+                                @numero, @complemento, @bairro, @cidade, @estado, @ativo)";
                 // Organizar e executar o comando sql
 
                 SqlCommand executacmd = new SqlCommand(sql, conexao);
@@ -52,6 +52,7 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
                 executacmd.Parameters.AddWithValue("@bairro", obj.bairro);
                 executacmd.Parameters.AddWithValue("@cidade", obj.cidade);
                 executacmd.Parameters.AddWithValue("@estado", obj.estado);
+                executacmd.Parameters.AddWithValue("@ativo", obj.ativo);
 
                 // Abrir conexao
 
@@ -98,7 +99,8 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
                                 	complemento		[COMPLEMENTO],
                                 	bairro			[BAIRRO],
                                 	cidade			[CIDADE],
-                                	estado			[ESTADO]
+                                	estado			[ESTADO],
+                                    ativo           [ATIVO]
                                 from tb_Funcionarios";
 
                 // 2 Organizar o comando sql e executar
@@ -149,7 +151,8 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
                                 	complemento		[COMPLEMENTO],
                                 	bairro			[BAIRRO],
                                 	cidade			[CIDADE],
-                                	estado			[ESTADO]
+                                	estado			[ESTADO],
+                                    ativo           [ATIVO]
                                 from tb_Funcionarios where nome like @nome";
 
                 // 2 Organizar o comando sql e executar
@@ -199,7 +202,8 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
                                     complemento = @complemento,
                                     bairro = @bairro,
                                     cidade = @cidade,
-                                    estado = @estado
+                                    estado = @estado,
+                                    ativo  = @ativo 
                                 where id = @id";
 
 
@@ -221,6 +225,7 @@ namespace Controle_de_Vendas.br.com.projeto.DAO
                 executacmd.Parameters.AddWithValue("@bairro", obj.cidade);
                 executacmd.Parameters.AddWithValue("@cidade", obj.cidade);
                 executacmd.Parameters.AddWithValue("@estado", obj.estado);
+                executacmd.Parameters.AddWithValue("@ativo", obj.ativo);
                 executacmd.Parameters.AddWithValue("@id", obj.codigo);
 
                 //3 - Executando o codigo sql

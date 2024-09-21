@@ -11,5 +11,6 @@ namespace Controle_de_Vendas.br.com.projeto.MODEL
         public string senha { get; set; }
         public string cargo { get; set; }
         public string nivel_acesso { get; set; }
+        public bool ativo { get; set; }
     }
 }
