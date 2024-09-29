@@ -45,26 +45,27 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
                 {
                     if (login.Logar(funcionario) == true)
                     {
+                        principal.SetUsuario(login.nomeFuncionario);
                         principal.Show();
                         this.Hide();
-                    } else
+                    }
+                    else
                     {
                         while (tentativas < 3)
                         {
                             tentativas += 1;
-
-                            if (tentativas == 3)
-                            {
-                                MessageBox.Show("Usuário bloqueado, contato o administrador do sistema.");
-                                break;
-                            }
+                            //if (tentativas == 3)
+                            //{
+                            //    login.BloquearUsuario(login.nomeFuncionario);
+                            //    break;
+                            //}
+                            break;
                         }
-                    }                   
+                    }
                 }
             }
             catch (Exception)
             {
-
                 throw;
             }
         }

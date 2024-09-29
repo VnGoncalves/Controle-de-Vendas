@@ -20,7 +20,6 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             this.WindowState = FormWindowState.Maximized;
         }
         // Instancia as classes necessarias
-
         Metodos m = new Metodos();
         Funcionario obj = new Funcionario();
         FuncionarioDAO dao = new FuncionarioDAO();
@@ -95,39 +94,8 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
             txt_Bairro.Text = tabelaFuncionario.CurrentRow.Cells[14].Value.ToString();
             txt_Cidade.Text = tabelaFuncionario.CurrentRow.Cells[15].Value.ToString();
             cbo_UF.Text = tabelaFuncionario.CurrentRow.Cells[16].Value.ToString();
-            var valorCelula = tabelaFuncionario.CurrentRow.Cells[17].Value;
+            check_Ativo.Checked = (bool)tabelaFuncionario.CurrentRow.Cells[17].Value;
 
-            // Verifica se o valor não é nulo ou do tipo DBNull
-            if (valorCelula != null && valorCelula != DBNull.Value)
-            {
-                try
-                {
-                    // Verifica se o valor é um booleano (por exemplo, se já é true ou false)
-                    if (valorCelula is bool)
-                    {
-                        check_Ativo.Checked = (bool)valorCelula; // Atribui diretamente
-                    }
-                    // Se for um inteiro (1 ou 0), converte para booleano
-                    else if (valorCelula is int)
-                    {
-                        check_Ativo.Checked = (int)valorCelula == 1; // Converte 1 para true e 0 para false
-                    }
-                    // Se for string (por exemplo, "1" ou "0"), converte para booleano
-                    else if (valorCelula is string)
-                    {
-                        check_Ativo.Checked = valorCelula.ToString() == "1"; // Converte "1" para true
-                    }
-                    else
-                    {
-                        MessageBox.Show("O valor da célula não pode ser convertido.");
-                    }
-                }
-                catch (InvalidCastException ex)
-                {
-                    // Captura erros de conversão
-                    MessageBox.Show($"Erro de conversão: {ex.Message}");
-                }
-            }
         }
         #endregion
 

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Controle_de_Vendas.br.com.projeto.DAO;
+using Controle_de_Vendas.br.com.projeto.MODEL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,14 +15,31 @@ namespace Controle_de_Vendas.br.com.projeto.VIEW
 {
     public partial class FRM_Principal : Form
     {
+        private Timer timer;
         public FRM_Principal()
         {
             InitializeComponent();
 
-            this.BackgroundImage = Properties.Resources.laptop_near_smartphone_digital_devices_shopping_trolley; // Substitua pelo caminho da sua imagem
-            this.BackgroundImageLayout = ImageLayout.Stretch; // Você pode escolher entre None, Tile, Center, Stretch, Zoom
+            this.BackgroundImage = Properties.Resources.laptop_near_smartphone_digital_devices_shopping_trolley;
+            this.BackgroundImageLayout = ImageLayout.Stretch;
 
-            lbl_Data.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            // Atualiza a data em tempo real
+            timer = new Timer();
+            timer.Interval = 1000;
+            timer.Tick += Timer_Tick;
+            timer.Start();  
+
+        }
+
+        public void SetUsuario(string nomeFuncionario)
+        {
+            lbl_Usuario.Text = nomeFuncionario;
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            // Atualiza o Label com a data atual
+            lbl_Data.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
         }
 
         private void funcionarioToolStripMenuItem_Click(object sender, EventArgs e)
